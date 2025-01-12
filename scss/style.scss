@@ -1,0 +1,34 @@
+@font-face {
+	font-family: 'playfair';
+	src: url(../fonts/Playfair_Display_SC/PlayfairDisplaySC-Regular.ttf);
+}
+
+body {
+	font-family: 'playfair', sans-serif;
+	overflow-x: hidden;
+}
+
+header {
+	height: 5vh;
+}
+
+.dropdown-toggle:after {
+	display: none !important;
+}
+
+#menu-icons img {
+	width: 20px;
+}
+
+.carousel img {
+	height: 90vh;
+	object-fit: cover;
+}
+
+footer {
+	height: 5vh;
+}
+
+footer img {
+	width: 20px;
+}

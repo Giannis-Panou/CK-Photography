@@ -8,7 +8,235 @@
 		<title>CK Photography</title>
 	</head>
 	<body>
-		<h1 class="border">CK Photography</h1>
+		<!-- Login Modal -->
+		<div class="modal" tabindex="-1" id="loginModal">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Modal title</h5>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body">
+						<p>Modal body text goes here.</p>
+					</div>
+					<div class="modal-footer">
+						<button
+							type="button"
+							class="btn btn-secondary"
+							data-bs-dismiss="modal"
+						>
+							Close
+						</button>
+						<button type="button" class="btn btn-primary">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Header -->
+		<header
+			class="container-fluid d-flex flex-row justify-content-around align-items-center"
+		>
+			<!-- Navbar -->
+			<div
+				class="navbar container-fluid d-flex flex-row justify-content-around"
+			>
+				<div class="dropdown-center">
+					<a
+						class="dropdown-toggle text-decoration-none text-dark"
+						type="button"
+						data-bs-toggle="dropdown"
+					>
+						Prints
+					</a>
+					<ul class="dropdown-menu">
+						<li><button class="dropdown-item" type="button">Action</button></li>
+						<li>
+							<button class="dropdown-item" type="button">
+								Another action
+							</button>
+						</li>
+						<li>
+							<button class="dropdown-item" type="button">
+								Something else here
+							</button>
+						</li>
+					</ul>
+				</div>
+				<div class="dropdown-center">
+					<a
+						class="dropdown-toggle text-decoration-none text-dark"
+						type="button"
+						data-bs-toggle="dropdown"
+					>
+						Presets
+					</a>
+					<ul class="dropdown-menu">
+						<li><button class="dropdown-item" type="button">Action</button></li>
+						<li>
+							<button class="dropdown-item" type="button">
+								Another action
+							</button>
+						</li>
+						<li>
+							<button class="dropdown-item" type="button">
+								Something else here
+							</button>
+						</li>
+					</ul>
+				</div>
+
+				<a href="../html/about.html" class="text-decoration-none text-dark"
+					>About</a
+				>
+			</div>
+			<!-- Title -->
+			<div
+				class="'title container-fluid d-flex flex-row justify-content-center"
+			>
+				<h1 class="text-dark">CK Photography</h1>
+			</div>
+			<!-- Menu Icons -->
+			<div
+				class="shopping container-fluid d-flex flex-row justify-content-center align-items-center"
+				id="menu-icons"
+			>
+				<div class="mx-4" data-bs-toggle="modal" data-bs-target="#loginModal">
+					<a type="button">
+						<img src="../images/icons/user.png" alt="login icon" />
+					</a>
+				</div>
+				<div class="mx-4" onclick="openCart()">
+					<a type="button">
+						<img src="../images/icons/shopping-basket.png" alt="cart icon" />
+						<span id="cartItemCount">0</span>
+					</a>
+				</div>
+				<div class="mx-4" onclick="openWishlist()">
+					<a type="button">
+						<img src="../images/icons/wishlist.png" alt="wishlist icon" />
+						<span id="wishlistCount">0</span>
+					</a>
+				</div>
+			</div>
+		</header>
+
+		<!-- Carousel -->
+		<div
+			id="carouselExampleAutoplaying"
+			class="carousel slide container-fluid"
+			data-bs-ride="carousel"
+		>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img
+						src="../images/wallpapers/wallpaper.jpg"
+						class="d-block w-100"
+						alt="..."
+					/>
+				</div>
+				<!-- Photos -->
+				<div class="carousel-item">
+					<img
+						src="../images/wallpapers/wallpaper1.jpg"
+						class="d-block w-100"
+						alt="..."
+					/>
+				</div>
+				<div class="carousel-item">
+					<img
+						src="../images/wallpapers/wallpaper2.jpg"
+						class="d-block w-100"
+						alt="..."
+					/>
+				</div>
+				<div class="carousel-item">
+					<img
+						src="../images/wallpapers/wallpaper3.jpg"
+						class="d-block w-100"
+						alt="..."
+					/>
+				</div>
+				<div class="carousel-item">
+					<img
+						src="../images/wallpapers/wallpaper4.jpg"
+						class="d-block w-100"
+						alt="..."
+					/>
+				</div>
+				<div class="carousel-item">
+					<img
+						src="../images/wallpapers/wallpaper5.jpg"
+						class="d-block w-100"
+						alt="..."
+					/>
+				</div>
+				<div class="carousel-item">
+					<img
+						src="../images/wallpapers/wallpaper6.jpg"
+						class="d-block w-100"
+						alt="..."
+					/>
+				</div>
+			</div>
+			<!-- Carousel Buttons -->
+			<button
+				class="carousel-control-prev"
+				type="button"
+				data-bs-target="#carouselExampleAutoplaying"
+				data-bs-slide="prev"
+			>
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button
+				class="carousel-control-next"
+				type="button"
+				data-bs-target="#carouselExampleAutoplaying"
+				data-bs-slide="next"
+			>
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+
+		<!-- Footer -->
+		<footer
+			class="container-fluid d-flex flex-row justify-content-around align-items-center"
+		>
+			<!-- Copyright -->
+			<div
+				class="container-fluid d-flex justify-content-center align-items-center"
+			>
+				<p class="m-0">
+					Copyright &copy;
+					<script>
+						document.write(new Date().getFullYear());
+					</script>
+					Ioannis Panou All Rights Reserved
+				</p>
+			</div>
+			<!-- Social -->
+			<div class="container-fluid d-flex flex-row justify-content-center">
+				<a href="https://www.facebook.com/" class="mx-4">
+					<img src="../images/social/facebook.png" alt="" />
+				</a>
+				<a href="https://www.instagram.com/" class="mx-4">
+					<img src="../images/social/instagram.png" alt="" />
+				</a>
+				<a href="https://www.pinterest.com/" class="mx-4">
+					<img src="../images/social/pinterest.png" alt="" />
+				</a>
+				<a href="https://www.tiktok.com/en/" class="mx-4">
+					<img src="../images/social/tiktok.png" alt="" />
+				</a>
+			</div>
+		</footer>
 
 		<script src="../js/bootstrap.bundle.min.js"></script>
 		<script src="../js/script.js"></script>
