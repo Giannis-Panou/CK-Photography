@@ -10,10 +10,10 @@
 	<body>
 		<!-- Login Modal -->
 		<div class="modal" tabindex="-1" id="loginModal">
-			<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-dialog modal-dialog-centered visible">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title">Modal title</h5>
+						<h5 class="modal-title">Login</h5>
 						<button
 							type="button"
 							class="btn-close"
@@ -22,20 +22,129 @@
 						></button>
 					</div>
 					<div class="modal-body">
-						<p>Modal body text goes here.</p>
+						<form>
+							<div class="mb-3">
+								<label for="email" class="form-label">Email address</label>
+								<input
+									type="email"
+									class="form-control rounded-0"
+									id="email"
+									aria-describedby="email"
+								/>
+							</div>
+							<div class="mb-3">
+								<label for="password" class="form-label">Password</label>
+								<input
+									type="password"
+									class="form-control rounded-0"
+									id="password"
+								/>
+							</div>
+
+							<button type="submit" class="btn btn-dark rounded-0">
+								Login
+							</button>
+						</form>
 					</div>
 					<div class="modal-footer">
-						<button
-							type="button"
-							class="btn btn-secondary"
-							data-bs-dismiss="modal"
-						>
-							Close
-						</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
+						<div data-bs-toggle="modal" data-bs-target="#registerModal">
+							<button class="btn btn-light border border-dark rounded-0">
+								Register
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+
+		<!-- Register Modal -->
+		<div class="modal" tabindex="-1" id="registerModal">
+			<div class="modal-dialog modal-dialog-centered visible">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Register</h5>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="mb-3">
+								<label for="name" class="form-label">Full Name</label>
+								<input
+									type="text"
+									class="form-control rounded-0"
+									id="name"
+									aria-describedby="name"
+								/>
+							</div>
+							<div class="mb-3">
+								<label for="email" class="form-label">Email address</label>
+								<input
+									type="email"
+									class="form-control rounded-0"
+									id="email"
+									aria-describedby="email"
+								/>
+							</div>
+							<div class="mb-3">
+								<label for="password" class="form-label">Password</label>
+								<input
+									type="password"
+									class="form-control rounded-0"
+									id="password"
+								/>
+							</div>
+							<div class="mb-3">
+								<label for="password" class="form-label"
+									>Confirm Password</label
+								>
+								<input
+									type="password"
+									class="form-control rounded-0"
+									id="password"
+								/>
+							</div>
+
+							<button type="submit" class="btn btn-dark rounded-0">
+								Register
+							</button>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<div data-bs-toggle="modal" data-bs-target="#loginModal">
+							<button class="btn btn-light border border-dark rounded-0">
+								Login
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Cart Modal -->
+
+		<div
+			class="offcanvas offcanvas-end"
+			tabindex="-1"
+			id="offcanvasRight"
+			aria-labelledby="offcanvasRightLabel"
+		>
+			<div class="offcanvas-header">
+				<h5 class="offcanvas-title" id="offcanvasRightLabel">
+					Offcanvas right
+				</h5>
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="offcanvas"
+					aria-label="Close"
+				></button>
+			</div>
+			<div class="offcanvas-body">...</div>
 		</div>
 
 		<!-- Header -->
@@ -111,7 +220,12 @@
 						<img src="../images/icons/user.png" alt="login icon" />
 					</a>
 				</div>
-				<div class="mx-4" onclick="openCart()">
+				<div
+					class="mx-4"
+					data-bs-toggle="offcanvas"
+					data-bs-target="#offcanvasRight"
+					aria-controls="offcanvasRight"
+				>
 					<a type="button">
 						<img src="../images/icons/shopping-basket.png" alt="cart icon" />
 						<span id="cartItemCount">0</span>
@@ -129,7 +243,7 @@
 		<!-- Carousel -->
 		<div
 			id="carouselExampleAutoplaying"
-			class="carousel slide container-fluid"
+			class="carousel slide"
 			data-bs-ride="carousel"
 		>
 			<div class="carousel-inner">
