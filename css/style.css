@@ -8,7 +8,7 @@ body {
 }
 
 header {
-  height: 5vh;
+  height: 7.5vh;
 }
 
 .dropdown-toggle:after {
@@ -20,12 +20,13 @@ header {
 }
 
 .carousel img {
-  height: 90vh;
+  height: 85vh;
   object-fit: cover;
 }
 
 footer {
-  height: 5vh;
+  height: 7.5vh;
+  font-size: medium;
 }
 
 footer img {
