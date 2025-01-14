@@ -126,7 +126,6 @@
 		</div>
 
 		<!-- Cart Modal -->
-
 		<div
 			class="offcanvas offcanvas-end"
 			tabindex="-1"
@@ -134,9 +133,7 @@
 			aria-labelledby="offcanvasRightLabel"
 		>
 			<div class="offcanvas-header">
-				<h5 class="offcanvas-title" id="offcanvasRightLabel">
-					Offcanvas right
-				</h5>
+				<h5 class="offcanvas-title">Cart</h5>
 				<button
 					type="button"
 					class="btn-close"
@@ -144,7 +141,26 @@
 					aria-label="Close"
 				></button>
 			</div>
-			<div class="offcanvas-body">...</div>
+			<div class="offcanvas-body"></div>
+		</div>
+
+		<!-- Wishlist Modal -->
+		<div
+			class="offcanvas offcanvas-start"
+			tabindex="-1"
+			id="offcanvasLeft"
+			aria-labelledby="offcanvasLeftLabel"
+		>
+			<div class="offcanvas-header">
+				<h5 class="offcanvas-title">Wishlist</h5>
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="offcanvas"
+					aria-label="Close"
+				></button>
+			</div>
+			<div class="offcanvas-body"></div>
 		</div>
 
 		<!-- Header -->
@@ -164,14 +180,14 @@
 						Prints
 					</a>
 					<ul class="dropdown-menu">
-						<li><button class="dropdown-item" type="button">Action</button></li>
+						<li><button class="dropdown-item btn btn-light" type="button">Action</button></li>
 						<li>
-							<button class="dropdown-item" type="button">
+							<button class="dropdown-item btn btn-light" type="button">
 								Another action
 							</button>
 						</li>
 						<li>
-							<button class="dropdown-item" type="button">
+							<button class="dropdown-item btn btn-light" type="button">
 								Something else here
 							</button>
 						</li>
@@ -186,14 +202,14 @@
 						Presets
 					</a>
 					<ul class="dropdown-menu">
-						<li><button class="dropdown-item" type="button">Action</button></li>
+						<li><button class="dropdown-item btn btn-light" type="button">Action</button></li>
 						<li>
-							<button class="dropdown-item" type="button">
+							<button class="dropdown-item btn btn-light" type="button">
 								Another action
 							</button>
 						</li>
 						<li>
-							<button class="dropdown-item" type="button">
+							<button class="dropdown-item btn btn-light" type="button">
 								Something else here
 							</button>
 						</li>
@@ -215,11 +231,13 @@
 				class="shopping container-fluid d-flex flex-row justify-content-center align-items-center"
 				id="menu-icons"
 			>
+				<!-- Login -->
 				<div class="mx-4" data-bs-toggle="modal" data-bs-target="#loginModal">
 					<a type="button">
 						<img src="../images/icons/user.png" alt="login icon" />
 					</a>
 				</div>
+				<!-- Cart -->
 				<div
 					class="mx-4"
 					data-bs-toggle="offcanvas"
@@ -231,7 +249,13 @@
 						<span id="cartItemCount">0</span>
 					</a>
 				</div>
-				<div class="mx-4" onclick="openWishlist()">
+				<!-- Wishlist -->
+				<div
+					class="mx-4"
+					data-bs-toggle="offcanvas"
+					data-bs-target="#offcanvasLeft"
+					aria-controls="offcanvasLeft"
+				>
 					<a type="button">
 						<img src="../images/icons/wishlist.png" alt="wishlist icon" />
 						<span id="wishlistCount">0</span>
