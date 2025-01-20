@@ -1,0 +1,154 @@
+.sidebar {
+	background-color: white;
+	width: 0px;
+	height: 70px;
+	z-index: 1;
+	overflow-x: hidden;
+	transition: 0.45s linear;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	font-family: 'asket';
+	font-weight: 500;
+}
+
+#min-price {
+	margin-left: 3.5px;
+}
+
+.filters label {
+	margin-right: 10px;
+}
+
+.price-filter {
+	margin-left: 10px;
+}
+
+.items-container {
+	padding: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	flex: 0 0 calc(80% - 20%);
+	box-sizing: border-box;
+}
+
+@media screen and (max-width: 1920px) {
+	#min-price {
+		margin-left: 3.5px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.price-filter label {
+		display: none;
+	}
+
+	#min-price {
+		margin-left: 0;
+	}
+}
+
+.items-container img {
+	max-width: 100%;
+}
+
+.items-container img:hover {
+	opacity: 75%;
+}
+
+.col-pr {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+}
+
+.col-pr1 {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.col-pr2 {
+	display: grid;
+	grid-template-columns: 1fr;
+	text-align: center;
+	margin: 10px;
+}
+
+.col-pr2 a {
+	text-decoration: none;
+	color: black;
+}
+
+.col-pr2 button {
+	background: none;
+	border: 1px solid black;
+	box-shadow: 0px 1px 3px silver;
+	padding: 10px;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
+
+.col-pr2 button:hover {
+	background-color: black;
+	color: white;
+	transition: 0.5s;
+}
+
+@media screen and (max-width: 600px) {
+	.items-container {
+		display: flex;
+	}
+
+	.col-pr {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.col-pr1 {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.filters {
+		display: flex;
+		justify-content: end;
+		flex-direction: row;
+	}
+
+	.bars {
+		display: flex;
+		justify-content: center;
+		padding-top: 12px;
+	}
+}
+
+.animMenu {
+	display: inline-block;
+	cursor: pointer;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+	width: 25px;
+	height: 4px;
+	background-color: black;
+	margin: 4px 0;
+	transition: 0.4s;
+}
+
+.change .bar1 {
+	transform: translate(0, 8px) rotate(-45deg);
+}
+
+.change .bar2 {
+	opacity: 0;
+}
+
+.change .bar3 {
+	transform: translate(0, -8px) rotate(45deg);
+}
