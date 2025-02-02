@@ -5,7 +5,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="../css/bootstrap.css" />
 		<link rel="stylesheet" href="../css/style.css" />
-		<title>CK Photography</title>
+		<link rel="stylesheet" href="../css/prints.css" />
+		<title>Presets</title>
 	</head>
 	<body>
 		<!-- Login Modal -->
@@ -286,83 +287,84 @@
 			</div>
 		</header>
 
-		<!-- Carousel -->
+		<!-- Main -->
+		<!-- Filters -->
 		<div
-			id="carouselExampleAutoplaying"
-			class="carousel slide"
-			data-bs-ride="carousel"
+			class="container-fluid d-flex flex-row justify-content-center align-items-center"
 		>
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img
-						src="../images/wallpapers/wallpaper.jpg"
-						class="d-block w-100"
-						alt="..."
-					/>
-				</div>
-				<!-- Photos -->
-				<div class="carousel-item">
-					<img
-						src="../images/wallpapers/wallpaper1.jpg"
-						class="d-block w-100"
-						alt="..."
-					/>
-				</div>
-				<div class="carousel-item">
-					<img
-						src="../images/wallpapers/wallpaper2.jpg"
-						class="d-block w-100"
-						alt="..."
-					/>
-				</div>
-				<div class="carousel-item">
-					<img
-						src="../images/wallpapers/wallpaper3.jpg"
-						class="d-block w-100"
-						alt="..."
-					/>
-				</div>
-				<div class="carousel-item">
-					<img
-						src="../images/wallpapers/wallpaper4.jpg"
-						class="d-block w-100"
-						alt="..."
-					/>
-				</div>
-				<div class="carousel-item">
-					<img
-						src="../images/wallpapers/wallpaper5.jpg"
-						class="d-block w-100"
-						alt="..."
-					/>
-				</div>
-				<div class="carousel-item">
-					<img
-						src="../images/wallpapers/wallpaper6.jpg"
-						class="d-block w-100"
-						alt="..."
-					/>
+			<div class="sidebar" id="sidebar">
+				<div class="d-flex flex-row justify-content-center">
+					<div
+						class="d-flex flex-row justify-content-center align-items-center"
+					>
+						<label class="px-2">Category</label>
+						<select id="category-filter" onchange="filterItems()">
+							<option value="all">All</option>
+							<option value="portrait">Portrait</option>
+							<option value="landscape">Landscape</option>
+						</select>
+					</div>
+					<div class="price-filter">
+						<label>Lowest Price</label>
+						<input
+							type="number"
+							id="min-price"
+							min="0"
+							placeholder="Lowest Price"
+							oninput="filterItems()"
+						/>
+						<label>Highest Price</label>
+						<input
+							type="number"
+							id="max-price"
+							min="0"
+							placeholder="Highest Price"
+							oninput="filterItems()"
+						/>
+					</div>
 				</div>
 			</div>
-			<!-- Carousel Buttons -->
-			<button
-				class="carousel-control-prev"
-				type="button"
-				data-bs-target="#carouselExampleAutoplaying"
-				data-bs-slide="prev"
+			<div
+				class="close-filters d-flex flex-row justify-content-center align-items-center"
 			>
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="visually-hidden">Previous</span>
-			</button>
-			<button
-				class="carousel-control-next"
-				type="button"
-				data-bs-target="#carouselExampleAutoplaying"
-				data-bs-slide="next"
-			>
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="visually-hidden">Next</span>
-			</button>
+				<div
+					class="bars d-flex flex-column justify-content-center align-items-center"
+				>
+					<div class="animMenu" onclick="openClose();animMenu(this);">
+						<div class="bar1"></div>
+						<div class="bar2"></div>
+						<div class="bar3"></div>
+					</div>
+				</div>
+				<div>
+					<p class="mt-3 mx-2">Filters</p>
+				</div>
+			</div>
+		</div>
+		<!-- Items -->
+		<div class="items-container" id="items-container">
+			<div class="prbigbig">
+				<div class="pribig">
+					<div class="col-pr">
+						<div class="col-pr1"></div>
+						<div class="col-pr1"></div>
+					</div>
+					<div class="col-pr">
+						<div class="col-pr1"></div>
+						<div class="col-pr1"></div>
+					</div>
+				</div>
+				<div class="prbig">
+					<div class="col-pr">
+						<div class="col-pr1"></div>
+						<div class="col-pr1"></div>
+					</div>
+					<div class="col-pr">
+						<div class="col-pr1"></div>
+						<div class="col-pr1"></div>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<!-- Footer -->
@@ -399,5 +401,6 @@
 		</footer>
 
 		<script src="../js/bootstrap.bundle.min.js"></script>
+		<script src="../js/filters.js"></script>
 	</body>
 </html>

@@ -1,0 +1,83 @@
+function filterItems() {
+	let items = [];
+	fetch('../data/items.json')
+		.then((response) => response.json())
+		.then((data) => {
+			if (window.location.pathname.includes('prints')) {
+				items = data.prints;
+			} else {
+				items = data.presets;
+			}
+			const categoryFilter = document.getElementById('category-filter').value;
+			const minPrice = document.getElementById('min-price').value;
+			const maxPrice = document.getElementById('max-price').value;
+			const itemsContainer = document.querySelector('.col-pr1');
+
+			itemsContainer.innerHTML = '';
+
+			let foundItems = false;
+
+			items.forEach((item) => {
+				const meetsCategory =
+					categoryFilter === 'all' || item.category === categoryFilter;
+				const meetsMinPrice =
+					minPrice === '' || item.price >= parseInt(minPrice);
+				const meetsMaxPrice =
+					maxPrice === '' || item.price <= parseInt(maxPrice);
+
+				if (meetsCategory && meetsMinPrice && meetsMaxPrice) {
+					foundItems = true;
+
+					const itemElement = document.createElement('div');
+					itemElement.className = 'col-pr2';
+					itemElement.innerHTML = `
+                        <a href=item.html>
+                            <img src="${item.image}" alt="${item.name}">
+                            <p class="item-title">${item.title}</p>
+                            <p class="item-price">${item.price.toFixed(2)}€</p>
+                        </a>
+                        <a>
+                            <button onclick="addToCart('${item.name}', ${
+						item.price
+					})" 
+                                data-item-name="${item.name}" 
+                                data-item-price="${
+																	item.price
+																}"> Add to Cart </button>
+                            <button onclick="addToWishlist('${item.name}', ${
+						item.price
+					})" 
+                                data-item-name="${item.name}" 
+                                data-item-price="${
+																	item.price
+																}"> Add to Wishlist </button>
+                        </a>
+                    `;
+
+					itemsContainer.appendChild(itemElement);
+				}
+			});
+
+			if (!foundItems) {
+				const noItemMessage = document.createElement('p');
+				noItemMessage.textContent = 'No Items Found.';
+				itemsContainer.appendChild(noItemMessage);
+			}
+		})
+		.catch((error) => console.error('Error loading items:', error));
+}
+
+document.addEventListener('DOMContentLoaded', filterItems);
+
+function openClose() {
+	let sidebar = document.getElementById('sidebar');
+	if (sidebar.style.width == '525px') {
+		sidebar.style.width = '0';
+	} else {
+		sidebar.style.width = '525px';
+	}
+}
+
+function animMenu(x) {
+	x.classList.toggle('change');
+}
