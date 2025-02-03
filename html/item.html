@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Item</title>
+		<link rel="stylesheet" href="../css/bootstrap.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		/>
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/item.css" />
+	</head>
+	<body>
+		<!-- Login Modal -->
+		<div class="modal" tabindex="-1" id="loginModal">
+			<div class="modal-dialog modal-dialog-centered visible">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Login</h5>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="mb-3">
+								<label for="email" class="form-label">Email address</label>
+								<input
+									type="email"
+									class="form-control rounded-0"
+									id="email"
+									aria-describedby="email"
+								/>
+							</div>
+							<div class="mb-3">
+								<label for="password" class="form-label">Password</label>
+								<input
+									type="password"
+									class="form-control rounded-0"
+									id="password"
+								/>
+							</div>
+
+							<button type="submit" class="btn btn-dark rounded-0">
+								Login
+							</button>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<div data-bs-toggle="modal" data-bs-target="#registerModal">
+							<button class="btn btn-light border border-dark rounded-0">
+								Register
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Register Modal -->
+		<div class="modal" tabindex="-1" id="registerModal">
+			<div class="modal-dialog modal-dialog-centered visible">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Register</h5>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="mb-3">
+								<label for="name" class="form-label">Full Name</label>
+								<input
+									type="text"
+									class="form-control rounded-0"
+									id="name"
+									aria-describedby="name"
+								/>
+							</div>
+							<div class="mb-3">
+								<label for="email" class="form-label">Email address</label>
+								<input
+									type="email"
+									class="form-control rounded-0"
+									id="email"
+									aria-describedby="email"
+								/>
+							</div>
+							<div class="mb-3">
+								<label for="password" class="form-label">Password</label>
+								<input
+									type="password"
+									class="form-control rounded-0"
+									id="password"
+								/>
+							</div>
+							<div class="mb-3">
+								<label for="password" class="form-label"
+									>Confirm Password</label
+								>
+								<input
+									type="password"
+									class="form-control rounded-0"
+									id="password"
+								/>
+							</div>
+
+							<button type="submit" class="btn btn-dark rounded-0">
+								Register
+							</button>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<div data-bs-toggle="modal" data-bs-target="#loginModal">
+							<button class="btn btn-light border border-dark rounded-0">
+								Login
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Cart Modal -->
+		<div
+			class="offcanvas offcanvas-end"
+			tabindex="-1"
+			id="offcanvasRight"
+			aria-labelledby="offcanvasRightLabel"
+		>
+			<div class="offcanvas-header">
+				<h5 class="offcanvas-title">Cart</h5>
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="offcanvas"
+					aria-label="Close"
+				></button>
+			</div>
+			<div class="offcanvas-body"></div>
+		</div>
+
+		<!-- Wishlist Modal -->
+		<div
+			class="offcanvas offcanvas-start"
+			tabindex="-1"
+			id="offcanvasLeft"
+			aria-labelledby="offcanvasLeftLabel"
+		>
+			<div class="offcanvas-header">
+				<h5 class="offcanvas-title">Wishlist</h5>
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="offcanvas"
+					aria-label="Close"
+				></button>
+			</div>
+			<div class="offcanvas-body"></div>
+		</div>
+
+		<!-- Header -->
+		<header
+			class="container-fluid d-flex flex-row justify-content-around align-items-center"
+		>
+			<!-- Navbar -->
+			<div
+				class="navbar container-fluid d-flex flex-row justify-content-around"
+			>
+				<div class="dropdown-center">
+					<a
+						class="dropdown-toggle text-decoration-none text-dark"
+						type="button"
+						data-bs-toggle="dropdown"
+					>
+						Prints
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="prints.html" class="text-decoration-none"
+								><button class="dropdown-item btn btn-light" type="button">
+									Winter Collection
+								</button></a
+							>
+						</li>
+						<li>
+							<a href="prints.html" class="text-decoration-none"
+								><button class="dropdown-item btn btn-light" type="button">
+									Urban Collection
+								</button></a
+							>
+						</li>
+						<li>
+							<a href="prints.html" class="text-decoration-none"
+								><button class="dropdown-item btn btn-light" type="button">
+									Summer Collection
+								</button></a
+							>
+						</li>
+					</ul>
+				</div>
+				<div class="dropdown-center">
+					<a
+						class="dropdown-toggle text-decoration-none text-dark"
+						type="button"
+						data-bs-toggle="dropdown"
+					>
+						Presets
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="presets.html" class="text-decoration-none"
+								><button class="dropdown-item btn btn-light" type="button">
+									Portrait Presets
+								</button></a
+							>
+						</li>
+						<li>
+							<a href="presets.html" class="text-decoration-none"
+								><button class="dropdown-item btn btn-light" type="button">
+									Landscape Presets
+								</button></a
+							>
+						</li>
+						<li>
+							<a href="presets.html" class="text-decoration-none"
+								><button class="dropdown-item btn btn-light" type="button">
+									Black & White Presets
+								</button></a
+							>
+						</li>
+					</ul>
+				</div>
+
+				<a href="../html/about.html" class="text-decoration-none text-dark"
+					>About</a
+				>
+			</div>
+			<!-- Title -->
+			<div
+				class="'title container-fluid d-flex flex-row justify-content-center"
+			>
+				<a href="index.html" class="text-decoration-none"
+					><h1 class="text-dark" id="title">CK Photography</h1></a
+				>
+			</div>
+			<!-- Menu Icons -->
+			<div
+				class="shopping container-fluid d-flex flex-row justify-content-center align-items-center"
+				id="menu-icons"
+			>
+				<!-- Login -->
+				<div class="mx-4" data-bs-toggle="modal" data-bs-target="#loginModal">
+					<a type="button">
+						<img src="../images/icons/user.png" alt="login icon" />
+					</a>
+				</div>
+				<!-- Cart -->
+				<div
+					class="mx-4"
+					data-bs-toggle="offcanvas"
+					data-bs-target="#offcanvasRight"
+					aria-controls="offcanvasRight"
+				>
+					<a type="button">
+						<img src="../images/icons/shopping-basket.png" alt="cart icon" />
+						<span id="cartItemCount">0</span>
+					</a>
+				</div>
+				<!-- Wishlist -->
+				<div
+					class="mx-4"
+					data-bs-toggle="offcanvas"
+					data-bs-target="#offcanvasLeft"
+					aria-controls="offcanvasLeft"
+				>
+					<a type="button">
+						<img src="../images/icons/wishlist.png" alt="wishlist icon" />
+						<span id="wishlistCount">0</span>
+					</a>
+				</div>
+			</div>
+		</header>
+
+		<!-- Item -->
+		<div class="container d-flex flex-row justify-content-center">
+			<div class="container d-flex flex-row">
+				<div
+					class="container-fluid d-flex flex-column justify-content-center align-items-center w-25"
+				>
+					<img
+						src="../images/items/portraits/print6.png"
+						id="openImg"
+						onclick="changeImg('../images/items/portraits/print6.png')"
+						alt="product image"
+						class="smallimg"
+					/>
+					<img
+						src="../images/items/portrait-desks/desk6.png"
+						id="openImg"
+						onclick="changeImg('../images/items/portrait-desks/desk6.png')"
+						alt="product image"
+						class="smallimg"
+					/>
+					<img
+						src="../images/items/portrait-living-rooms/living6.png"
+						id="openImg"
+						onclick="changeImg('../images/items/portrait-living-rooms/living6.png')"
+						alt="product image"
+						class="smallimg"
+					/>
+				</div>
+				<div
+					class="container d-flex flex-column justify-content-center align-items-center"
+				>
+					<div class="img-wrapper">
+						<img
+							src="../images/items/portraits/print6.png"
+							id="mainImg"
+							alt="Gray Boulevard"
+							onclick="imgModal(this.src, this.alt)"
+							class="bigimg"
+						/>
+					</div>
+				</div>
+			</div>
+			<div
+				class="container d-flex flex-column justify-content-center align-items-center w-50"
+			>
+				<h2 class="container d-flex justify-content-center mb-3">
+					Gray Boulevard
+				</h2>
+				<div class="container d-flex justify-content-center">
+					<ul class="list-unstyled">
+						<li class="my-1">
+							<h4>Dimensions:</h4>
+							<p>24x36 inches</p>
+						</li>
+						<li class="my-1">
+							<h4>Print Type:</h4>
+							<p>Giclée Print</p>
+						</li>
+						<li class="my-1">
+							<h4>Print Finish:</h4>
+							<p>UV Protective Coating</p>
+						</li>
+						<li class="my-1">
+							<h4>Paper Quality:</h4>
+							<p>Archival Quality Fine Art Paper, Matte Finish</p>
+						</li>
+						<li class="my-1">
+							<h4>Date of Photograph:</h4>
+							<p>June 20, 2021</p>
+						</li>
+						<li class="mt-1">
+							<h4>Signature:</h4>
+							<p>Hand-signed by the photographer</p>
+						</li>
+					</ul>
+				</div>
+				<div class="container d-flex justify-content-center">
+					<h5>39.99 &euro;</h5>
+				</div>
+				<div class="container d-flex flex-row justify-content-center">
+					<a>
+						<button
+							onclick="addToWishlist(document.getElementById('itemName').innerText)"
+							class="btn btn-light border border-dark rounded-0 m-2 add"
+						>
+							Add to wishlist
+						</button>
+					</a>
+					<a>
+						<button
+							onclick="addToCart(document.getElementById('itemName').innerText)"
+							class="btn btn-light border border-dark rounded-0 m-2 add"
+						>
+							Add to Cart
+						</button>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Reviews -->
+		<div class="container-fluid d-flex flex-column justify-content-center">
+			<div class="stars">
+				<h2>Reviews</h2>
+				<span class="fa fa-star starrtn"></span>
+				<span class="fa fa-star starrtn"></span>
+				<span class="fa fa-star starrtn"></span>
+				<span class="fa fa-star"></span>
+				<span class="fa fa-star"></span>
+			</div>
+
+			<div class="container text-center">
+				<div class="w-75 mx-auto">
+					<!-- Rating Rows -->
+					<div
+						class="d-flex justify-content-between align-items-center p-2 rating-row"
+					>
+						<p class="mb-0 text-start rating-label">5 Stars</p>
+						<div class="mx-3 rating-bar">
+							<div class="progress rounded-0">
+								<div class="progress-bar1 bg-dark"></div>
+							</div>
+						</div>
+						<p class="mb-0 text-end rating-number">250</p>
+					</div>
+
+					<div
+						class="d-flex justify-content-between align-items-center p-2 rating-row"
+					>
+						<p class="mb-0 text-start rating-label">4 Stars</p>
+						<div class="mx-3 rating-bar">
+							<div class="progress rounded-0">
+								<div class="progress-bar2 bg-dark"></div>
+							</div>
+						</div>
+						<p class="mb-0 text-end rating-number">168</p>
+					</div>
+
+					<div
+						class="d-flex justify-content-between align-items-center p-2 rating-row"
+					>
+						<p class="mb-0 text-start rating-label">3 Stars</p>
+						<div class="mx-3 rating-bar">
+							<div class="progress rounded-0">
+								<div class="progress-bar3 bg-dark"></div>
+							</div>
+						</div>
+						<p class="mb-0 text-end rating-number">87</p>
+					</div>
+
+					<div
+						class="d-flex justify-content-between align-items-center p-2 rating-row"
+					>
+						<p class="mb-0 text-start rating-label">2 Stars</p>
+						<div class="mx-3 rating-bar">
+							<div class="progress rounded-0">
+								<div class="progress-bar4 bg-dark"></div>
+							</div>
+						</div>
+						<p class="mb-0 text-end rating-number">26</p>
+					</div>
+
+					<div
+						class="d-flex justify-content-between align-items-center p-2 rating-row"
+					>
+						<p class="mb-0 text-start rating-label">1 Star</p>
+						<div class="mx-3 rating-bar">
+							<div class="progress rounded-0">
+								<div class="progress-bar5 bg-dark"></div>
+							</div>
+						</div>
+						<p class="mb-0 text-end rating-number">4</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<footer
+			class="container-fluid d-flex flex-row justify-content-around align-items-center"
+		>
+			<!-- Copyright -->
+			<div
+				class="container-fluid d-flex justify-content-center align-items-center"
+			>
+				<p class="m-0">
+					Copyright &copy;
+					<script>
+						document.write(new Date().getFullYear());
+					</script>
+					Ioannis Panou All Rights Reserved
+				</p>
+			</div>
+			<!-- Social -->
+			<div class="container-fluid d-flex flex-row justify-content-center">
+				<a href="https://www.facebook.com/" class="mx-4">
+					<img src="../images/social/facebook.png" alt="" />
+				</a>
+				<a href="https://www.instagram.com/" class="mx-4">
+					<img src="../images/social/instagram.png" alt="" />
+				</a>
+				<a href="https://www.pinterest.com/" class="mx-4">
+					<img src="../images/social/pinterest.png" alt="" />
+				</a>
+				<a href="https://www.tiktok.com/en/" class="mx-4">
+					<img src="../images/social/tiktok.png" alt="" />
+				</a>
+			</div>
+		</footer>
+
+		<script src="../js/bootstrap.bundle.min.js"></script>
+		<script src="../js/imagefocus.js"></script>
+	</body>
+</html>
