@@ -8,6 +8,9 @@ function addToCart(itemName, itemPrice) {
 		count: 1,
 	};
 
+	var storedItems = localStorage.getItem('cart');
+	cart = storedItems ? JSON.parse(storedItems) : [];
+
 	var currentItem = cart.find((p) => p.name === itemName);
 
 	if (currentItem) {
@@ -17,6 +20,9 @@ function addToCart(itemName, itemPrice) {
 	}
 
 	totalAmount += itemPrice;
+	localStorage.setItem('cart', JSON.stringify(cart));
+	localStorage.setItem('totalAmount', totalAmount);
+	saveCart();
 	updateCart();
 	calculateItemCount();
 	console.log('Added to cart:', itemName, 'Price:', itemPrice);
@@ -28,7 +34,13 @@ function increaseQuantity(itemName) {
 	if (item) {
 		item.count++;
 		totalAmount += item.price;
+
+		localStorage.setItem('cart', JSON.stringify(cart));
+		localStorage.setItem('totalAmount', totalAmount);
+
+		saveCart();
 		updateCart();
+		calculateItemCount();
 	}
 }
 
@@ -44,6 +56,10 @@ function decreaseQuantity(itemName) {
 			cart = cart.filter((p) => p.name !== itemName);
 		}
 
+		localStorage.setItem('cart', JSON.stringify(cart));
+		localStorage.setItem('totalAmount', totalAmount);
+
+		saveCart();
 		updateCart();
 		calculateItemCount();
 	}
@@ -56,16 +72,25 @@ function removeItem(itemName) {
 		totalAmount -= item.price * item.count;
 		cart = cart.filter((p) => p.name !== itemName);
 
+		localStorage.setItem('cart', JSON.stringify(cart));
+		localStorage.setItem('totalAmount', totalAmount);
+
+		saveCart();
 		updateCart();
 		calculateItemCount();
 	}
 }
 
 function updateCart() {
+	var storedItems = localStorage.getItem('cart');
+	cart = storedItems ? JSON.parse(storedItems) : [];
+	totalAmount = parseFloat(localStorage.getItem('totalAmount')) || 0;
+
 	var cartItemsDiv = document.getElementById('cartItems');
 	var totalAmountSpan = document.getElementById('totalAmount');
 
 	cartItemsDiv.innerHTML = '';
+
 	cart.forEach((item) => {
 		var cartItemDiv = document.createElement('div');
 		cartItemDiv.classList.add('cart-item');
@@ -144,10 +169,15 @@ function calculateItemCount() {
 		(total, product) => total + product.count,
 		0
 	);
-
 	document.getElementById('cartItemCount').innerText = totalItemCount;
+}
+
+function saveCart() {
+	localStorage.setItem('cart', JSON.stringify(cart));
+	localStorage.setItem('totalAmount', totalAmount.toFixed(2));
 }
 
 document.addEventListener('DOMContentLoaded', function () {
 	updateCart();
+	calculateItemCount();
 });

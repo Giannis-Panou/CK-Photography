@@ -142,7 +142,15 @@
 					aria-label="Close"
 				></button>
 			</div>
-			<div class="offcanvas-body"></div>
+			<div class="offcanvas-body">
+				<div id="cartItems" class="cart-items"></div>
+				<div class="cart-total">
+					<div>
+						Total:
+						<span id="totalAmount"> 0.00 &euro; </span>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<!-- Wishlist Modal -->
@@ -401,6 +409,7 @@
 		</footer>
 
 		<script src="../js/bootstrap.bundle.min.js"></script>
+		<script src="../js/cart.js"></script>
 		<script src="../js/filters.js"></script>
 	</body>
 </html>
