@@ -128,8 +128,8 @@
 
 		<!-- Cart Modal -->
 		<div
-			class="offcanvas offcanvas-end"
-			tabindex="-1"
+			class="offcanvas offcanvas-end cart-modal active"
+			tabindex="=-1"
 			id="offcanvasRight"
 			aria-labelledby="offcanvasRightLabel"
 		>
@@ -142,12 +142,24 @@
 					aria-label="Close"
 				></button>
 			</div>
-			<div class="offcanvas-body">
-				<div id="cartItems" class="cart-items"></div>
-				<div class="cart-total">
-					<div>
+
+			<div class="offcanvas-body d-flex flex-column">
+				<div class="cart-content flex-grow-1">
+					<div class="cart-items" id="cartItems"></div>
+				</div>
+				<div
+					class="cart-total bg-light pt-3"
+				>
+					<div class="mb-2">
 						Total:
 						<span id="totalAmount"> 0.00 &euro; </span>
+					</div>
+					<div class="checkout-button">
+						<a href="checkout.html">
+							<button class="btn btn-success border border-dark rounded-0">
+								Proceed to Checkout
+							</button>
+						</a>
 					</div>
 				</div>
 			</div>

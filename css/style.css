@@ -32,3 +32,24 @@ footer {
 footer img {
   width: 20px;
 }
+
+.increaseButton:hover {
+  background-color: black;
+  color: white;
+}
+
+.decreaseButton:hover {
+  background-color: black;
+  color: white;
+}
+
+.cart-content {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.cart-total {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+}
