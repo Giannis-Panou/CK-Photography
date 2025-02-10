@@ -29,7 +29,7 @@ function addToWishlist(itemName, itemPrice) {
 	saveWishlist();
 }
 
-function removeItem(itemName) {
+function removeWish(itemName) {
 	var item = wishlist.find((p) => p.name === itemName);
 
 	if (item) {
@@ -84,7 +84,7 @@ function updateWishlist() {
 		removeButton.classList.add('rounded-0');
 		removeButton.innerText = 'Remove';
 		removeButton.onclick = function () {
-			removeItem(item.name);
+			removeWish(item.name);
 		};
 
 		wishlistItemDiv.appendChild(nameOfItem);

@@ -72,7 +72,7 @@ function removeItem(itemName) {
 		cart = cart.filter((p) => p.name !== itemName);
 
 		localStorage.setItem('cart', JSON.stringify(cart));
-		localStorage.setItem('totalAmount', totalAmount);
+		localStorage.setItem('totalAmount', totalAmount.toFixed(2));
 
 		saveCart();
 		updateCart();
@@ -96,19 +96,19 @@ function updateCart() {
 		cartItemDiv.classList.add('my-3');
 
 		var nameOfItem = document.createElement('div');
-		nameOfItem.classList.add('my-1')
+		nameOfItem.classList.add('my-1');
 		nameOfItem.innerText = item.name;
 
 		var totalItemPrice = item.price * item.count;
 		var priceOfItem = document.createElement('div');
-		priceOfItem.classList.add('mb-2')
+		priceOfItem.classList.add('mb-2');
 		priceOfItem.innerText = new Intl.NumberFormat('el-GR', {
 			style: 'currency',
 			currency: 'EUR',
 		}).format(totalItemPrice);
 
 		var itemCountDiv = document.createElement('div');
-		itemCountDiv.classList.add('my-1')
+		itemCountDiv.classList.add('my-1');
 		itemCountDiv.innerHTML = 'Quantity: ' + item.count;
 
 		var increaseButton = document.createElement('button');
