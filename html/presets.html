@@ -129,7 +129,7 @@
 		<!-- Cart Modal -->
 		<div
 			class="offcanvas offcanvas-end cart-modal"
-			tabindex="-1"
+			tabindex="=-1"
 			id="offcanvasRight"
 			aria-labelledby="offcanvasRightLabel"
 		>
@@ -143,19 +143,21 @@
 				></button>
 			</div>
 
-			<div class="offcanvas-body">
-				<div class="cart-content">
+			<div class="offcanvas-body d-flex flex-column">
+				<div class="cart-content flex-grow-1">
 					<div class="cart-items" id="cartItems"></div>
 				</div>
-				<div class="cart-total">
-					<div class="checkout-button">
-						<a href="checkout.html">
-							<button>Proceed to Checkout</button>
-						</a>
-					</div>
-					<div>
+				<div class="cart-total bg-light pt-3">
+					<div class="mb-2">
 						Total:
 						<span id="totalAmount"> 0.00 &euro; </span>
+					</div>
+					<div class="checkout-button">
+						<a href="checkout.html">
+							<button class="btn btn-success border border-dark rounded-0">
+								Proceed to Checkout
+							</button>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -163,7 +165,7 @@
 
 		<!-- Wishlist Modal -->
 		<div
-			class="offcanvas offcanvas-start"
+			class="offcanvas offcanvas-start wishlist-modal"
 			tabindex="-1"
 			id="offcanvasLeft"
 			aria-labelledby="offcanvasLeftLabel"
@@ -177,7 +179,11 @@
 					aria-label="Close"
 				></button>
 			</div>
-			<div class="offcanvas-body"></div>
+			<div class="offcanvas-body d-flex flex-column">
+				<div class="wishlist-content flex-grow-1">
+					<div class="wishlist-items" id="wishlistItems"></div>
+				</div>
+			</div>
 		</div>
 
 		<!-- Header -->
@@ -419,5 +425,6 @@
 		<script src="../js/bootstrap.bundle.min.js"></script>
 		<script src="../js/cart.js"></script>
 		<script src="../js/filters.js"></script>
+		<script src="../js/wishlist.js"></script>
 	</body>
 </html>

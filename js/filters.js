@@ -73,8 +73,10 @@ function openClose() {
 	let sidebar = document.getElementById('sidebar');
 	if (sidebar.style.width == '525px') {
 		sidebar.style.width = '0';
+		sidebar.style.overflow = 'hidden';
 	} else {
 		sidebar.style.width = '525px';
+		sidebar.style.overflow = 'hidden';
 	}
 }
 

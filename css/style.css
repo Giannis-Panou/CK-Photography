@@ -53,3 +53,8 @@ footer img {
   bottom: 0;
   width: 100%;
 }
+
+.wishlist-content {
+  flex-grow: 1;
+  overflow-y: auto;
+}
