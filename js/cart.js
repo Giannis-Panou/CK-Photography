@@ -86,14 +86,20 @@ function updateCart() {
 	totalAmount = parseFloat(localStorage.getItem('totalAmount')) || 0;
 
 	var cartItemsDiv = document.getElementById('cartItems');
+	var cartItemsDiv2 = document.getElementById('cartItems2');
 	var totalAmountSpan = document.getElementById('totalAmount');
 
 	cartItemsDiv.innerHTML = '';
+	cartItemsDiv2.innerHTML = '';
 
 	cart.forEach((item) => {
 		var cartItemDiv = document.createElement('div');
 		cartItemDiv.classList.add('cart-item');
 		cartItemDiv.classList.add('my-3');
+		cartItemDiv.classList.add('list-unstyled');
+
+		var cartItemDiv2 = document.createElement('li');
+		cartItemDiv2.classList.add('list-group-item');
 
 		var nameOfItem = document.createElement('div');
 		nameOfItem.classList.add('my-1');
@@ -156,6 +162,14 @@ function updateCart() {
 		cartItemDiv.appendChild(decreaseButton);
 		cartItemDiv.appendChild(removeButton);
 		cartItemsDiv.appendChild(cartItemDiv);
+
+		cartItemDiv2.appendChild(nameOfItem);
+		cartItemDiv2.appendChild(itemCountDiv);
+		cartItemDiv2.appendChild(priceOfItem);
+		cartItemDiv2.appendChild(increaseButton);
+		cartItemDiv2.appendChild(decreaseButton);
+		cartItemDiv2.appendChild(removeButton);
+		cartItemsDiv2.appendChild(cartItemDiv2);
 	});
 
 	if (Math.abs(totalAmount) < 0.001) {
@@ -194,6 +208,7 @@ function calculateItemCount() {
 		0
 	);
 	document.getElementById('cartItemCount').innerText = totalItemCount;
+	document.getElementById('cartItemCount2').innerText = totalItemCount;
 }
 
 function saveCart() {
