@@ -37,14 +37,14 @@ function filterItems() {
                             <p class="item-price">${item.price.toFixed(2)}€</p>
                         </a>
                         <a>
-                            <button onclick="addToCart('${item.name}', ${
+                            <button class="btn rounded-1 border-secondary" onclick="addToCart('${item.name}', ${
 						item.price
 					})" 
                                 data-item-name="${item.name}" 
                                 data-item-price="${
 																	item.price
 																}"> Add to Cart </button>
-                            <button onclick="addToWishlist('${item.name}', ${
+                            <button class="btn rounded-1 border-secondary" onclick="addToWishlist('${item.name}', ${
 						item.price
 					})" 
                                 data-item-name="${item.name}" 

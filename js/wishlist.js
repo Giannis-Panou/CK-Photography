@@ -81,7 +81,7 @@ function updateWishlist() {
 		removeButton.classList.add('btn-danger');
 		removeButton.classList.add('border');
 		removeButton.classList.add('border-dark');
-		removeButton.classList.add('rounded-0');
+		removeButton.classList.add('rounded-1');
 		removeButton.innerText = 'Remove';
 		removeButton.onclick = function () {
 			removeWish(item.name);

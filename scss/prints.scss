@@ -12,10 +12,6 @@
 	font-weight: 500;
 }
 
-#min-price {
-	margin-left: 3.5px;
-}
-
 .filters label {
 	margin-right: 10px;
 }
@@ -24,18 +20,16 @@
 	margin-left: 10px;
 }
 
+.price-filter label {
+	width: 86.6562px;
+}
+
 .items-container {
 	padding: 20px;
 	display: flex;
 	flex-wrap: wrap;
 	flex: 0 0 calc(80% - 20%);
 	box-sizing: border-box;
-}
-
-@media screen and (max-width: 1920px) {
-	#min-price {
-		margin-left: 3.5px;
-	}
 }
 
 @media screen and (max-width: 600px) {

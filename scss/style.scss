@@ -1,6 +1,6 @@
 @font-face {
 	font-family: 'playfair';
-	src: url(../fonts/Playfair_Display_SC/PlayfairDisplaySC-Regular.ttf);
+	src: url(../fonts/Nunito/static/Nunito-Light.ttf);
 }
 
 body {
@@ -37,6 +37,10 @@ footer img {
 .increaseButton:hover {
 	background-color: black;
 	color: white;
+}
+
+.decreaseButton {
+	width: 35.6094px;
 }
 
 .decreaseButton:hover {

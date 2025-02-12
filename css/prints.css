@@ -12,16 +12,16 @@
   font-weight: 500;
 }
 
-#min-price {
-  margin-left: 3.5px;
-}
-
 .filters label {
   margin-right: 10px;
 }
 
 .price-filter {
   margin-left: 10px;
+}
+
+.price-filter label {
+  width: 86.6562px;
 }
 
 .items-container {
@@ -32,11 +32,6 @@
   box-sizing: border-box;
 }
 
-@media screen and (max-width: 1920px) {
-  #min-price {
-    margin-left: 3.5px;
-  }
-}
 @media screen and (max-width: 600px) {
   .price-filter label {
     display: none;

@@ -122,8 +122,8 @@ function updateCart() {
 		increaseButton.classList.add('btn');
 		increaseButton.classList.add('btn-light');
 		increaseButton.classList.add('border');
-		increaseButton.classList.add('border-dark');
-		increaseButton.classList.add('rounded-0');
+		increaseButton.classList.add('border-secondary');
+		increaseButton.classList.add('rounded-1');
 		increaseButton.classList.add('me-2');
 		increaseButton.innerText = '+';
 		increaseButton.onclick = function () {
@@ -135,8 +135,8 @@ function updateCart() {
 		decreaseButton.classList.add('btn');
 		decreaseButton.classList.add('btn-light');
 		decreaseButton.classList.add('border');
-		decreaseButton.classList.add('border-dark');
-		decreaseButton.classList.add('rounded-0');
+		decreaseButton.classList.add('border-secondary');
+		decreaseButton.classList.add('rounded-1');
 		decreaseButton.classList.add('me-2');
 		decreaseButton.innerText = '-';
 		decreaseButton.onclick = function () {
@@ -148,8 +148,9 @@ function updateCart() {
 		removeButton.classList.add('btn');
 		removeButton.classList.add('btn-danger');
 		removeButton.classList.add('border');
-		removeButton.classList.add('border-dark');
-		removeButton.classList.add('rounded-0');
+		removeButton.classList.add('border-secondary');
+		removeButton.classList.add('rounded-1');
+		removeButton.classList.add('me-2');
 		removeButton.innerText = 'Remove';
 		removeButton.onclick = function () {
 			removeItem(item.name);
