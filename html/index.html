@@ -5,11 +5,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="../css/bootstrap.css" />
 		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/animations.css" />
+		<link rel="stylesheet" href="../css/prints.css" />
 		<title>CK Photography</title>
 	</head>
 	<body>
 		<!-- Login Modal -->
-		<div class="modal" tabindex="-1" id="loginModal">
+		<div class="modal fade" tabindex="-1" id="loginModal">
 			<div class="modal-dialog modal-dialog-centered visible">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -58,7 +60,7 @@
 		</div>
 
 		<!-- Register Modal -->
-		<div class="modal" tabindex="-1" id="registerModal">
+		<div class="modal fade" tabindex="-1" id="registerModal">
 			<div class="modal-dialog modal-dialog-centered visible">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -186,6 +188,101 @@
 			</div>
 		</div>
 
+		<!-- Menu Modal -->
+		<div
+			class="offcanvas offcanvas-start menu-modal"
+			tabindex="-1"
+			id="offcanvasLeft2"
+			aria-labelledby="offcanvasLeftLabel"
+		>
+			<div class="offcanvas-header">
+				<h5 class="offcanvas-title">Wishlist</h5>
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="offcanvas"
+					aria-label="Close"
+				></button>
+			</div>
+			<div class="offcanvas-body d-flex flex-column">
+				<div class="menu-content flex-grow-1">
+					<!-- Navbar -->
+					<div
+						class="navbar container-fluid d-flex flex-row justify-content-around"
+					>
+						<div class="dropdown-center">
+							<a
+								class="dropdown-toggle text-decoration-none text-dark"
+								type="button"
+								data-bs-toggle="dropdown"
+							>
+								Prints
+							</a>
+							<ul class="dropdown-menu animate slideIn rounded-1">
+								<li>
+									<a href="prints.html" class="text-decoration-none"
+										><button class="dropdown-item btn btn-light" type="button">
+											Winter Collection
+										</button></a
+									>
+								</li>
+								<li>
+									<a href="prints.html" class="text-decoration-none"
+										><button class="dropdown-item btn btn-light" type="button">
+											Urban Collection
+										</button></a
+									>
+								</li>
+								<li>
+									<a href="prints.html" class="text-decoration-none"
+										><button class="dropdown-item btn btn-light" type="button">
+											Summer Collection
+										</button></a
+									>
+								</li>
+							</ul>
+						</div>
+						<div class="dropdown-center">
+							<a
+								class="dropdown-toggle text-decoration-none text-dark"
+								type="button"
+								data-bs-toggle="dropdown"
+							>
+								Presets
+							</a>
+							<ul class="dropdown-menu animate slideIn rounded-1">
+								<li>
+									<a href="presets.html" class="text-decoration-none"
+										><button class="dropdown-item btn btn-light" type="button">
+											Portrait Presets
+										</button></a
+									>
+								</li>
+								<li>
+									<a href="presets.html" class="text-decoration-none"
+										><button class="dropdown-item btn btn-light" type="button">
+											Landscape Presets
+										</button></a
+									>
+								</li>
+								<li>
+									<a href="presets.html" class="text-decoration-none"
+										><button class="dropdown-item btn btn-light" type="button">
+											Black & White Presets
+										</button></a
+									>
+								</li>
+							</ul>
+						</div>
+
+						<a href="../html/about.html" class="text-decoration-none text-dark"
+							>About</a
+						>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<!-- Header -->
 		<header
 			class="container-fluid d-flex flex-row justify-content-around align-items-center"
@@ -193,6 +290,7 @@
 			<!-- Navbar -->
 			<div
 				class="navbar container-fluid d-flex flex-row justify-content-around"
+				id="defaultNavBar"
 			>
 				<div class="dropdown-center">
 					<a
@@ -202,7 +300,7 @@
 					>
 						Prints
 					</a>
-					<ul class="dropdown-menu rounded-1">
+					<ul class="dropdown-menu animate slideIn rounded-1">
 						<li>
 							<a href="prints.html" class="text-decoration-none"
 								><button class="dropdown-item btn btn-light" type="button">
@@ -234,7 +332,7 @@
 					>
 						Presets
 					</a>
-					<ul class="dropdown-menu rounded-1">
+					<ul class="dropdown-menu animate slideIn rounded-1">
 						<li>
 							<a href="presets.html" class="text-decoration-none"
 								><button class="dropdown-item btn btn-light" type="button">
@@ -264,9 +362,7 @@
 				>
 			</div>
 			<!-- Title -->
-			<div
-				class="'title container-fluid d-flex flex-row justify-content-center"
-			>
+			<div class="title container-fluid d-flex flex-row justify-content-center">
 				<a href="index.html" class="text-decoration-none"
 					><h1 class="text-dark" id="title">CK Photography</h1></a
 				>
@@ -305,6 +401,18 @@
 						<img src="../images/icons/wishlist.png" alt="wishlist icon" />
 						<span id="wishlistCount">0</span>
 					</a>
+				</div>
+				<!-- Menu  -->
+				<div
+					class="animMenu d-none"
+					id="mobileMenu"
+					onclick="openClose();animMenu(this);"
+					data-bs-toggle="offcanvas"
+					data-bs-target="#offcanvasLeft2"
+				>
+					<div class="bar1"></div>
+					<div class="bar2"></div>
+					<div class="bar3"></div>
 				</div>
 			</div>
 		</header>
@@ -391,12 +499,13 @@
 		<!-- Footer -->
 		<footer
 			class="container-fluid d-flex flex-row justify-content-around align-items-center"
+			id="footer"
 		>
 			<!-- Copyright -->
 			<div
 				class="container-fluid d-flex justify-content-center align-items-center"
 			>
-				<p class="m-0">
+				<p class="m-0 text-center">
 					Copyright &copy;
 					<script>
 						document.write(new Date().getFullYear());
@@ -405,7 +514,10 @@
 				</p>
 			</div>
 			<!-- Social -->
-			<div class="container-fluid d-flex flex-row justify-content-center">
+			<div
+				class="container-fluid d-flex flex-row justify-content-center"
+				id="social"
+			>
 				<a href="https://www.facebook.com/" class="mx-4">
 					<img src="../images/social/facebook.png" alt="" />
 				</a>
@@ -425,5 +537,6 @@
 		<script src="../js/cart.js"></script>
 		<script src="../js/filters.js"></script>
 		<script src="../js/wishlist.js"></script>
+		<script src="../js/mobile.js"></script>
 	</body>
 </html>
