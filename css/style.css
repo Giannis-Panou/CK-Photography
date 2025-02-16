@@ -19,6 +19,16 @@ header {
   width: 20px;
 }
 
+.bar4,
+.bar5,
+.bar6 {
+  width: 25px;
+  height: 2px;
+  background-color: black;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
 .carousel img {
   height: 85vh;
   object-fit: cover;

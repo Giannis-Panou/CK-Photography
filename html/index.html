@@ -196,7 +196,7 @@
 			aria-labelledby="offcanvasLeftLabel"
 		>
 			<div class="offcanvas-header">
-				<h5 class="offcanvas-title">Wishlist</h5>
+				<h5 class="offcanvas-title">Menu</h5>
 				<button
 					type="button"
 					class="btn-close"
@@ -362,7 +362,9 @@
 				>
 			</div>
 			<!-- Title -->
-			<div class="title container-fluid d-flex flex-row justify-content-center">
+			<div
+				class="title container d-flex justify-content-center align-items-center"
+			>
 				<a href="index.html" class="text-decoration-none"
 					><h1 class="text-dark" id="title">CK Photography</h1></a
 				>
@@ -385,7 +387,7 @@
 					data-bs-target="#offcanvasRight"
 					aria-controls="offcanvasRight"
 				>
-					<a type="button">
+					<a type="button" id="cartButton">
 						<img src="../images/icons/shopping-basket.png" alt="cart icon" />
 						<span id="cartItemCount">0</span>
 					</a>
@@ -397,22 +399,21 @@
 					data-bs-target="#offcanvasLeft"
 					aria-controls="offcanvasLeft"
 				>
-					<a type="button">
+					<a type="button" id="wishButton">
 						<img src="../images/icons/wishlist.png" alt="wishlist icon" />
 						<span id="wishlistCount">0</span>
 					</a>
 				</div>
 				<!-- Menu  -->
 				<div
-					class="animMenu d-none"
+					class="animMenu d-none mx-4"
 					id="mobileMenu"
-					onclick="openClose();animMenu(this);"
 					data-bs-toggle="offcanvas"
 					data-bs-target="#offcanvasLeft2"
 				>
-					<div class="bar1"></div>
-					<div class="bar2"></div>
-					<div class="bar3"></div>
+					<div class="bar4"></div>
+					<div class="bar5"></div>
+					<div class="bar6"></div>
 				</div>
 			</div>
 		</header>

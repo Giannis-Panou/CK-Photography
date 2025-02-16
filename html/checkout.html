@@ -187,6 +187,101 @@
 			</div>
 		</div>
 
+		<!-- Menu Modal -->
+		<div
+			class="offcanvas offcanvas-start menu-modal"
+			tabindex="-1"
+			id="offcanvasLeft2"
+			aria-labelledby="offcanvasLeftLabel"
+		>
+			<div class="offcanvas-header">
+				<h5 class="offcanvas-title">Menu</h5>
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="offcanvas"
+					aria-label="Close"
+				></button>
+			</div>
+			<div class="offcanvas-body d-flex flex-column">
+				<div class="menu-content flex-grow-1">
+					<!-- Navbar -->
+					<div
+						class="navbar container-fluid d-flex flex-row justify-content-around"
+					>
+						<div class="dropdown-center">
+							<a
+								class="dropdown-toggle text-decoration-none text-dark"
+								type="button"
+								data-bs-toggle="dropdown"
+							>
+								Prints
+							</a>
+							<ul class="dropdown-menu animate slideIn rounded-1">
+								<li>
+									<a href="prints.html" class="text-decoration-none"
+										><button class="dropdown-item btn btn-light" type="button">
+											Winter Collection
+										</button></a
+									>
+								</li>
+								<li>
+									<a href="prints.html" class="text-decoration-none"
+										><button class="dropdown-item btn btn-light" type="button">
+											Urban Collection
+										</button></a
+									>
+								</li>
+								<li>
+									<a href="prints.html" class="text-decoration-none"
+										><button class="dropdown-item btn btn-light" type="button">
+											Summer Collection
+										</button></a
+									>
+								</li>
+							</ul>
+						</div>
+						<div class="dropdown-center">
+							<a
+								class="dropdown-toggle text-decoration-none text-dark"
+								type="button"
+								data-bs-toggle="dropdown"
+							>
+								Presets
+							</a>
+							<ul class="dropdown-menu animate slideIn rounded-1">
+								<li>
+									<a href="presets.html" class="text-decoration-none"
+										><button class="dropdown-item btn btn-light" type="button">
+											Portrait Presets
+										</button></a
+									>
+								</li>
+								<li>
+									<a href="presets.html" class="text-decoration-none"
+										><button class="dropdown-item btn btn-light" type="button">
+											Landscape Presets
+										</button></a
+									>
+								</li>
+								<li>
+									<a href="presets.html" class="text-decoration-none"
+										><button class="dropdown-item btn btn-light" type="button">
+											Black & White Presets
+										</button></a
+									>
+								</li>
+							</ul>
+						</div>
+
+						<a href="../html/about.html" class="text-decoration-none text-dark"
+							>About</a
+						>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<!-- Header -->
 		<header
 			class="container-fluid d-flex flex-row justify-content-around align-items-center"
@@ -194,6 +289,7 @@
 			<!-- Navbar -->
 			<div
 				class="navbar container-fluid d-flex flex-row justify-content-around"
+				id="defaultNavBar"
 			>
 				<div class="dropdown-center">
 					<a
@@ -266,7 +362,7 @@
 			</div>
 			<!-- Title -->
 			<div
-				class="'title container-fluid d-flex flex-row justify-content-center"
+				class="title container d-flex justify-content-center align-items-center"
 			>
 				<a href="index.html" class="text-decoration-none"
 					><h1 class="text-dark" id="title">CK Photography</h1></a
@@ -290,7 +386,7 @@
 					data-bs-target="#offcanvasRight"
 					aria-controls="offcanvasRight"
 				>
-					<a type="button">
+					<a type="button" id="cartButton">
 						<img src="../images/icons/shopping-basket.png" alt="cart icon" />
 						<span id="cartItemCount">0</span>
 					</a>
@@ -302,10 +398,21 @@
 					data-bs-target="#offcanvasLeft"
 					aria-controls="offcanvasLeft"
 				>
-					<a type="button">
+					<a type="button" id="wishButton">
 						<img src="../images/icons/wishlist.png" alt="wishlist icon" />
 						<span id="wishlistCount">0</span>
 					</a>
+				</div>
+				<!-- Menu  -->
+				<div
+					class="animMenu d-none mx-4"
+					id="mobileMenu"
+					data-bs-toggle="offcanvas"
+					data-bs-target="#offcanvasLeft2"
+				>
+					<div class="bar4"></div>
+					<div class="bar5"></div>
+					<div class="bar6"></div>
 				</div>
 			</div>
 		</header>
@@ -567,12 +674,13 @@
 		<!-- Footer -->
 		<footer
 			class="container-fluid d-flex flex-row justify-content-around align-items-center"
+			id="footer"
 		>
 			<!-- Copyright -->
 			<div
 				class="container-fluid d-flex justify-content-center align-items-center"
 			>
-				<p class="m-0">
+				<p class="m-0 text-center">
 					Copyright &copy;
 					<script>
 						document.write(new Date().getFullYear());
@@ -581,7 +689,10 @@
 				</p>
 			</div>
 			<!-- Social -->
-			<div class="container-fluid d-flex flex-row justify-content-center">
+			<div
+				class="container-fluid d-flex flex-row justify-content-center"
+				id="social"
+			>
 				<a href="https://www.facebook.com/" class="mx-4">
 					<img src="../images/social/facebook.png" alt="" />
 				</a>
@@ -601,5 +712,6 @@
 		<script src="../js/cart.js"></script>
 		<script src="../js/filters.js"></script>
 		<script src="../js/wishlist.js"></script>
+		<script src="../js/mobile.js"></script>
 	</body>
 </html>
