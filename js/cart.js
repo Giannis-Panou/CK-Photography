@@ -86,20 +86,15 @@ function updateCart() {
 	totalAmount = parseFloat(localStorage.getItem('totalAmount')) || 0;
 
 	var cartItemsDiv = document.getElementById('cartItems');
-	var cartItemsDiv2 = document.getElementById('cartItems2');
 	var totalAmountSpan = document.getElementById('totalAmount');
 
 	cartItemsDiv.innerHTML = '';
-	cartItemsDiv2.innerHTML = '';
 
 	cart.forEach((item) => {
-		var cartItemDiv = document.createElement('div');
+		var cartItemDiv = document.createElement('li');
 		cartItemDiv.classList.add('cart-item');
 		cartItemDiv.classList.add('my-3');
 		cartItemDiv.classList.add('list-unstyled');
-
-		var cartItemDiv2 = document.createElement('li');
-		cartItemDiv2.classList.add('list-group-item');
 
 		var nameOfItem = document.createElement('div');
 		nameOfItem.classList.add('my-1');
@@ -118,39 +113,47 @@ function updateCart() {
 		itemCountDiv.innerHTML = 'Quantity: ' + item.count;
 
 		var increaseButton = document.createElement('button');
-		increaseButton.classList.add('increaseButton');
-		increaseButton.classList.add('btn');
-		increaseButton.classList.add('btn-light');
-		increaseButton.classList.add('border');
-		increaseButton.classList.add('border-secondary');
-		increaseButton.classList.add('rounded-1');
-		increaseButton.classList.add('me-2');
+		increaseButton.classList.add(
+			'increaseButton',
+			'btn',
+			'btn-light',
+			'border',
+			'border-secondary',
+			'rounded-1',
+			'me-2'
+		);
 		increaseButton.innerText = '+';
 		increaseButton.onclick = function () {
 			increaseQuantity(item.name);
 		};
 
 		var decreaseButton = document.createElement('button');
-		decreaseButton.classList.add('decreaseButton');
-		decreaseButton.classList.add('btn');
-		decreaseButton.classList.add('btn-light');
-		decreaseButton.classList.add('border');
-		decreaseButton.classList.add('border-secondary');
-		decreaseButton.classList.add('rounded-1');
-		decreaseButton.classList.add('me-2');
+		decreaseButton.classList.add(
+			'decreaseButton',
+			'btn',
+			'btn-light',
+			'border',
+			'border-secondary',
+			'rounded-1',
+			'me-2'
+		);
+
 		decreaseButton.innerText = '-';
 		decreaseButton.onclick = function () {
 			decreaseQuantity(item.name);
 		};
 
 		var removeButton = document.createElement('button');
-		removeButton.classList.add('removeButton');
-		removeButton.classList.add('btn');
-		removeButton.classList.add('btn-danger');
-		removeButton.classList.add('border');
-		removeButton.classList.add('border-secondary');
-		removeButton.classList.add('rounded-1');
-		removeButton.classList.add('me-2');
+		removeButton.classList.add(
+			'removeButton',
+			'btn',
+			'btn-danger',
+			'border',
+			'border-secondary',
+			'rounded-1',
+			'me-2'
+		);
+
 		removeButton.innerText = 'Remove';
 		removeButton.onclick = function () {
 			removeItem(item.name);
@@ -163,14 +166,6 @@ function updateCart() {
 		cartItemDiv.appendChild(decreaseButton);
 		cartItemDiv.appendChild(removeButton);
 		cartItemsDiv.appendChild(cartItemDiv);
-
-		cartItemDiv2.appendChild(nameOfItem);
-		cartItemDiv2.appendChild(itemCountDiv);
-		cartItemDiv2.appendChild(priceOfItem);
-		cartItemDiv2.appendChild(increaseButton);
-		cartItemDiv2.appendChild(decreaseButton);
-		cartItemDiv2.appendChild(removeButton);
-		cartItemsDiv2.appendChild(cartItemDiv2);
 	});
 
 	if (Math.abs(totalAmount) < 0.001) {
@@ -218,7 +213,6 @@ function saveCart() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-	console.log('Cart items div:', document.getElementById('cartItems2'));
 	updateCart();
 	calculateItemCount();
 });
