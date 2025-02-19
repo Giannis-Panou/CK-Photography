@@ -218,6 +218,7 @@ function saveCart() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+	console.log('Cart items div:', document.getElementById('cartItems2'));
 	updateCart();
 	calculateItemCount();
 });

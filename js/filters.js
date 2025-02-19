@@ -37,16 +37,16 @@ function filterItems() {
                             <p class="item-price">${item.price.toFixed(2)}€</p>
                         </a>
                         <a>
-                            <button class="btn rounded-1 border-secondary" onclick="addToCart('${item.name}', ${
-						item.price
-					})" 
+                            <button class="btn rounded-1 border-secondary" onclick="addToCart('${
+															item.name
+														}', ${item.price})" 
                                 data-item-name="${item.name}" 
                                 data-item-price="${
 																	item.price
 																}"> Add to Cart </button>
-                            <button class="btn rounded-1 border-secondary" onclick="addToWishlist('${item.name}', ${
-						item.price
-					})" 
+                            <button class="btn rounded-1 border-secondary" onclick="addToWishlist('${
+															item.name
+														}', ${item.price})" 
                                 data-item-name="${item.name}" 
                                 data-item-price="${
 																	item.price
@@ -71,11 +71,12 @@ document.addEventListener('DOMContentLoaded', filterItems);
 
 function openClose() {
 	let sidebar = document.getElementById('sidebar');
-	if (sidebar.style.width == '525px') {
+
+	if (sidebar.style.width == '400px') {
 		sidebar.style.width = '0';
 		sidebar.style.overflow = 'hidden';
 	} else {
-		sidebar.style.width = '525px';
+		sidebar.style.width = '400px';
 		sidebar.style.overflow = 'hidden';
 	}
 }
