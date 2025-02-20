@@ -10,19 +10,3 @@
 	width: 100%;
 	height: 100%;
 }
-
-@media screen and (max-width: 600px) {
-	.words1 {
-		flex-direction: column;
-	}
-
-	.words2 {
-		padding-left: 20px;
-		padding-right: 20px;
-	}
-
-	.words3 {
-		padding-left: 20px;
-		padding-right: 20px;
-	}
-}

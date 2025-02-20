@@ -84,3 +84,26 @@ function openClose() {
 function animMenu(x) {
 	x.classList.toggle('change');
 }
+
+function mobileFilters() {
+	var windowSize = window.matchMedia('(max-width: 600px)');
+	const minPrice = document.getElementById('min-price');
+	const maxPrice = document.getElementById('max-price');
+	const filtersLabel = document.getElementById('filtersLabel');
+	const barsDiv = document.getElementById('bars');
+
+	if (windowSize.matches) {
+		// Filters
+		minPrice.classList.add('w-75');
+		maxPrice.classList.add('w-75');
+		filtersLabel.classList.remove('mt-3');
+		filtersLabel.classList.add('mt-4');
+		barsDiv.classList.add('mb-1');
+	}
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+	requestAnimationFrame(() => {
+		mobileFilters();
+	});
+});

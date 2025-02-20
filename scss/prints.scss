@@ -32,16 +32,6 @@
 	box-sizing: border-box;
 }
 
-@media screen and (max-width: 600px) {
-	.price-filter label {
-		display: none;
-	}
-
-	#min-price {
-		margin-left: 0;
-	}
-}
-
 .items-container img {
 	max-width: 100%;
 }
@@ -87,37 +77,6 @@
 	background-color: black;
 	color: white;
 	transition: 0.5s;
-}
-
-@media screen and (max-width: 600px) {
-	.items-container {
-		display: flex;
-	}
-
-	.col-pr {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
-
-	.col-pr1 {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.filters {
-		display: flex;
-		justify-content: end;
-		flex-direction: row;
-	}
-
-	.bars {
-		display: flex;
-		justify-content: center;
-		padding-top: 12px;
-	}
 }
 
 .animMenu {

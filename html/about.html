@@ -190,7 +190,7 @@
 
 		<!-- Menu Modal -->
 		<div
-			class="offcanvas offcanvas-start menu-modal"
+			class="offcanvas offcanvas-start menu-modal d-flex"
 			tabindex="-1"
 			id="offcanvasLeft2"
 			aria-labelledby="offcanvasLeftLabel"
@@ -204,80 +204,88 @@
 					aria-label="Close"
 				></button>
 			</div>
-			<div class="offcanvas-body d-flex flex-column">
+			<div
+				class="offcanvas-body d-flex flex-column align-items-center justify-content-center"
+			>
 				<div class="menu-content flex-grow-1">
 					<!-- Navbar -->
 					<div
-						class="navbar container-fluid d-flex flex-row justify-content-around"
+						class="navbar container-fluid d-flex flex-row justify-content-center align-items-center"
 					>
-						<div class="dropdown-center">
-							<a
-								class="dropdown-toggle text-decoration-none text-dark"
-								type="button"
-								data-bs-toggle="dropdown"
-							>
-								Prints
-							</a>
-							<ul class="dropdown-menu animate slideIn rounded-1">
-								<li>
-									<a href="prints.html" class="text-decoration-none"
-										><button class="dropdown-item btn btn-light" type="button">
-											Winter Collection
-										</button></a
-									>
-								</li>
-								<li>
-									<a href="prints.html" class="text-decoration-none"
-										><button class="dropdown-item btn btn-light" type="button">
-											Urban Collection
-										</button></a
-									>
-								</li>
-								<li>
-									<a href="prints.html" class="text-decoration-none"
-										><button class="dropdown-item btn btn-light" type="button">
-											Summer Collection
-										</button></a
-									>
-								</li>
-							</ul>
-						</div>
-						<div class="dropdown-center">
-							<a
-								class="dropdown-toggle text-decoration-none text-dark"
-								type="button"
-								data-bs-toggle="dropdown"
-							>
-								Presets
-							</a>
-							<ul class="dropdown-menu animate slideIn rounded-1">
-								<li>
-									<a href="presets.html" class="text-decoration-none"
-										><button class="dropdown-item btn btn-light" type="button">
-											Portrait Presets
-										</button></a
-									>
-								</li>
-								<li>
-									<a href="presets.html" class="text-decoration-none"
-										><button class="dropdown-item btn btn-light" type="button">
-											Landscape Presets
-										</button></a
-									>
-								</li>
-								<li>
-									<a href="presets.html" class="text-decoration-none"
-										><button class="dropdown-item btn btn-light" type="button">
-											Black & White Presets
-										</button></a
-									>
-								</li>
-							</ul>
+						<div class="d-flex flex-column justify-content-center text-center">
+							<div class="mx-5 my-3">
+								<a
+									href="prints.html"
+									class="text-decoration-none text-dark text-uppercase"
+									type="button"
+									data-bs-toggle="dropdown"
+								>
+									All Prints
+								</a>
+							</div>
+							<div class="mx-5 my-3">
+								<a href="prints.html" class="text-decoration-none"
+									><button class="btn btn-light" type="button">
+										Winter Collection
+									</button></a
+								>
+							</div>
+							<div class="mx-5 my-3">
+								<a href="prints.html" class="text-decoration-none"
+									><button class="btn btn-light" type="button">
+										Urban Collection
+									</button></a
+								>
+							</div>
+							<div class="mx-5 my-3 mb-5">
+								<a href="prints.html" class="text-decoration-none"
+									><button class="btn btn-light" type="button">
+										Summer Collection
+									</button></a
+								>
+							</div>
 						</div>
 
-						<a href="../html/about.html" class="text-decoration-none text-dark"
-							>About</a
-						>
+						<div class="d-flex flex-column justify-content-center text-center">
+							<div class="mx-5 my-3">
+								<a
+									class="text-decoration-none text-dark text-uppercase"
+									type="button"
+									data-bs-toggle="dropdown"
+								>
+									All Presets
+								</a>
+							</div>
+							<div class="mx-5 my-3">
+								<a href="presets.html" class="text-decoration-none"
+									><button class="btn btn-light" type="button">
+										Portrait Presets
+									</button></a
+								>
+							</div>
+							<div class="mx-5 my-3">
+								<a href="presets.html" class="text-decoration-none"
+									><button class="btn btn-light" type="button">
+										Landscape Presets
+									</button></a
+								>
+							</div>
+							<div class="mx-5 my-3 mb-5">
+								<a href="presets.html" class="text-decoration-none"
+									><button class="btn btn-light" type="button">
+										Black & White Presets
+									</button></a
+								>
+							</div>
+						</div>
+
+						<div class="m-5">
+							<a
+								href="../html/about.html"
+								class="text-decoration-none text-dark text-uppercase"
+								>About</a
+							>
+						</div>
 					</div>
 				</div>
 			</div>

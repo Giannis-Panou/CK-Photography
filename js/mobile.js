@@ -12,15 +12,10 @@ const imgWrapper = document.getElementById('imgWrapper');
 const reviewDiv = document.getElementById('reviewDiv');
 const ratingBar = document.querySelectorAll('.rating-bar');
 const aboutDiv = document.querySelectorAll('#about');
-const minPrice = document.getElementById('min-price');
-const maxPrice = document.getElementById('max-price');
-const filtersLabel = document.getElementById('filtersLabel');
-const barsDiv = document.getElementById('bars');
 
 function mobileView() {
 	if (windowSize.matches) {
 		// Navbar
-		console.log('ok');
 		navbar.classList.remove('d-flex');
 		navbar.classList.add('d-none');
 		title.innerHTML = 'CK';
@@ -45,15 +40,7 @@ function mobileView() {
 		footer.classList.add('flex-column');
 		social.classList.add('my-2');
 
-		// Filters
-		minPrice.classList.add('w-75');
-		maxPrice.classList.add('w-75');
-		filtersLabel.classList.remove('mt-3');
-		filtersLabel.classList.add('mt-4');
-		barsDiv.classList.add('mb-1');
-
 		// About Page
-		console.log('ok2');
 		for (let i = 0; i < aboutDiv.length; i++) {
 			aboutDiv[i].classList.remove('flew-row');
 			aboutDiv[i].classList.add('flex-column');
@@ -74,5 +61,7 @@ function mobileView() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-	mobileView();
+	requestAnimationFrame(() => {
+		mobileView();
+	});
 });
