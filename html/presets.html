@@ -433,23 +433,27 @@
 		>
 			<div class="sidebar" id="sidebar">
 				<div class="d-flex flex-row justify-content-center">
-					<div
-						class="d-flex flex-row justify-content-center align-items-center"
-					>
-						<label class="px-2">Category</label>
-						<select id="category-filter" onchange="filterItems()">
-							<option value="all">All</option>
+					<div class="container d-flex flex-row align-items-center">
+						<select
+							class="form-select"
+							id="category-filter"
+							onchange="filterItems()"
+						>
+							<option value="all">Category - All</option>
 							<option value="portrait">Portrait</option>
 							<option value="landscape">Landscape</option>
 						</select>
 					</div>
-					<div class="price-filter">
+					<div
+						class="price-filter w-75 me-3 d-flex flex-column align-items-center"
+					>
 						<input
 							type="number"
 							id="min-price"
 							min="0"
 							placeholder="Lowest Price"
 							oninput="filterItems()"
+							class="form-control mb-1"
 						/>
 						<input
 							type="number"
@@ -457,6 +461,7 @@
 							min="0"
 							placeholder="Highest Price"
 							oninput="filterItems()"
+							class="form-control mt-1"
 						/>
 					</div>
 				</div>

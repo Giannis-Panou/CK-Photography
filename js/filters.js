@@ -32,30 +32,27 @@ function filterItems() {
 					itemElement.className = 'col-pr2';
 					itemElement.innerHTML = `
                         <a href=item.html>
-                            <img src="${item.image}" alt="${item.name}">
-                            <p class="item-title">${item.title}</p>
-                            
+							<img src="${item.image}" alt="${item.name}">
+							<p class="item-title text-uppercase">${item.title}</p>
+							<p class="item-price fw-semibold">${item.price.toFixed(2)}€</p>
                         </a>
-                        <a>
-                            <button class="btn rounded-1 border-secondary bg-primary" onclick="addToCart('${
-															item.name
-														}', ${item.price})" 
-                                data-item-name="${item.name}" 
-                                data-item-price="${
-																	item.price
-																}"> <img src="../images/icons/shopping-basket.png" alt="cart icon" id='basket' /> Add to Cart  - ${item.price.toFixed(
-						2
-					)}€ </button>
-                            <button class="btn rounded-1 border-secondary" onclick="addToWishlist('${
-															item.name
-														}', ${item.price})" 
-                                data-item-name="${item.name}" 
-                                data-item-price="${
-																	item.price
-																}"> <img src="../images/icons/heart-regular.svg" alt="" id='heart' />  </button>
-                        </a>
+						<div>
+                            <button 
+							class="btn btn-primary rounded-1 border-secondary" 
+							onclick="addToCart('${item.name}', ${item.price})" 
+							data-item-name="${item.name}" 
+							data-item-price="${item.price}"> 
+							<img src="../images/icons/shopping-basket.png" alt="cart icon" id='basket' />
+							Add to Cart</button>
+							
+                            <button
+							class="btn btn-light rounded-1 border-secondary"
+							onclick="addToWishlist('${item.name}', ${item.price})" 
+							data-item-name="${item.name}" 
+							data-item-price="${item.price}"> 
+							<img src="../images/icons/heart-regular.svg" alt="heart icon" class='heart' id='heart' />  </button>
+                        </div>
                     `;
-
 					itemsContainer.appendChild(itemElement);
 				}
 			});

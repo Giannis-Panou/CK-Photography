@@ -1,5 +1,5 @@
-var wishlist = [];
-var totalWish = 0;
+var wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+var totalWish = parseFloat(localStorage.getItem('totalWish')) || 0;
 
 function addToWishlist(itemName, itemPrice) {
 	var item = {
@@ -8,25 +8,26 @@ function addToWishlist(itemName, itemPrice) {
 		count: 1,
 	};
 
-	var storedWish = localStorage.getItem('wishlist');
-	wishlist = storedWish ? JSON.parse(storedWish) : [];
+	var wishButton = event.currentTarget;
+	var wishlistImg = wishButton.querySelector('.heart');
 
-	var currentItem = wishlist.find((p) => p.name === itemName);
+	var currentItem = wishlist.findIndex((p) => p.name === itemName);
 
-	if (currentItem) {
-		alert('This item is already in your wishlist.');
+	if (currentItem !== -1) {
+		wishlist.splice(currentItem, 1);
+		wishlistImg.src = '../images/icons/heart-regular.svg';
+		totalWish -= itemPrice;
 	} else {
 		wishlist.push(item);
-		localStorage.setItem('wishlist', JSON.stringify(wishlist));
-		localStorage.setItem('totalWish', totalWish);
-		updateWishlist();
-		calculateWishCount();
-		alert('This item has been added to your wishlist.');
+		wishlistImg.src = '../images/icons/heart-solid.svg';
+		totalWish += itemPrice;
 	}
 
-	totalWish += itemPrice;
+	localStorage.setItem('wishlist', JSON.stringify(wishlist));
+	localStorage.setItem('totalWish', totalWish);
 
-	saveWishlist();
+	updateWishlist();
+	calculateWishCount();
 }
 
 function removeWish(itemName) {
@@ -39,17 +40,13 @@ function removeWish(itemName) {
 		localStorage.setItem('wishlist', JSON.stringify(wishlist));
 		localStorage.setItem('totalWish', totalWish);
 
-		saveWishlist();
 		updateWishlist();
 		calculateWishCount();
+		updateWishlistButtons();
 	}
 }
 
 function updateWishlist() {
-	var storedWish = localStorage.getItem('wishlist');
-	wishlist = storedWish ? JSON.parse(storedWish) : [];
-	totalWish = parseFloat(localStorage.getItem('totalWish')) || 0;
-
 	var wishlistItemsDiv = document.getElementById('wishlistItems');
 	var totalWish = document.getElementById('totalWish');
 
@@ -57,8 +54,7 @@ function updateWishlist() {
 
 	wishlist.forEach((item) => {
 		var wishlistItemDiv = document.createElement('div');
-		wishlistItemDiv.classList.add('wishlist-item');
-		wishlistItemDiv.classList.add('my-3');
+		wishlistItemDiv.classList.add('wishlist-item', 'my-3');
 
 		var nameOfItem = document.createElement('div');
 		nameOfItem.classList.add('my-1');
@@ -76,12 +72,14 @@ function updateWishlist() {
 		itemCountDiv.innerHTML = 'Quantity: ' + item.count;
 
 		var removeButton = document.createElement('button');
-		removeButton.classList.add('removeButton');
-		removeButton.classList.add('btn');
-		removeButton.classList.add('btn-danger');
-		removeButton.classList.add('border');
-		removeButton.classList.add('border-dark');
-		removeButton.classList.add('rounded-1');
+		removeButton.classList.add(
+			'removeButton',
+			'btn',
+			'btn-danger',
+			'border',
+			'border-dark',
+			'rounded-1'
+		);
 		removeButton.innerText = 'Remove';
 		removeButton.onclick = function () {
 			removeWish(item.name);
@@ -114,6 +112,7 @@ function closeWishlist() {
 
 function saveWishlist() {
 	localStorage.setItem('wishlist', JSON.stringify(wishlist));
+	localStorage.setItem('totalWish', totalWish);
 }
 
 function calculateWishCount() {
@@ -124,7 +123,26 @@ function calculateWishCount() {
 	document.getElementById('wishlistCount').innerText = totalWishCount;
 }
 
+function updateWishlistButtons() {
+	var storedWish = localStorage.getItem('wishlist');
+	var wishlist = storedWish ? JSON.parse(storedWish) : [];
+
+	setTimeout(() => {
+		document.querySelectorAll('button[data-item-name]').forEach((button) => {
+			var itemName = button.getAttribute('data-item-name');
+			var wishlistImg = button.querySelector('.heart');
+
+			if (wishlist.some((item) => item.name === itemName)) {
+				wishlistImg.src = '../images/icons/heart-solid.svg';
+			} else {
+				wishlistImg.src = '../images/icons/heart-regular.svg';
+			}
+		});
+	}, 100);
+}
+
 document.addEventListener('DOMContentLoaded', function () {
 	updateWishlist();
 	calculateWishCount();
+	updateWishlistButtons();
 });
