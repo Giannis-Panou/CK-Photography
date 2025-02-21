@@ -1,7 +1,7 @@
 .sidebar {
 	background-color: white;
 	width: 0px;
-	height: 70px;
+	height: 95px;
 	z-index: 1;
 	overflow-x: hidden;
 	transition: 0.45s linear;
@@ -74,9 +74,9 @@
 }
 
 .col-pr2 button:hover {
-	background-color: black;
-	color: white;
+	background-color: rgb(219, 219, 219);
 	transition: 0.5s;
+	opacity: 0.75;
 }
 
 .animMenu {

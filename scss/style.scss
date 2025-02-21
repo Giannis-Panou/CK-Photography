@@ -73,3 +73,14 @@ footer img {
 	flex-grow: 1;
 	overflow-y: auto;
 }
+
+#heart {
+	width: 20px;
+	transform: translate(-0%, -5%);
+}
+
+#basket {
+	width: 20px;
+	margin-right: 2px;
+	transform: translate(-0%, -10%);
+}

@@ -92,30 +92,3 @@
 .progress-bar5 {
   width: 4%;
 }
-
-@media screen and (max-width: 600px) {
-  .body {
-    overflow-x: hidden;
-  }
-  .close-wish span {
-    left: 94.5%;
-  }
-  .close-cart span {
-    left: 95.5%;
-  }
-  .item {
-    display: flex;
-    flex-direction: column;
-  }
-  .images {
-    display: flex;
-    flex-direction: row;
-  }
-  .bigimg img {
-    width: 85%;
-  }
-  .smallimg {
-    display: flex;
-    flex-direction: column;
-  }
-}

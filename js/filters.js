@@ -34,23 +34,25 @@ function filterItems() {
                         <a href=item.html>
                             <img src="${item.image}" alt="${item.name}">
                             <p class="item-title">${item.title}</p>
-                            <p class="item-price">${item.price.toFixed(2)}€</p>
+                            
                         </a>
                         <a>
-                            <button class="btn rounded-1 border-secondary" onclick="addToCart('${
+                            <button class="btn rounded-1 border-secondary bg-primary" onclick="addToCart('${
 															item.name
 														}', ${item.price})" 
                                 data-item-name="${item.name}" 
                                 data-item-price="${
 																	item.price
-																}"> Add to Cart </button>
+																}"> <img src="../images/icons/shopping-basket.png" alt="cart icon" id='basket' /> Add to Cart  - ${item.price.toFixed(
+						2
+					)}€ </button>
                             <button class="btn rounded-1 border-secondary" onclick="addToWishlist('${
 															item.name
 														}', ${item.price})" 
                                 data-item-name="${item.name}" 
                                 data-item-price="${
 																	item.price
-																}"> Add to Wishlist </button>
+																}"> <img src="../images/icons/heart-regular.svg" alt="" id='heart' />  </button>
                         </a>
                     `;
 
