@@ -1,15 +1,14 @@
 var wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 var totalWish = parseFloat(localStorage.getItem('totalWish')) || 0;
 
-function addToWishlist(itemName, itemPrice) {
+function addToWishlist(button, itemName, itemPrice) {
 	var item = {
 		name: itemName,
 		price: itemPrice,
 		count: 1,
 	};
 
-	var wishButton = event.currentTarget;
-	var wishlistImg = wishButton.querySelector('.heart');
+	var wishlistImg = button.querySelector('.heart');
 
 	var currentItem = wishlist.findIndex((p) => p.name === itemName);
 
@@ -132,17 +131,19 @@ function updateWishlistButtons() {
 			var itemName = button.getAttribute('data-item-name');
 			var wishlistImg = button.querySelector('.heart');
 
-			if (wishlist.some((item) => item.name === itemName)) {
-				wishlistImg.src = '../images/icons/heart-solid.svg';
-			} else {
-				wishlistImg.src = '../images/icons/heart-regular.svg';
+			if (wishlistImg) {
+				if (wishlist.some((item) => item.name === itemName)) {
+					wishlistImg.src = '../images/icons/heart-solid.svg';
+				} else {
+					wishlistImg.src = '../images/icons/heart-regular.svg';
+				}
 			}
 		});
-	}, 100);
+	}, 1);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
 	updateWishlist();
 	calculateWishCount();
-	updateWishlistButtons();
+	setTimeout(updateWishlistButtons, 1);
 });

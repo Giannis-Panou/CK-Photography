@@ -37,7 +37,7 @@ function filterItems() {
 							<p class="item-price fw-semibold">${item.price.toFixed(2)}€</p>
                         </a>
 						<div>
-                            <button 
+							<button 
 							class="btn btn-primary rounded-1 border-secondary" 
 							onclick="addToCart('${item.name}', ${item.price})" 
 							data-item-name="${item.name}" 
@@ -45,13 +45,13 @@ function filterItems() {
 							<img src="../images/icons/shopping-basket.png" alt="cart icon" id='basket' />
 							Add to Cart</button>
 							
-                            <button
+							<button
 							class="btn btn-light rounded-1 border-secondary"
-							onclick="addToWishlist('${item.name}', ${item.price})" 
+							onclick="addToWishlist(this, '${item.name}', ${item.price})" 
 							data-item-name="${item.name}" 
 							data-item-price="${item.price}"> 
 							<img src="../images/icons/heart-regular.svg" alt="heart icon" class='heart' id='heart' />  </button>
-                        </div>
+						</div>
                     `;
 					itemsContainer.appendChild(itemElement);
 				}
