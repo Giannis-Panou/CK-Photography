@@ -98,3 +98,20 @@
 .change .bar3 {
   transform: translate(0, -8px) rotate(45deg);
 }
+
+@media screen and (max-width: 600px) {
+  .items-container {
+    display: flex;
+  }
+  .col-pr {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .col-pr1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+  }
+}
