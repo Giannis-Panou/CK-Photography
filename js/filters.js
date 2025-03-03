@@ -38,7 +38,7 @@ function filterItems() {
                         </a>
 						<div>
 							<button 
-							class="btn btn-primary rounded-1 border-secondary" 
+							class="btn btn-primary rounded-0 border-secondary" 
 							onclick="addToCart('${item.name}', ${item.price})" 
 							data-item-name="${item.name}" 
 							data-item-price="${item.price}"> 
@@ -46,7 +46,7 @@ function filterItems() {
 							Add to Cart</button>
 							
 							<button
-							class="btn btn-light rounded-1 border-secondary"
+							class="btn btn-light rounded-0 border-secondary"
 							onclick="addToWishlist(this, '${item.name}', ${item.price})" 
 							data-item-name="${item.name}" 
 							data-item-price="${item.price}"> 

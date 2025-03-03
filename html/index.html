@@ -294,6 +294,7 @@
 		<!-- Header -->
 		<header
 			class="container-fluid d-flex flex-row justify-content-around align-items-center"
+			id="header"
 		>
 			<!-- Navbar -->
 			<div
@@ -435,7 +436,7 @@
 			<div class="carousel-inner">
 				<div class="carousel-item active">
 					<img
-						src="../images/wallpapers/wallpaper.jpg"
+						src="../images/wallpapers/wallpaper3.jpg"
 						class="d-block w-100"
 						alt="..."
 					/>
@@ -457,7 +458,7 @@
 				</div>
 				<div class="carousel-item">
 					<img
-						src="../images/wallpapers/wallpaper3.jpg"
+						src="../images/wallpapers/wallpaper.jpg"
 						class="d-block w-100"
 						alt="..."
 					/>
@@ -494,6 +495,43 @@
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 				<span class="visually-hidden">Previous</span>
 			</button>
+			<!-- Carousel Caption -->
+			<div
+				class="carousel-caption d-none d-md-block position-absolute top-50 start-50 translate-middle"
+			>
+				<div>
+					<h1 class="mb-3 text-uppercase" id="captionTitle">
+						Winter Collection
+					</h1>
+					<h2 class="fw-bold text-uppercase" id="captionRelease">Out Now</h2>
+				</div>
+				<div
+					class="container d-flex flex-row justify-content-center position-absolute start-50 translate-middle"
+					id="captionButtons"
+				>
+					<div>
+						<a href="prints.html">
+							<button
+								class="btn btn-light btn-lg rounded-0 border-dark me-3"
+								id="captionButton"
+							>
+								PRINTS
+							</button>
+						</a>
+					</div>
+					<div>
+						<a href="presets.html">
+							<button
+								class="btn btn-light btn-lg rounded-0 border-dark ms-3"
+								id="captionButton"
+							>
+								PRESETS
+							</button>
+						</a>
+					</div>
+				</div>
+			</div>
+
 			<button
 				class="carousel-control-next"
 				type="button"
@@ -547,5 +585,6 @@
 		<script src="../js/filters.js"></script>
 		<script src="../js/wishlist.js"></script>
 		<script src="../js/mobile.js"></script>
+		<script src="../js/nav.js"></script>
 	</body>
 </html>

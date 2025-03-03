@@ -1,19 +1,12 @@
-var prevScrollpos = window.scrollY;
 window.onscroll = function () {
-	var currentScrollPos = window.scrollY;
+	var scrollPos = window.scrollY;
 
-	if (prevScrollpos > currentScrollPos || prevScrollpos <= currentScrollPos) {
-		document.querySelector('.navbar').style.top = '0px';
-		document.querySelector('.navbar').style.backgroundColor = 'white';
-		document.querySelector('.navbar').style.transition = '0.5s';
+	if (scrollPos > 50) {
+		document.getElementById('header').style.position = 'sticky';
+		document.getElementById('header').style.top = '0px';
+		document.getElementById('header').style.backgroundColor = 'white';
+		document.getElementById('header').style.transition = '0.5s';
 	} else {
-		document.querySelector('.navbar').style.top = '-50px';
+		document.getElementById('header').style.top = '-64.8px';
 	}
-
-	if (currentScrollPos <= 50) {
-		document.querySelector('.navbar').style.backgroundColor =
-			'rgba(0, 0, 0, 0.05)';
-	}
-
-	prevScrollpos = currentScrollPos;
 };

@@ -1,6 +1,6 @@
 @font-face {
 	font-family: 'playfair';
-	src: url(../fonts/Nunito/static/Nunito-Light.ttf);
+	src: url(../fonts/Playfair_Display_SC/PlayfairDisplaySC-Regular.ttf);
 }
 
 body {
@@ -9,7 +9,8 @@ body {
 }
 
 header {
-	height: 7.5vh;
+	height: 64.8px;
+	z-index: 2;
 }
 
 .dropdown-toggle:after {
@@ -31,12 +32,12 @@ header {
 }
 
 .carousel img {
-	height: 85vh;
+	height: 89vh;
 	object-fit: cover;
 }
 
 footer {
-	height: 7.5vh;
+	height: 54px;
 	font-size: medium;
 }
 
@@ -73,4 +74,21 @@ footer img {
 	width: 20px;
 	margin-right: 2px;
 	transform: translate(-0%, -10%);
+}
+
+#captionTitle {
+	font-size: 60px;
+}
+
+#captionRelease {
+	font-size: 45px;
+}
+
+#captionButtons {
+	top: 75%;
+}
+
+#captionButton {
+	width: 170px;
+	height: 55px;
 }
