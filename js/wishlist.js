@@ -77,7 +77,8 @@ function updateWishlist() {
 			'btn-danger',
 			'border',
 			'border-dark',
-			'rounded-1'
+			'rounded-0',
+			'text-light'
 		);
 		removeButton.innerText = 'Remove';
 		removeButton.onclick = function () {

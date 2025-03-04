@@ -28,7 +28,7 @@
 								<label for="email" class="form-label">Email address</label>
 								<input
 									type="email"
-									class="form-control rounded-1"
+									class="form-control rounded-0"
 									id="email"
 									aria-describedby="email"
 								/>
@@ -37,19 +37,19 @@
 								<label for="password" class="form-label">Password</label>
 								<input
 									type="password"
-									class="form-control rounded-1"
+									class="form-control rounded-0"
 									id="password"
 								/>
 							</div>
 
-							<button type="submit" class="btn btn-dark rounded-1">
+							<button type="submit" class="btn btn-dark rounded-0">
 								Login
 							</button>
 						</form>
 					</div>
 					<div class="modal-footer">
 						<div data-bs-toggle="modal" data-bs-target="#registerModal">
-							<button class="btn btn-light border border-dark rounded-1">
+							<button class="btn btn-light border border-dark rounded-0">
 								Register
 							</button>
 						</div>
@@ -77,7 +77,7 @@
 								<label for="name" class="form-label">Full Name</label>
 								<input
 									type="text"
-									class="form-control rounded-1"
+									class="form-control rounded-0"
 									id="name"
 									aria-describedby="name"
 								/>
@@ -86,7 +86,7 @@
 								<label for="email" class="form-label">Email address</label>
 								<input
 									type="email"
-									class="form-control rounded-1"
+									class="form-control rounded-0"
 									id="email"
 									aria-describedby="email"
 								/>
@@ -95,7 +95,7 @@
 								<label for="password" class="form-label">Password</label>
 								<input
 									type="password"
-									class="form-control rounded-1"
+									class="form-control rounded-0"
 									id="password"
 								/>
 							</div>
@@ -105,19 +105,19 @@
 								>
 								<input
 									type="password"
-									class="form-control rounded-1"
+									class="form-control rounded-0"
 									id="password"
 								/>
 							</div>
 
-							<button type="submit" class="btn btn-dark rounded-1">
+							<button type="submit" class="btn btn-dark rounded-0">
 								Register
 							</button>
 						</form>
 					</div>
 					<div class="modal-footer">
 						<div data-bs-toggle="modal" data-bs-target="#loginModal">
-							<button class="btn btn-light border border-dark rounded-1">
+							<button class="btn btn-light border border-dark rounded-0">
 								Login
 							</button>
 						</div>
@@ -144,7 +144,10 @@
 			</div>
 
 			<div class="offcanvas-body d-flex flex-column">
-				<div class="cart-content flex-grow-1"></div>
+				<div class="cart-content flex-grow-1">
+					<div class="cart-items" id="cartItems"></div>
+					<div class="cart-items disabled" id="cartItems2"></div>
+				</div>
 				<div class="cart-total bg-light pt-3">
 					<div class="mb-2">
 						Total:
@@ -152,7 +155,7 @@
 					</div>
 					<div class="checkout-button">
 						<a href="checkout.html">
-							<button class="btn btn-success border border-dark rounded-1">
+							<button class="btn btn-success border border-secondary text-light rounded-0">
 								Proceed to Checkout
 							</button>
 						</a>
@@ -436,14 +439,14 @@
 							<div class="cart-items rounded-2" id="cartItems"></div>
 						</ul>
 
-						<form class="card p-2">
+						<form class="card p-2 rounded-0">
 							<div class="input-group">
 								<input
 									type="text"
-									class="form-control"
+									class="form-control rounded-0"
 									placeholder="Promo code"
 								/>
-								<button type="submit" class="btn btn-secondary">Redeem</button>
+								<button type="submit" class="btn btn-secondary rounded-0">Redeem</button>
 							</div>
 						</form>
 					</div>
@@ -455,7 +458,7 @@
 									<label for="firstName" class="form-label">First name</label>
 									<input
 										type="text"
-										class="form-control"
+										class="form-control rounded-0"
 										id="firstName"
 										placeholder=""
 										value=""
@@ -470,7 +473,7 @@
 									<label for="lastName" class="form-label">Last name</label>
 									<input
 										type="text"
-										class="form-control"
+										class="form-control rounded-0"
 										id="lastName"
 										placeholder=""
 										value=""
@@ -485,7 +488,7 @@
 									<label for="email" class="form-label">Email </label>
 									<input
 										type="email"
-										class="form-control"
+										class="form-control rounded-0"
 										id="email"
 										placeholder="you@example.com"
 									/>
@@ -498,7 +501,7 @@
 									<label for="address" class="form-label">Address</label>
 									<input
 										type="text"
-										class="form-control"
+										class="form-control rounded-0"
 										id="address"
 										placeholder="1234 Main St"
 										required=""
@@ -510,7 +513,7 @@
 
 								<div class="col-md-5">
 									<label for="country" class="form-label">Country</label>
-									<select class="form-select" id="country" required="">
+									<select class="form-select rounded-0" id="country" required="">
 										<option value="">Choose...</option>
 										<option>United States</option>
 									</select>
@@ -521,7 +524,7 @@
 
 								<div class="col-md-4">
 									<label for="state" class="form-label">State</label>
-									<select class="form-select" id="state" required="">
+									<select class="form-select rounded-0" id="state" required="">
 										<option value="">Choose...</option>
 										<option>California</option>
 									</select>
@@ -534,7 +537,7 @@
 									<label for="zip" class="form-label">Zip</label>
 									<input
 										type="text"
-										class="form-control"
+										class="form-control rounded-0"
 										id="zip"
 										placeholder=""
 										required=""
@@ -548,7 +551,7 @@
 							<div class="form-check">
 								<input
 									type="checkbox"
-									class="form-check-input"
+									class="form-check-input rounded-0"
 									id="same-address"
 								/>
 								<label class="form-check-label" for="same-address"
@@ -559,7 +562,7 @@
 							<div class="form-check">
 								<input
 									type="checkbox"
-									class="form-check-input"
+									class="form-check-input rounded-0"
 									id="save-info"
 								/>
 								<label class="form-check-label" for="save-info"
@@ -612,7 +615,7 @@
 									<label for="cc-name" class="form-label">Name on card</label>
 									<input
 										type="text"
-										class="form-control"
+										class="form-control rounded-0"
 										id="cc-name"
 										placeholder=""
 										required=""
@@ -629,7 +632,7 @@
 									>
 									<input
 										type="text"
-										class="form-control"
+										class="form-control rounded-0"
 										id="cc-number"
 										placeholder=""
 										required=""
@@ -645,7 +648,7 @@
 									>
 									<input
 										type="text"
-										class="form-control"
+										class="form-control rounded-0"
 										id="cc-expiration"
 										placeholder=""
 										required=""
@@ -657,7 +660,7 @@
 									<label for="cc-cvv" class="form-label">CVV</label>
 									<input
 										type="text"
-										class="form-control"
+										class="form-control rounded-0"
 										id="cc-cvv"
 										placeholder=""
 										required=""
@@ -668,7 +671,7 @@
 
 							<hr class="my-4" />
 
-							<button class="w-100 btn btn-success btn-lg" type="submit">
+							<button class="w-100 btn btn-success btn-lg rounded-0 border border-secondary" type="submit">
 								Continue to checkout
 							</button>
 						</form>

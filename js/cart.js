@@ -119,7 +119,7 @@ function updateCart() {
 			'btn-light',
 			'border',
 			'border-secondary',
-			'rounded-1',
+			'rounded-0',
 			'me-2'
 		);
 		increaseButton.innerText = '+';
@@ -134,7 +134,7 @@ function updateCart() {
 			'btn-light',
 			'border',
 			'border-secondary',
-			'rounded-1',
+			'rounded-0',
 			'me-2'
 		);
 
@@ -150,8 +150,9 @@ function updateCart() {
 			'btn-danger',
 			'border',
 			'border-secondary',
-			'rounded-1',
-			'me-2'
+			'rounded-0',
+			'me-2',
+			'text-light'
 		);
 
 		removeButton.innerText = 'Remove';
