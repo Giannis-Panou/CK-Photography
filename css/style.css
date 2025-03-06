@@ -91,3 +91,23 @@ footer img {
   width: 170px;
   height: 55px;
 }
+
+@media screen and (max-width: 600px) {
+  #captionTitle {
+    font-size: 50px;
+    position: absolute;
+    bottom: 150%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  #captionRelease {
+    font-size: 30px;
+    position: absolute;
+    bottom: 145%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  #captionButton {
+    width: 125px;
+  }
+}

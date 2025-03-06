@@ -70,13 +70,24 @@ document.addEventListener('DOMContentLoaded', filterItems);
 
 function openClose() {
 	let sidebar = document.getElementById('sidebar');
+	const windowSize = window.matchMedia('(max-width: 600px)');
 
-	if (sidebar.style.width == '400px') {
-		sidebar.style.width = '0';
-		sidebar.style.overflow = 'hidden';
+	if (windowSize.matches) {
+		if (sidebar.style.height == '400px') {
+			sidebar.style.height = '0';
+			sidebar.style.overflow = 'hidden';
+		} else {
+			sidebar.style.height = '400px';
+			sidebar.style.overflow = 'visible';
+		}
 	} else {
-		sidebar.style.width = '400px';
-		sidebar.style.overflow = 'hidden';
+		if (sidebar.style.width == '400px') {
+			sidebar.style.width = '0';
+			sidebar.style.overflow = 'hidden';
+		} else {
+			sidebar.style.width = '400px';
+			sidebar.style.overflow = 'visible';
+		}
 	}
 }
 
@@ -90,12 +101,14 @@ function mobileFilters() {
 	const maxPrice = document.getElementById('max-price');
 	const filtersLabel = document.getElementById('filtersLabel');
 	const barsDiv = document.getElementById('bars');
+	const categoryFilter = document.getElementById('category-filter');
 
 	if (windowSize.matches) {
 		// Filters
 		minPrice.classList.add('w-75');
 		maxPrice.classList.add('w-75');
 		filtersLabel.classList.remove('mt-3');
+		categoryFilter.classList.add('w-75');
 		filtersLabel.classList.add('mt-4');
 		barsDiv.classList.add('mb-1');
 	}
