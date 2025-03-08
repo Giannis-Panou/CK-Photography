@@ -146,5 +146,5 @@ function updateWishlistButtons() {
 document.addEventListener('DOMContentLoaded', function () {
 	updateWishlist();
 	calculateWishCount();
-	setTimeout(updateWishlistButtons, 1);
+	setInterval(updateWishlistButtons, 1);
 });

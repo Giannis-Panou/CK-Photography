@@ -13,7 +13,6 @@ const reviewDiv = document.getElementById('reviewDiv');
 const ratingBar = document.querySelectorAll('.rating-bar');
 const aboutDiv = document.querySelectorAll('#about');
 const captionDiv = document.getElementById('captionDiv');
-const captionTitle = document.getElementById('captionTitle');
 
 function mobileView() {
 	if (windowSize.matches) {
@@ -69,13 +68,49 @@ function mobileView() {
 			div.classList.remove('flew-row');
 			div.classList.add('flex-column');
 		});
+	} else {
+		navbar.classList.add('d-flex');
+		navbar.classList.remove('d-none');
+		title.innerHTML = 'CK Photography';
+		title.classList.remove('my-2');
+		cartButton.classList.remove('d-flex', 'flex-row');
+		wishButton.classList.remove('d-flex', 'flex-row');
+		menu.classList.add('d-none');
+		menu.classList.remove('d-block');
+
+		if (footer) {
+			footer.classList.add('flex-row');
+			footer.classList.remove('flex-column');
+			social.classList.remove('my-2');
+		}
+
+		if (captionDiv) {
+			captionDiv.classList.add(
+				'position-absolute',
+				'start-50',
+				'translate-middle'
+			);
+		}
+
+		itemDiv.classList.add('flex-row');
+		itemDiv.classList.remove('flex-column');
+		itemDisc.classList.add('w-50');
+		imgWrapper.style.height = '';
+		reviewDiv.classList.add('w-75', 'mx-auto');
+		ratingBar.forEach((bar) => {
+			bar.classList.add('mx-3');
+			bar.classList.remove('mx-2');
+		});
+
+		aboutDiv.forEach((div) => {
+			div.classList.add('flex-row');
+			div.classList.remove('flex-column');
+		});
 	}
 }
 
+// Run on page load
 document.addEventListener('DOMContentLoaded', mobileView);
 
-document.addEventListener('DOMContentLoaded', function () {
-	requestAnimationFrame(() => {
-		mobileView();
-	});
-});
+// Run on window resize
+window.addEventListener('resize', mobileView);

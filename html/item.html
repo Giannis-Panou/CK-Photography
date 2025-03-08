@@ -3,7 +3,6 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Item</title>
 		<link rel="stylesheet" href="../css/bootstrap.css" />
 		<link
 			rel="stylesheet"
@@ -12,6 +11,7 @@
 		<link rel="stylesheet" href="../css/style.css" />
 		<link rel="stylesheet" href="../css/item.css" />
 		<link rel="stylesheet" href="../css/animations.css" />
+		<title>Item</title>
 	</head>
 	<body>
 		<!-- Login Modal -->
@@ -213,20 +213,23 @@
 			<div
 				class="offcanvas-body d-flex flex-column align-items-center justify-content-center"
 			>
-				<div class="menu-content flex-grow-1">
+				<div
+					class="menu-content d-flex flex-column justify-content-center align-items-center h-100"
+				>
 					<!-- Navbar -->
 					<div
 						class="navbar container-fluid d-flex flex-row justify-content-center align-items-center"
 					>
 						<div class="d-flex flex-column justify-content-center text-center">
-							<div class="mx-5 my-3">
+							<div class="mx-5 my-2">
 								<a
 									href="prints.html"
-									class="text-decoration-none text-dark text-uppercase"
+									class="text-decoration-none"
 									type="button"
-									data-bs-toggle="dropdown"
 								>
-									All Prints
+									<button class="btn btn-light" type="button">
+										All Prints
+									</button>
 								</a>
 							</div>
 							<div class="mx-5 my-3">
@@ -243,25 +246,29 @@
 									</button></a
 								>
 							</div>
-							<div class="mx-5 my-3 mb-5">
+							<div class="mx-5 my-3">
 								<a href="prints.html" class="text-decoration-none"
 									><button class="btn btn-light" type="button">
 										Summer Collection
 									</button></a
 								>
 							</div>
+							<hr class="mx-4 my-3" />
 						</div>
 
 						<div class="d-flex flex-column justify-content-center text-center">
-							<div class="mx-5 my-3">
+							<div class="mx-5 my-2">
 								<a
-									class="text-decoration-none text-dark text-uppercase"
+									href="prints.html"
+									class="text-decoration-none"
 									type="button"
-									data-bs-toggle="dropdown"
 								>
-									All Presets
+									<button class="btn btn-light" type="button">
+										All Presets
+									</button>
 								</a>
 							</div>
+
 							<div class="mx-5 my-3">
 								<a href="presets.html" class="text-decoration-none"
 									><button class="btn btn-light" type="button">
@@ -276,20 +283,21 @@
 									</button></a
 								>
 							</div>
-							<div class="mx-5 my-3 mb-5">
+							<div class="mx-5 my-3">
 								<a href="presets.html" class="text-decoration-none"
 									><button class="btn btn-light" type="button">
 										Black & White Presets
 									</button></a
 								>
 							</div>
+							<hr class="mx-4 my-3" />
 						</div>
 
-						<div class="m-5">
+						<div class="mx-5 my-2">
 							<a
 								href="../html/about.html"
 								class="text-decoration-none text-dark text-uppercase"
-								>About</a
+								>About CK</a
 							>
 						</div>
 					</div>
