@@ -1,4 +1,4 @@
-var windowSize = window.matchMedia('(max-width: 600px)');
+var windowSize = window.matchMedia('(max-width: 768px)');
 const navbar = document.getElementById('defaultNavBar');
 const title = document.getElementById('title');
 const cartButton = document.getElementById('cartButton');
@@ -11,7 +11,7 @@ const itemDisc = document.getElementById('itemDisc');
 const imgWrapper = document.getElementById('imgWrapper');
 const reviewDiv = document.getElementById('reviewDiv');
 const ratingBar = document.querySelectorAll('.rating-bar');
-const aboutDiv = document.querySelectorAll('#about');
+const about = document.getElementById('about');
 const captionDiv = document.getElementById('captionDiv');
 
 function mobileView() {
@@ -62,12 +62,6 @@ function mobileView() {
 			bar.classList.remove('mx-3');
 			bar.classList.add('mx-2');
 		});
-
-		// About Page
-		aboutDiv.forEach((div) => {
-			div.classList.remove('flew-row');
-			div.classList.add('flex-column');
-		});
 	} else {
 		navbar.classList.add('d-flex');
 		navbar.classList.remove('d-none');
@@ -100,11 +94,6 @@ function mobileView() {
 		ratingBar.forEach((bar) => {
 			bar.classList.add('mx-3');
 			bar.classList.remove('mx-2');
-		});
-
-		aboutDiv.forEach((div) => {
-			div.classList.add('flex-row');
-			div.classList.remove('flex-column');
 		});
 	}
 }

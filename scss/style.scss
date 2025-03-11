@@ -93,7 +93,7 @@ footer img {
 	height: 55px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
 	#captionTitle {
 		font-size: 50px;
 		position: absolute;
@@ -112,5 +112,57 @@ footer img {
 
 	#captionButton {
 		width: 125px;
+	}
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+	#captionTitle {
+		font-size: 60px;
+		position: absolute;
+		bottom: 35%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	#captionRelease {
+		font-size: 30px;
+		position: absolute;
+		bottom: 35%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	#captionButton {
+		width: 125px;
+	}
+
+	#title {
+		font-size: 35px;
+	}
+}
+
+@media screen and (min-width: 2560px) {
+	#captionTitle {
+		font-size: 80px;
+		position: absolute;
+		bottom: 35%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	#captionRelease {
+		font-size: 50px;
+		position: absolute;
+		bottom: 35%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	#captionButton {
+		width: 125px;
+	}
+
+	#title {
+		font-size: 35px;
 	}
 }
