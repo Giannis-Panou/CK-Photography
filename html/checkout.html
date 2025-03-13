@@ -146,10 +146,7 @@
 			<div class="offcanvas-body d-flex flex-column">
 				<div class="cart-content flex-grow-1"></div>
 				<div class="cart-total bg-light pt-3">
-					<div class="mb-2">
-						Total:
-						<span id="totalAmount"> 0.00 &euro; </span>
-					</div>
+					<div class="mb-2"></div>
 					<div class="checkout-button">
 						<a href="checkout.html">
 							<button
@@ -457,6 +454,11 @@
 								</button>
 							</div>
 						</form>
+
+						<div class="my-4 fs-4">
+							Total:
+							<span id="totalAmount"> 0.00 &euro; </span>
+						</div>
 					</div>
 					<div class="col-md-7 col-lg-8">
 						<h4 class="mb-3">Billing address</h4>
@@ -686,6 +688,7 @@
 							<button
 								class="w-100 btn btn-success btn-lg text-light rounded-0 border border-secondary"
 								type="submit"
+								onclick="alert('Thank you for your purchase!');"
 							>
 								Continue to checkout
 							</button>

@@ -30,6 +30,11 @@ function filterItems() {
 
 					const itemElement = document.createElement('div');
 					itemElement.className = 'col-pr2';
+					itemElement.classList.add(
+						'animated',
+						'animatedFadeInDown',
+						'fadeInDown'
+					);
 					itemElement.innerHTML = `
                         <a href=item.html>
 							<img src="${item.image}" alt="${item.name}">

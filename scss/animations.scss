@@ -45,3 +45,152 @@
 	-webkit-animation-name: slideIn;
 	animation-name: slideIn;
 }
+
+// Fade Up
+
+@keyframes fadeInUp {
+	from {
+		transform: translate3d(0, 40px, 0);
+		opacity: 0;
+	}
+
+	to {
+		transform: translate3d(0, 0, 0);
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes fadeInUp {
+	from {
+		transform: translate3d(0, 40px, 0);
+		opacity: 0;
+	}
+
+	to {
+		transform: translate3d(0, 0, 0);
+		opacity: 1;
+	}
+}
+
+.animated {
+	animation-duration: 3s;
+	animation-fill-mode: both;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+}
+
+.animatedFadeInUp {
+	opacity: 0;
+}
+
+.fadeInUp {
+	opacity: 1;
+	animation-name: fadeInUp;
+	-webkit-animation-name: fadeInUp;
+}
+
+// Fade Down
+
+@keyframes fadeInDown {
+	from {
+		transform: translate3d(0, 0, 0);
+		opacity: 0;
+	}
+
+	to {
+		transform: translate3d(0, 40px, 0);
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes fadeInDown {
+	from {
+		transform: translate3d(0, 0, 0);
+		opacity: 0;
+	}
+
+	to {
+		transform: translate3d(0, 40px, 0);
+		opacity: 1;
+	}
+}
+
+.animatedFadeInDown {
+	opacity: 0;
+}
+
+.fadeInDown {
+	opacity: 1;
+	animation-name: fadeInDown;
+	-webkit-animation-name: fadeInDown;
+}
+
+// Fade Left
+
+@keyframes fadeInLeft {
+	from {
+		transform: translateX(-20px);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes fadeInLeft {
+	from {
+		transform: translateX(-20px);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+.animatedFadeInLeft {
+	opacity: 0;
+}
+
+.fadeInLeft {
+	opacity: 1;
+	animation-name: fadeInLeft;
+	-webkit-animation-name: fadeInLeft;
+}
+
+// Fade Right
+
+@keyframes fadeInRight {
+	from {
+		opacity: 0;
+		transform: translateX(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@-webkit-keyframes fadeInRight {
+	from {
+		opacity: 0;
+		transform: translateX(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.animatedFadeInRight {
+	opacity: 0;
+}
+
+.fadeInRight {
+	opacity: 1;
+	animation-name: fadeInRight;
+	-webkit-animation-name: fadeInRight;
+}
