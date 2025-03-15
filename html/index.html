@@ -10,6 +10,12 @@
 		<title>CK Photography</title>
 	</head>
 	<body>
+		<!-- Overlay for transition -->
+		<div class="overlay"></div>
+
+		<!-- Overlay for transition -->
+		<div class="overlay-reverse"></div>
+
 		<!-- Login Modal -->
 		<div class="modal fade" tabindex="-1" id="loginModal">
 			<div class="modal-dialog modal-dialog-centered visible">
@@ -320,21 +326,21 @@
 					</a>
 					<ul class="dropdown-menu animate slideIn rounded-1">
 						<li>
-							<a href="prints.html" class="text-decoration-none"
+							<a href="prints.html" class="text-decoration-none page-transition"
 								><button class="dropdown-item btn btn-light" type="button">
 									Winter Collection
 								</button></a
 							>
 						</li>
 						<li>
-							<a href="prints.html" class="text-decoration-none"
+							<a href="prints.html" class="text-decoration-none page-transition"
 								><button class="dropdown-item btn btn-light" type="button">
 									Urban Collection
 								</button></a
 							>
 						</li>
 						<li>
-							<a href="prints.html" class="text-decoration-none"
+							<a href="prints.html" class="text-decoration-none page-transition"
 								><button class="dropdown-item btn btn-light" type="button">
 									Summer Collection
 								</button></a
@@ -352,21 +358,27 @@
 					</a>
 					<ul class="dropdown-menu animate slideIn rounded-1">
 						<li>
-							<a href="presets.html" class="text-decoration-none"
+							<a
+								href="presets.html"
+								class="text-decoration-none page-transition"
 								><button class="dropdown-item btn btn-light" type="button">
 									Portrait Presets
 								</button></a
 							>
 						</li>
 						<li>
-							<a href="presets.html" class="text-decoration-none"
+							<a
+								href="presets.html"
+								class="text-decoration-none page-transition"
 								><button class="dropdown-item btn btn-light" type="button">
 									Landscape Presets
 								</button></a
 							>
 						</li>
 						<li>
-							<a href="presets.html" class="text-decoration-none"
+							<a
+								href="presets.html"
+								class="text-decoration-none page-transition"
 								><button class="dropdown-item btn btn-light" type="button">
 									Black & White Presets
 								</button></a
@@ -375,7 +387,9 @@
 					</ul>
 				</div>
 
-				<a href="../html/about.html" class="text-decoration-none text-dark"
+				<a
+					href="../html/about.html"
+					class="text-decoration-none text-dark page-transition"
 					>About</a
 				>
 			</div>
@@ -383,7 +397,7 @@
 			<div
 				class="title container d-flex justify-content-center align-items-center"
 			>
-				<a href="index.html" class="text-decoration-none"
+				<a href="index.html" class="text-decoration-none page-transition"
 					><h1 class="text-dark" id="title">CK Photography</h1></a
 				>
 			</div>
@@ -443,7 +457,7 @@
 			data-bs-ride="carousel"
 		>
 			<div class="carousel-inner">
-				<div class="carousel-item active">
+				<div class="carousel-item active" data-bs-interval="3000">
 					<img
 						src="../images/wallpapers/wallpaper3.jpg"
 						class="d-block w-100"
@@ -451,42 +465,42 @@
 					/>
 				</div>
 				<!-- Photos -->
-				<div class="carousel-item">
+				<div class="carousel-item" data-bs-interval="3000">
 					<img
 						src="../images/wallpapers/wallpaper1.jpg"
 						class="d-block w-100"
 						alt="..."
 					/>
 				</div>
-				<div class="carousel-item">
+				<div class="carousel-item" data-bs-interval="3000">
 					<img
 						src="../images/wallpapers/wallpaper2.jpg"
 						class="d-block w-100"
 						alt="..."
 					/>
 				</div>
-				<div class="carousel-item">
+				<div class="carousel-item" data-bs-interval="3000">
 					<img
 						src="../images/wallpapers/wallpaper.jpg"
 						class="d-block w-100"
 						alt="..."
 					/>
 				</div>
-				<div class="carousel-item">
+				<div class="carousel-item" data-bs-interval="3000">
 					<img
 						src="../images/wallpapers/wallpaper4.jpg"
 						class="d-block w-100"
 						alt="..."
 					/>
 				</div>
-				<div class="carousel-item">
+				<div class="carousel-item" data-bs-interval="3000">
 					<img
 						src="../images/wallpapers/wallpaper5.jpg"
 						class="d-block w-100"
 						alt="..."
 					/>
 				</div>
-				<div class="carousel-item">
+				<div class="carousel-item" data-bs-interval="3000">
 					<img
 						src="../images/wallpapers/wallpaper6.jpg"
 						class="d-block w-100"
@@ -520,9 +534,9 @@
 					id="captionButtons"
 				>
 					<div class="animated animatedFadeInLeft fadeInLeft">
-						<a href="prints.html">
+						<a href="prints.html" class="page-transition">
 							<button
-								class="btn btn-light btn-lg rounded-0 border-dark me-3"
+								class="btn bg-transparent btn-lg rounded-0 border-light text-light me-3"
 								id="captionButton"
 							>
 								PRINTS
@@ -530,9 +544,9 @@
 						</a>
 					</div>
 					<div class="animated animatedFadeInRight fadeInRight">
-						<a href="presets.html">
+						<a href="presets.html" class="page-transition">
 							<button
-								class="btn btn-light btn-lg rounded-0 border-dark ms-3"
+								class="btn bg-transparent btn-lg rounded-0 border-light text-light ms-3 page-transition"
 								id="captionButton"
 							>
 								PRESETS
