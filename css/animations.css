@@ -192,29 +192,26 @@
   z-index: 9999;
 }
 
-/* Overlay Fade-in (Normal and Reverse) */
 .overlay.show,
 .overlay-reverse.show {
   opacity: 1;
-  pointer-events: all; /* Allow interactions when visible */
+  pointer-events: all;
   transition: opacity 0.5s ease;
 }
 
-/* Overlay Fade-out (Reverse Fade-out) */
 .overlay.hidden,
 .overlay-reverse.hidden {
   opacity: 0;
-  pointer-events: none; /* Disable interactions while hidden */
-  transition: opacity 0.5s ease; /* Smooth transition for fade-out */
+  pointer-events: none;
+  transition: opacity 0.5s ease;
 }
 
-/* Body content transitions */
 body.hidden {
-  opacity: 0; /* Fade-out body */
+  opacity: 0;
 }
 
 body.show {
-  opacity: 1; /* Fade-in body */
+  opacity: 1;
 }
 
 body.hidden {

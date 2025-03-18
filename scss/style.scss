@@ -10,7 +10,7 @@ body {
 
 header {
 	height: 64.8px;
-	z-index: 2;
+	z-index: 9000;
 }
 
 .dropdown-toggle:after {
@@ -39,6 +39,7 @@ header {
 footer {
 	height: 54px;
 	font-size: medium;
+	z-index: 9000;
 }
 
 footer img {
