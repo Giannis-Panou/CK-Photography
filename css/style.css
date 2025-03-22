@@ -9,7 +9,7 @@ body {
 
 header {
   height: 64.8px;
-  z-index: 9000;
+  z-index: 1000;
 }
 
 .dropdown-toggle:after {
@@ -38,7 +38,6 @@ header {
 footer {
   height: 54px;
   font-size: medium;
-  z-index: 9000;
 }
 
 footer img {
@@ -76,6 +75,11 @@ footer img {
   transform: translate(0%, -10%);
 }
 
+#captionDiv {
+  display: flex;
+  justify-content: center;
+}
+
 #captionTitle {
   font-size: 70px;
 }
@@ -94,38 +98,32 @@ footer img {
 }
 
 @media screen and (max-width: 768px) {
-  #captionTitle {
-    font-size: 50px;
+  #captionDiv {
     position: absolute;
-    bottom: 150%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+  #captionTitle {
+    font-size: 50px;
   }
   #captionRelease {
     font-size: 30px;
-    position: absolute;
-    bottom: 145%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
   #captionButton {
     width: 125px;
+  }
+  footer {
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   #captionTitle {
     font-size: 60px;
-    position: absolute;
-    bottom: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
   #captionRelease {
     font-size: 30px;
-    position: absolute;
-    bottom: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
   #captionButton {
     width: 125px;
@@ -137,17 +135,9 @@ footer img {
 @media screen and (min-width: 2560px) {
   #captionTitle {
     font-size: 80px;
-    position: absolute;
-    bottom: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
   #captionRelease {
     font-size: 50px;
-    position: absolute;
-    bottom: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
   #captionButton {
     width: 125px;

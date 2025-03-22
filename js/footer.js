@@ -9,12 +9,10 @@ function adjustFooterPosition() {
 		footer.style.left = '0';
 		footer.style.width = '100%';
 	} else {
-		footer.style.position = 'static'; // Reset to default
-		footer.style.marginTop = '100px';
+		footer.style.position = 'static';
 	}
 }
 
-// Run on load and resize
 window.addEventListener('load', adjustFooterPosition);
 window.addEventListener('resize', adjustFooterPosition);
 new MutationObserver(adjustFooterPosition).observe(document.body, {
