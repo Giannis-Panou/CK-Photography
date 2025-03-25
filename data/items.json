@@ -3,112 +3,112 @@
         {
             "name": "Flatiron NYC",
             "category": "portrait",
-            "image": "../images/items/portraits/print1.png",
+            "image": "../images/items/portraits/print1.webp",
             "title": "Flatiron NYC",
             "price": 19.99
         },
         {
             "name": "Fly Away",
             "category": "portrait",
-            "image": "../images/items/portraits/print2.png",
+            "image": "../images/items/portraits/print2.webp",
             "title": "Fly Away",
             "price": 29.99
         },
         {
             "name": "Neon City",
             "category": "portrait",
-            "image": "../images/items/portraits/print3.png",
+            "image": "../images/items/portraits/print3.webp",
             "title": "Neon City",
             "price": 39.99
         },
         {
             "name": "Neon Alley",
             "category": "portrait",
-            "image": "../images/items/portraits/print4.png",
+            "image": "../images/items/portraits/print4.webp",
             "title": "Neon Alley",
             "price": 49.99
         },
         {
             "name": "Into the Clouds",
             "category": "landscape",
-            "image": "../images/items/landscapes/land1.png",
+            "image": "../images/items/landscapes/land1.webp",
             "title": "Into the Clouds",
             "price": 19.99
         },
         {
             "name": "Endless Green",
             "category": "landscape",
-            "image": "../images/items/landscapes/land2.png",
+            "image": "../images/items/landscapes/land2.webp",
             "title": "Endless Green",
             "price": 29.99
         },
         {
             "name": "Below Zero",
             "category": "landscape",
-            "image": "../images/items/landscapes/land3.png",
+            "image": "../images/items/landscapes/land3.webp",
             "title": "Below Zero",
             "price": 39.99
         },
         {
             "name": "Golden Mountain",
             "category": "landscape",
-            "image": "../images/items/landscapes/land4.png",
+            "image": "../images/items/landscapes/land4.webp",
             "title": "Golden Mountain",
             "price": 49.99
         },
         {
             "name": "Urban Jungle",
             "category": "portrait",
-            "image": "../images/items/portraits/print5.png",
+            "image": "../images/items/portraits/print5.webp",
             "title": "Urban Jungle",
             "price": 19.99
         },
         {
             "name": "Gray Boulevard",
             "category": "portrait",
-            "image": "../images/items/portraits/print6.png",
+            "image": "../images/items/portraits/print6.webp",
             "title": "Gray Boulevard",
             "price": 29.99
         },
         {
             "name": "Among Giants",
             "category": "portrait",
-            "image": "../images/items/portraits/print7.png",
+            "image": "../images/items/portraits/print7.webp",
             "title": "Among Giants",
             "price": 39.99
         },
         {
             "name": "Taking a Shortcut",
             "category": "portrait",
-            "image": "../images/items/portraits/print8.png",
+            "image": "../images/items/portraits/print8.webp",
             "title": "Taking a Shortcut",
             "price": 49.99
         },
         {
             "name": "Villain Stronghold",
             "category": "landscape",
-            "image": "../images/items/landscapes/land5.png",
+            "image": "../images/items/landscapes/land5.webp",
             "title": "Villain Stronghold",
             "price": 19.99
         },
         {
             "name": "Message from the Gods",
             "category": "landscape",
-            "image": "../images/items/landscapes/land6.png",
+            "image": "../images/items/landscapes/land6.webp",
             "title": "Message from the Gods",
             "price": 29.99
         },
         {
             "name": "Blue Paradise",
             "category": "landscape",
-            "image": "../images/items/landscapes/land7.png",
+            "image": "../images/items/landscapes/land7.webp",
             "title": "Blue Paradise",
             "price": 39.99
         },
         {
             "name": "Above the Clouds",
             "category": "landscape",
-            "image": "../images/items/landscapes/land8.png",
+            "image": "../images/items/landscapes/land8.webp",
             "title": "Above the Clouds",
             "price": 49.99
         }
