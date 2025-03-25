@@ -47,7 +47,7 @@ function filterItems() {
 							onclick="addToCart('${item.name}', ${item.price})"
 							data-item-name="${item.name}" 
 							data-item-price="${item.price}"> 
-							<img src="../images/icons/shopping-basket.png" alt="cart icon" id='basket' />
+							<img src="/images/icons/shopping-basket.png" alt="cart icon" id='basket' />
 							Add to Cart</button>
 							
 							<button
@@ -55,7 +55,7 @@ function filterItems() {
 							onclick="addToWishlist(this, '${item.name}', ${item.price})" 
 							data-item-name="${item.name}" 
 							data-item-price="${item.price}"> 
-							<img src="../images/icons/heart-regular.svg" alt="heart icon" class='heart' id='heart' />  </button>
+							<img src="/images/icons/heart-regular.svg" alt="heart icon" class='heart' id='heart' />  </button>
 						</div>
                     `;
 					itemsContainer.appendChild(itemElement);

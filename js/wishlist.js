@@ -14,11 +14,11 @@ function addToWishlist(button, itemName, itemPrice) {
 
 	if (currentItem !== -1) {
 		wishlist.splice(currentItem, 1);
-		wishlistImg.src = '../images/icons/heart-regular.svg';
+		wishlistImg.src = '/images/icons/heart-regular.svg';
 		totalWish -= itemPrice;
 	} else {
 		wishlist.push(item);
-		wishlistImg.src = '../images/icons/heart-solid.svg';
+		wishlistImg.src = '/images/icons/heart-solid.svg';
 		totalWish += itemPrice;
 	}
 
@@ -134,9 +134,9 @@ function updateWishlistButtons() {
 
 			if (wishlistImg) {
 				if (wishlist.some((item) => item.name === itemName)) {
-					wishlistImg.src = '../images/icons/heart-solid.svg';
+					wishlistImg.src = '/images/icons/heart-solid.svg';
 				} else {
-					wishlistImg.src = '../images/icons/heart-regular.svg';
+					wishlistImg.src = '/images/icons/heart-regular.svg';
 				}
 			}
 		});
