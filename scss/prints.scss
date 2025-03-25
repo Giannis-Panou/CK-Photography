@@ -25,11 +25,8 @@
 }
 
 .items-container {
-	padding: 20px;
+	padding: 10px;
 	display: flex;
-	flex-wrap: wrap;
-	flex: 0 0 calc(80% - 20%);
-	box-sizing: border-box;
 }
 
 .items-container img {
@@ -116,5 +113,14 @@
 		grid-template-columns: 1fr 1fr;
 		justify-content: center;
 		align-items: center;
+	}
+
+	.item-buttons {
+		display: flex;
+		flex-direction: row;
+	}
+
+	#cartButton {
+		font-size: 14px;
 	}
 }

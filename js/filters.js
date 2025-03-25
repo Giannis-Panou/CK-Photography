@@ -41,10 +41,10 @@ function filterItems() {
 							<p class="item-title text-uppercase">${item.title}</p>
 							<p class="item-price fw-semibold">${item.price.toFixed(2)}€</p>
                         </a>
-						<div>
+						<div class='item-buttons'>
 							<button 
 							class="btn btn-primary rounded-0 border-secondary" 
-							onclick="addToCart('${item.name}', ${item.price})" 
+							onclick="addToCart('${item.name}', ${item.price})"
 							data-item-name="${item.name}" 
 							data-item-price="${item.price}"> 
 							<img src="../images/icons/shopping-basket.png" alt="cart icon" id='basket' />
