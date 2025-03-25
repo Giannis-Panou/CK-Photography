@@ -117,56 +117,56 @@
         {
             "name": "Bokeh",
             "category": "portrait",
-            "image": "../images/presets/preset1.jpg",
+            "image": "../images/presets/preset1.webp",
             "title": "Bokeh",
             "price": 39.99
         },
         {
             "name": "Analog",
             "category": "portrait",
-            "image": "../images/presets/preset2.jpg",
+            "image": "../images/presets/preset2.webp",
             "title": "Analog",
             "price": 49.99
         },
         {
             "name": "Special Effects",
             "category": "landscape",
-            "image": "../images/presets/preset3.jpg",
+            "image": "../images/presets/preset3.webp",
             "title": "Special Effects",
             "price": 49.99
         },
         {
             "name": "Landscape",
             "category": "landscape",
-            "image": "../images/presets/preset4.jpg",
+            "image": "../images/presets/preset4.webp",
             "title": "Landscape",
             "price": 59.99
         },
         {
             "name": "Summer",
             "category": "landscape",
-            "image": "../images/presets/preset5.jpg",
+            "image": "../images/presets/preset5.webp",
             "title": "Summer",
             "price": 79.99
         },
         {
             "name": "Cinema",
             "category": "portrait",
-            "image": "../images/presets/preset6.jpg",
+            "image": "../images/presets/preset6.webp",
             "title": "Cinema",
             "price": 59.99
         },
         {
             "name": "Exposure",
             "category": "landscape",
-            "image": "../images/presets/preset7.jpg",
+            "image": "../images/presets/preset7.webp",
             "title": "Exposure",
             "price": 69.99
         },
         {
             "name": "Wedding",
             "category": "portrait",
-            "image": "../images/presets/preset8.jpg",
+            "image": "../images/presets/preset8.webp",
             "title": "Wedding",
             "price": 29.99
         }
