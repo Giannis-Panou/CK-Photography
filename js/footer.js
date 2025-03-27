@@ -3,11 +3,6 @@ function adjustFooterPosition() {
 	const viewportHeight = window.innerHeight;
 	const pageHeight = document.documentElement.scrollHeight;
 
-	new MutationObserver(adjustFooterPosition).observe(document.body, {
-		childList: true,
-		subtree: true,
-	});
-
 	if (pageHeight <= viewportHeight) {
 		footer.style.position = 'absolute';
 		footer.style.bottom = '0';
@@ -18,8 +13,9 @@ function adjustFooterPosition() {
 	}
 }
 
-window.addEventListener('DOMContentLoaded', adjustFooterPosition);
-window.addEventListener('load', adjustFooterPosition);
+window.addEventListener('load', () => {
+	requestAnimationFrame(adjustFooterPosition);
+});
 window.addEventListener('resize', adjustFooterPosition);
 
 new MutationObserver(adjustFooterPosition).observe(document.body, {
