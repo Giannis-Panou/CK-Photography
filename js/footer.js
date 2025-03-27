@@ -9,12 +9,14 @@ function adjustFooterPosition() {
 		footer.style.left = '0';
 		footer.style.width = '100%';
 	} else {
-		footer.style.position = 'static';
+		footer.style.position = 'relative';
 	}
 }
 
 window.addEventListener('load', () => {
-	requestAnimationFrame(adjustFooterPosition);
+	requestAnimationFrame(() => {
+		setTimeout(adjustFooterPosition, 1000);
+	});
 });
 window.addEventListener('resize', adjustFooterPosition);
 
