@@ -55,6 +55,8 @@
   grid-template-columns: 1fr;
   text-align: center;
   margin: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
 .col-pr2 a {
@@ -115,8 +117,9 @@
   .item-buttons {
     display: flex;
     flex-direction: row;
+    justify-content: center;
   }
   #cartButton {
-    font-size: 14px;
+    font-size: 10px;
   }
 }
