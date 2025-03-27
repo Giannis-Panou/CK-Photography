@@ -3,6 +3,11 @@ function adjustFooterPosition() {
 	const viewportHeight = window.innerHeight;
 	const pageHeight = document.documentElement.scrollHeight;
 
+	new MutationObserver(adjustFooterPosition).observe(document.body, {
+		childList: true,
+		subtree: true,
+	});
+
 	if (pageHeight <= viewportHeight) {
 		footer.style.position = 'absolute';
 		footer.style.bottom = '0';
