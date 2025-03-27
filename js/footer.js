@@ -13,8 +13,10 @@ function adjustFooterPosition() {
 	}
 }
 
+window.addEventListener('DOMContentLoaded', adjustFooterPosition);
 window.addEventListener('load', adjustFooterPosition);
 window.addEventListener('resize', adjustFooterPosition);
+
 new MutationObserver(adjustFooterPosition).observe(document.body, {
 	childList: true,
 	subtree: true,
