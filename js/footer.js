@@ -15,7 +15,7 @@ function adjustFooterPosition() {
 
 window.addEventListener('load', () => {
 	requestAnimationFrame(() => {
-		setTimeout(adjustFooterPosition, 1000);
+		setTimeout(adjustFooterPosition, 100);
 	});
 });
 window.addEventListener('resize', adjustFooterPosition);
