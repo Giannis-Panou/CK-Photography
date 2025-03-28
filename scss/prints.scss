@@ -99,6 +99,17 @@
 	transform: translate(0, -8px) rotate(45deg);
 }
 
+#heart {
+	width: 20px;
+	transform: translate(0%, -5%);
+  }
+  
+#basket {
+	width: 20px;
+	margin-right: 2px;
+	transform: translate(0%, -10%);
+}
+
 @media screen and (max-width: 768px) {
 	.items-container {
 		display: flex;
