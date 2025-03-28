@@ -1,5 +1,6 @@
 function adjustFooterPosition() {
 	const footer = document.querySelector('footer');
+	if (!footer) return;
 	const viewportHeight = window.innerHeight;
 	const pageHeight = document.documentElement.scrollHeight;
 
@@ -13,10 +14,8 @@ function adjustFooterPosition() {
 	}
 }
 
-window.addEventListener('load', () => {
-	requestAnimationFrame(() => {
-		setTimeout(adjustFooterPosition, 100);
-	});
+window.addEventListener('DOMContentLoaded', () => {
+	setTimeout(adjustFooterPosition, 300);
 });
 window.addEventListener('resize', adjustFooterPosition);
 
