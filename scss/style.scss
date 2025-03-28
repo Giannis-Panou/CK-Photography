@@ -65,17 +65,6 @@ footer img {
 	overflow-y: auto;
 }
 
-#heart {
-	width: 20px;
-	transform: translate(-0%, -5%);
-}
-
-#basket {
-	width: 20px;
-	margin-right: 2px;
-	transform: translate(-0%, -10%);
-}
-
 #captionDiv {
 	display: flex;
 	justify-content: center;
@@ -157,5 +146,18 @@ footer img {
 
 	#title {
 		font-size: 35px;
+	}
+
+	header {
+		height: 5vh;
+	}
+
+	.carousel img {
+		height: 90vh;
+	}
+
+	footer {
+		margin-top: 0px;
+		height: 5vh;
 	}
 }

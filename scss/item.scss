@@ -31,6 +31,32 @@
 	transition: 0.5s;
 }
 
+.item-buttons {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+}
+
+#cartButton {
+	height: 45px;
+}
+
+#wishButton {
+	height: 45px;
+}
+
+#heart {
+	width: 20px;
+	transform: translate(-0%, -5%);
+}
+
+#basket {
+	width: 20px;
+	margin-right: 2px;
+	transform: translate(-0%, -10%);
+}
+
 .stars {
 	display: flex;
 	justify-content: center;
