@@ -10,12 +10,12 @@ function adjustFooterPosition() {
 		footer.style.left = '0';
 		footer.style.width = '100%';
 	} else {
-		footer.style.position = 'relative';
+		footer.style.position = 'static';
 	}
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-	setTimeout(adjustFooterPosition, 200);
+	setTimeout(adjustFooterPosition, 300);
 });
 window.addEventListener('resize', adjustFooterPosition);
 
