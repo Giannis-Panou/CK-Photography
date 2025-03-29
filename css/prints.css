@@ -130,7 +130,7 @@
     flex-direction: row;
     justify-content: center;
   }
-  #cartButton {
+  #cartItemButton {
     font-size: 10px;
   }
 }

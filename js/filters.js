@@ -45,7 +45,7 @@ function filterItems() {
 							<button 
 							class="btn btn-primary rounded-0 border-secondary" 
 							onclick="addToCart('${item.name}', ${item.price})"
-							id='cartButton'
+							id='cartItemButton'
 							data-item-name="${item.name}" 
 							data-item-price="${item.price}"> 
 							<img src="/images/icons/shopping-basket.png" alt="cart icon" id='basket' />
