@@ -36,7 +36,9 @@ function filterItems() {
 						'fadeInDown'
 					);
 					itemElement.innerHTML = `
-                        <a href=item.html class='page-transition'>
+                        <a href=item.html class='page-transition' onclick="saveItem('${
+													item.name
+												}', '${item.image}', ${item.price})">
 							<img src="${item.image}" alt="${item.name}">
 							<p class="item-title text-uppercase">${item.title}</p>
 							<p class="item-price fw-semibold">${item.price.toFixed(2)}€</p>

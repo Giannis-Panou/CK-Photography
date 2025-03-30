@@ -5,112 +5,129 @@
             "category": "portrait",
             "image": "../images/items/portraits/print1.webp",
             "title": "Flatiron NYC",
-            "price": 19.99
+            "price": 19.99,
+            "type": "print"
         },
         {
             "name": "Fly Away",
             "category": "portrait",
             "image": "../images/items/portraits/print2.webp",
             "title": "Fly Away",
-            "price": 29.99
+            "price": 29.99,
+            "type": "print"
+            
         },
         {
             "name": "Neon City",
             "category": "portrait",
             "image": "../images/items/portraits/print3.webp",
             "title": "Neon City",
-            "price": 39.99
+            "price": 39.99,
+            "type": "print"
         },
         {
             "name": "Neon Alley",
             "category": "portrait",
             "image": "../images/items/portraits/print4.webp",
             "title": "Neon Alley",
-            "price": 49.99
+            "price": 49.99,
+            "type": "print"
         },
         {
             "name": "Into the Clouds",
             "category": "landscape",
             "image": "../images/items/landscapes/land1.webp",
             "title": "Into the Clouds",
-            "price": 19.99
+            "price": 19.99,
+            "type": "print"
         },
         {
             "name": "Endless Green",
             "category": "landscape",
             "image": "../images/items/landscapes/land2.webp",
             "title": "Endless Green",
-            "price": 29.99
+            "price": 29.99,
+            "type": "print"
         },
         {
             "name": "Below Zero",
             "category": "landscape",
             "image": "../images/items/landscapes/land3.webp",
             "title": "Below Zero",
-            "price": 39.99
+            "price": 39.99,
+            "type": "print"
         },
         {
             "name": "Golden Mountain",
             "category": "landscape",
             "image": "../images/items/landscapes/land4.webp",
             "title": "Golden Mountain",
-            "price": 49.99
+            "price": 49.99,
+            "type": "print"
         },
         {
             "name": "Urban Jungle",
             "category": "portrait",
             "image": "../images/items/portraits/print5.webp",
             "title": "Urban Jungle",
-            "price": 19.99
+            "price": 19.99,
+            "type": "print"
         },
         {
             "name": "Gray Boulevard",
             "category": "portrait",
             "image": "../images/items/portraits/print6.webp",
             "title": "Gray Boulevard",
-            "price": 29.99
+            "price": 29.99,
+            "type": "print"
         },
         {
             "name": "Among Giants",
             "category": "portrait",
             "image": "../images/items/portraits/print7.webp",
             "title": "Among Giants",
-            "price": 39.99
+            "price": 39.99,
+            "type": "print"
         },
         {
             "name": "Taking a Shortcut",
             "category": "portrait",
             "image": "../images/items/portraits/print8.webp",
             "title": "Taking a Shortcut",
-            "price": 49.99
+            "price": 49.99,
+            "type": "print"
         },
         {
             "name": "Villain Stronghold",
             "category": "landscape",
             "image": "../images/items/landscapes/land5.webp",
             "title": "Villain Stronghold",
-            "price": 19.99
+            "price": 19.99,
+            "type": "print"
         },
         {
             "name": "House of the Gods",
             "category": "landscape",
             "image": "../images/items/landscapes/land6.webp",
             "title": "House of the Gods",
-            "price": 29.99
+            "price": 29.99,
+            "type": "print"
         },
         {
             "name": "Blue Paradise",
             "category": "landscape",
             "image": "../images/items/landscapes/land7.webp",
             "title": "Blue Paradise",
-            "price": 39.99
+            "price": 39.99,
+            "type": "print"
         },
         {
             "name": "Above the Clouds",
             "category": "landscape",
             "image": "../images/items/landscapes/land8.webp",
             "title": "Above the Clouds",
-            "price": 49.99
+            "price": 49.99,
+            "type": "print"
         }
     ],
     "presets": [
@@ -119,56 +136,64 @@
             "category": "portrait",
             "image": "../images/presets/preset1.webp",
             "title": "Bokeh",
-            "price": 39.99
+            "price": 39.99,
+            "type": "preset"
         },
         {
             "name": "Analog",
             "category": "portrait",
             "image": "../images/presets/preset2.webp",
             "title": "Analog",
-            "price": 49.99
+            "price": 49.99,
+            "type": "preset"
         },
         {
             "name": "Special Effects",
             "category": "landscape",
             "image": "../images/presets/preset3.webp",
             "title": "Special Effects",
-            "price": 49.99
+            "price": 49.99,
+            "type": "preset"
         },
         {
             "name": "Landscape",
             "category": "landscape",
             "image": "../images/presets/preset4.webp",
             "title": "Landscape",
-            "price": 59.99
+            "price": 59.99,
+            "type": "preset"
         },
         {
             "name": "Summer",
             "category": "landscape",
             "image": "../images/presets/preset5.webp",
             "title": "Summer",
-            "price": 79.99
+            "price": 79.99,
+            "type": "preset"
         },
         {
             "name": "Cinema",
             "category": "portrait",
             "image": "../images/presets/preset6.webp",
             "title": "Cinema",
-            "price": 59.99
+            "price": 59.99,
+            "type": "preset"
         },
         {
             "name": "Exposure",
             "category": "landscape",
             "image": "../images/presets/preset7.webp",
             "title": "Exposure",
-            "price": 69.99
+            "price": 69.99,
+            "type": "preset"
         },
         {
             "name": "Wedding",
             "category": "portrait",
             "image": "../images/presets/preset8.webp",
             "title": "Wedding",
-            "price": 29.99
+            "price": 29.99,
+            "type": "preset"
         }
     ]
 }
