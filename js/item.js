@@ -21,9 +21,9 @@ function loadItem() {
 }
 
 function setItemType() {
-	if (window.location.pathname.endsWith('prints.html')) {
+	if (window.location.pathname.includes('prints')) {
 		localStorage.setItem('itemType', '1');
-	} else if (window.location.pathname.endsWith('presets.html')) {
+	} else if (window.location.pathname.includes('presets')) {
 		localStorage.setItem('itemType', '2');
 	}
 }
