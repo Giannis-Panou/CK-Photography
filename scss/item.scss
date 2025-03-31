@@ -16,8 +16,8 @@
 
 .smallimg {
 	width: 100%;
-	max-width: 100px;
-	margin-bottom: 10px;
+	max-width: 125px;
+	margin-bottom: 25px;
 	cursor: pointer;
 }
 
@@ -82,16 +82,17 @@
 }
 
 .rating-label {
-	width: 60px;
+	width: 65px;
 	text-align: center;
+	font-size: 14px;
 }
 
 .rating-bar {
-	width: 85%;
+	width: 90%;
 }
 
 .rating-number {
-	width: 30px;
+	width: 25px;
 	text-align: center;
 }
 
@@ -117,4 +118,7 @@
 
 .progress-bar5 {
 	width: 4%;
+}
+
+@media screen and (max-width: 768px) {
 }
