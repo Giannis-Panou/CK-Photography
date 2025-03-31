@@ -205,7 +205,6 @@ function calculateItemCount() {
 		0
 	);
 	document.getElementById('cartItemCount').innerText = totalItemCount;
-	document.getElementById('cartItemCount2').innerText = totalItemCount;
 }
 
 function saveCart() {
