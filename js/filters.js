@@ -74,31 +74,9 @@ function filterItems() {
 		.catch((error) => console.error('Error loading items:', error))
 		.finally(() => {
 			const itemsContainer = document.querySelector('.col-pr1');
-			const images = itemsContainer.querySelectorAll('img');
-
-			if (images.length === 0) {
+			waitForImages(itemsContainer).then(() => {
 				adjustFooterPosition();
-				return;
-			}
-
-			let loadedCount = 0;
-			images.forEach((img) => {
-				if (img.complete) {
-					loadedCount++;
-				} else {
-					img.addEventListener('load', () => {
-						loadedCount++;
-						if (loadedCount === images.length) {
-							adjustFooterPosition();
-						}
-					});
-				}
 			});
-
-			// If all were already loaded
-			if (loadedCount === images.length) {
-				adjustFooterPosition();
-			}
 		});
 }
 
@@ -128,6 +106,24 @@ new MutationObserver(adjustFooterPosition).observe(document.body, {
 	childList: true,
 	subtree: true,
 });
+
+function waitForImages(container) {
+	const images = container.querySelectorAll('img');
+
+	if (images.length === 0) {
+		return Promise.resolve();
+	}
+
+	const promises = Array.from(images).map((img) => {
+		if (img.complete) return Promise.resolve();
+		return new Promise((resolve) => {
+			img.addEventListener('load', resolve);
+			img.addEventListener('error', resolve);
+		});
+	});
+
+	return Promise.all(promises);
+}
 
 function openClose() {
 	let sidebar = document.getElementById('sidebar');
