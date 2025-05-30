@@ -2,19 +2,17 @@ function adjustFooterPosition() {
 	const footer = document.querySelector('footer');
 	if (!footer) return;
 
-	requestAnimationFrame(() => {
-		const viewportHeight = window.innerHeight;
-		const pageHeight = document.documentElement.scrollHeight;
+	const viewportHeight = window.innerHeight;
+	const pageHeight = document.documentElement.scrollHeight;
 
-		if (pageHeight <= viewportHeight) {
-			footer.style.position = 'absolute';
-			footer.style.bottom = '0';
-			footer.style.left = '0';
-			footer.style.width = '100%';
-		} else {
-			footer.style.position = 'relative';
-		}
-	});
+	if (pageHeight <= viewportHeight) {
+		footer.style.position = 'absolute';
+		footer.style.bottom = '0';
+		footer.style.left = '0';
+		footer.style.width = '100%';
+	} else {
+		footer.style.position = 'relative';
+	}
 }
 
 window.addEventListener('DOMContentLoaded', () => {
