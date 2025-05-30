@@ -16,10 +16,10 @@ function adjustFooterPosition() {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+	setTimeout(adjustFooterPosition, 300);
 	window.addEventListener('load', () => {
 		adjustFooterPosition();
 	});
-	setTimeout(adjustFooterPosition, 200);
 });
 window.addEventListener('resize', adjustFooterPosition);
 
