@@ -73,7 +73,32 @@ function filterItems() {
 		})
 		.catch((error) => console.error('Error loading items:', error))
 		.finally(() => {
-			adjustFooterPosition();
+			const itemsContainer = document.querySelector('.col-pr1');
+			const images = itemsContainer.querySelectorAll('img');
+
+			if (images.length === 0) {
+				adjustFooterPosition();
+				return;
+			}
+
+			let loadedCount = 0;
+			images.forEach((img) => {
+				if (img.complete) {
+					loadedCount++;
+				} else {
+					img.addEventListener('load', () => {
+						loadedCount++;
+						if (loadedCount === images.length) {
+							adjustFooterPosition();
+						}
+					});
+				}
+			});
+
+			// If all were already loaded
+			if (loadedCount === images.length) {
+				adjustFooterPosition();
+			}
 		});
 }
 
@@ -97,11 +122,6 @@ function adjustFooterPosition() {
 	}
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-	window.addEventListener('load', () => {
-		adjustFooterPosition();
-	});
-});
 window.addEventListener('resize', adjustFooterPosition);
 
 new MutationObserver(adjustFooterPosition).observe(document.body, {
