@@ -19,6 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	window.addEventListener('load', () => {
 		adjustFooterPosition();
 	});
+	setTimeout(adjustFooterPosition, 200);
 });
 window.addEventListener('resize', adjustFooterPosition);
 
