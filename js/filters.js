@@ -71,10 +71,43 @@ function filterItems() {
 				itemsContainer.appendChild(noItemMessage);
 			}
 		})
-		.catch((error) => console.error('Error loading items:', error));
+		.catch((error) => console.error('Error loading items:', error))
+		.finally(() => {
+			adjustFooterPosition();
+		});
 }
 
 document.addEventListener('DOMContentLoaded', filterItems);
+
+// Footer Adjustment
+function adjustFooterPosition() {
+	const footer = document.querySelector('footer');
+	if (!footer) return;
+
+	const viewportHeight = window.innerHeight;
+	const pageHeight = document.documentElement.scrollHeight;
+
+	if (pageHeight <= viewportHeight) {
+		footer.style.position = 'absolute';
+		footer.style.bottom = '0';
+		footer.style.left = '0';
+		footer.style.width = '100%';
+	} else {
+		footer.style.position = 'relative';
+	}
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+	window.addEventListener('load', () => {
+		adjustFooterPosition();
+	});
+});
+window.addEventListener('resize', adjustFooterPosition);
+
+new MutationObserver(adjustFooterPosition).observe(document.body, {
+	childList: true,
+	subtree: true,
+});
 
 function openClose() {
 	let sidebar = document.getElementById('sidebar');
