@@ -107,6 +107,7 @@ new MutationObserver(adjustFooterPosition).observe(document.body, {
 	subtree: true,
 });
 
+// Wait for all images in a container to load
 function waitForImages(container) {
 	const images = container.querySelectorAll('img');
 
