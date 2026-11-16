@@ -2,38 +2,32 @@ import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
-import AuthModals from './AuthModals';
-import { CartOffcanvas, MenuOffcanvas, WishlistOffcanvas } from './Offcanvases';
 
-/** Shell shared by every route: modals, offcanvas panels and header. */
+/** Shell shared by every route. */
 export default function Layout() {
 	return (
-		<>
-			<AuthModals />
-			<CartOffcanvas />
-			<WishlistOffcanvas />
-			<MenuOffcanvas />
-
-			{/* Flex column keeps the footer at the bottom on short pages
-			    (replaces the old adjustFooterPosition / MutationObserver). */}
-			<div className="d-flex flex-column min-vh-100">
-				<Header />
-				<Outlet />
-			</div>
-		</>
+		<div className="d-flex flex-column min-vh-100">
+			<a href="#main" className="skip-link">
+				Skip to content
+			</a>
+			<Header />
+			<Outlet />
+		</div>
 	);
 }
 
 /** Wraps a page's content: sets the tab title and renders the footer. */
-export function Page({ title, footerClass, className = '', children }) {
+export function Page({ title, footerCta = true, className = '', children }) {
 	useEffect(() => {
-		document.title = title;
+		document.title = title === 'CK Photography' ? title : `${title} | CK Photography`;
 	}, [title]);
 
 	return (
 		<>
-			<main className={`flex-grow-1 ${className}`}>{children}</main>
-			<Footer className={footerClass} />
+			<main id="main" className={`flex-grow-1 ${className}`}>
+				{children}
+			</main>
+			<Footer showCta={footerCta} />
 		</>
 	);
 }

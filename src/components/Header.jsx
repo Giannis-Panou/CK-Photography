@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { TransitionLink } from '../context/PageTransition';
-import { useCart } from '../context/CartContext';
-import { useWishlist } from '../context/WishlistContext';
-import { CORNER_STYLES, THEMES, TYPE_STYLES, useTheme } from '../context/ThemeContext';
-import { presetLinks, printLinks } from '../data/navigation';
+import { navLinks } from '../data/navigation';
+import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from '../data/instagram';
+import AppearancePicker from './AppearancePicker';
 import Icon from './Icon';
 
 /** Tracks whether the page is scrolled and whether the header should tuck away. */
@@ -16,12 +15,8 @@ function useHeaderScroll() {
 		const onScroll = () => {
 			const y = window.scrollY;
 			const goingDown = y > lastY.current;
-			// Don't hide while a dropdown is open
 			const menuOpen = document.querySelector('.site-header .dropdown-menu.show');
-			setState({
-				scrolled: y > 10,
-				hidden: goingDown && y > 240 && !menuOpen,
-			});
+			setState({ scrolled: y > 10, hidden: goingDown && y > 240 && !menuOpen });
 			lastY.current = y;
 		};
 		onScroll();
@@ -32,205 +27,135 @@ function useHeaderScroll() {
 	return state;
 }
 
-function NavDropdown({ label, links, active }) {
+/** Full-screen menu for phones and tablets. */
+function MenuOverlay({ open, onClose, pathname }) {
+	const closeRef = useRef(null);
+
+	useEffect(() => {
+		if (!open) return;
+		const prev = document.body.style.overflow;
+		document.body.style.overflow = 'hidden';
+		closeRef.current?.focus();
+		const onKey = (e) => e.key === 'Escape' && onClose();
+		window.addEventListener('keydown', onKey);
+		return () => {
+			document.body.style.overflow = prev;
+			window.removeEventListener('keydown', onKey);
+		};
+	}, [open, onClose]);
+
 	return (
-		<div className="dropdown">
-			<button
-				className={`nav-btn dropdown-toggle${active ? ' active' : ''}`}
-				type="button"
-				data-bs-toggle="dropdown"
-				aria-expanded="false"
-			>
-				{label}
-			</button>
-			<ul className="dropdown-menu animate slideIn">
-				{links.map(({ label, to }) => (
-					<li key={label}>
-						<TransitionLink to={to} className="dropdown-item">
-							{label}
+		<div
+			className={`menu-overlay${open ? ' is-open' : ''}`}
+			id="site-menu"
+			role="dialog"
+			aria-modal="true"
+			aria-label="Menu"
+			inert={!open}
+		>
+			<div className="menu-overlay-top container-xxl px-3 px-lg-4">
+				<span className="menu-overlay-label">Menu</span>
+				<button
+					ref={closeRef}
+					type="button"
+					className="icon-btn"
+					onClick={onClose}
+					aria-label="Close menu"
+				>
+					<Icon name="close" size={26} />
+				</button>
+			</div>
+			<nav className="menu-overlay-nav container-xxl px-3 px-lg-4" aria-label="Mobile">
+				<ol>
+					<li style={{ '--i': 0 }}>
+						<TransitionLink to="/" onClick={onClose} aria-current={pathname === '/' ? 'page' : undefined}>
+							<span className="menu-num">00</span>Home
 						</TransitionLink>
 					</li>
-				))}
-			</ul>
-		</div>
-	);
-}
-
-function AppearancePicker() {
-	const { theme, type, corners, set } = useTheme();
-
-	return (
-		<div className="dropdown">
-			<button
-				type="button"
-				className="icon-btn"
-				data-bs-toggle="dropdown"
-				data-bs-auto-close="outside"
-				aria-expanded="false"
-				aria-label="Appearance settings"
-			>
-				<Icon name="theme" />
-			</button>
-			<div className="dropdown-menu dropdown-menu-end appearance-menu">
-				<fieldset>
-					<legend className="eyebrow">Colour</legend>
-					{Object.entries(THEMES).map(([key, t]) => (
-						<button
-							key={key}
-							type="button"
-							role="radio"
-							aria-checked={theme === key}
-							className="dropdown-item theme-option"
-							onClick={() => set('theme', key)}
-						>
-							<span className="theme-swatch" style={{ '--a': t.swatch[0], '--b': t.swatch[1] }} />
-							<span>
-								{t.label}
-								<small>{t.description}</small>
-							</span>
-							<Icon name="check" size={16} className="check" />
-						</button>
+					{navLinks.map(({ label, to }, i) => (
+						<li key={to} style={{ '--i': i + 1 }}>
+							<TransitionLink
+								to={to}
+								onClick={onClose}
+								aria-current={pathname.startsWith(to) ? 'page' : undefined}
+							>
+								<span className="menu-num">{String(i + 1).padStart(2, '0')}</span>
+								{label}
+							</TransitionLink>
+						</li>
 					))}
-				</fieldset>
-
-				<fieldset>
-					<legend className="eyebrow">Typography</legend>
-					<div className="segmented segmented-3">
-						{Object.entries(TYPE_STYLES).map(([key, t]) => (
-							<button
-								key={key}
-								type="button"
-								role="radio"
-								aria-checked={type === key}
-								onClick={() => set('type', key)}
-								title={t.description}
-							>
-								<span className="type-sample" style={{ fontFamily: t.sample }}>Aa</span>
-								{t.label}
-							</button>
-						))}
-					</div>
-				</fieldset>
-
-				<fieldset>
-					<legend className="eyebrow">Corners</legend>
-					<div className="segmented">
-						{Object.entries(CORNER_STYLES).map(([key, c]) => (
-							<button
-								key={key}
-								type="button"
-								role="radio"
-								aria-checked={corners === key}
-								onClick={() => set('corners', key)}
-							>
-								<span className={`corner-sample corner-${key}`} aria-hidden="true" />
-								{c.label}
-							</button>
-						))}
-					</div>
-				</fieldset>
+				</ol>
+			</nav>
+			<div className="menu-overlay-foot container-xxl px-3 px-lg-4">
+				<a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
+					<Icon name="instagram" size={18} /> @{INSTAGRAM_HANDLE}
+				</a>
 			</div>
 		</div>
-	);
-}
-
-function IconButton({ label, icon, count, ...toggle }) {
-	return (
-		<button type="button" className="icon-btn" aria-label={label} {...toggle}>
-			<Icon name={icon} size={21} />
-			{count !== undefined && (
-				// key re-mounts the badge so it "pops" whenever the count changes
-				<span key={count} className="count-badge" data-count={count} aria-hidden="true">
-					{count}
-				</span>
-			)}
-		</button>
 	);
 }
 
 export default function Header() {
 	const { scrolled, hidden } = useHeaderScroll();
 	const { pathname } = useLocation();
-	const { itemCount } = useCart();
-	const { wishCount } = useWishlist();
+	const [menuOpen, setMenuOpen] = useState(false);
+	const closeMenu = useCallback(() => setMenuOpen(false), []);
 
-	// Transparent over the full-bleed hero until the user scrolls
-	const overlay = pathname === '/' && !scrolled;
-	const classes = [
-		'site-header',
-		scrolled && 'is-scrolled',
-		hidden && 'is-hidden',
-		overlay && 'is-overlay',
-	]
+	// Pages that open with a full-bleed photo get a transparent header
+	const overlay = (pathname === '/' || /^\/projects\/.+/.test(pathname)) && !scrolled;
+	const classes = ['site-header', scrolled && 'is-scrolled', hidden && !menuOpen && 'is-hidden', overlay && 'is-overlay']
 		.filter(Boolean)
 		.join(' ');
 
 	return (
-		<header className={classes} id="header">
-			<div className="header-inner container-xxl px-2 px-sm-3 px-lg-4">
-				<div className="header-start">
-					<button
-						type="button"
-						className="icon-btn d-lg-none"
-						data-bs-toggle="offcanvas"
-						data-bs-target="#offcanvasLeft2"
-						aria-controls="offcanvasLeft2"
-						aria-label="Open menu"
-					>
-						<Icon name="menu" size={24} />
-					</button>
+		<>
+			<header className={classes} id="header">
+				<div className="header-inner container-xxl px-3 px-lg-4">
+					<TransitionLink to="/" className="site-logo" aria-label="CK Photography, home">
+						<span className="logo-mark">CK</span>
+						<span className="logo-word d-none d-sm-inline">Photography</span>
+					</TransitionLink>
 
 					<nav className="main-nav d-none d-lg-flex" aria-label="Main">
-						<NavDropdown label="Prints" links={printLinks} active={pathname === '/prints'} />
-						<NavDropdown label="Presets" links={presetLinks} active={pathname === '/presets'} />
-						<TransitionLink
-							to="/journal"
-							className={`nav-btn${pathname.startsWith('/journal') ? ' active' : ''}`}
-						>
-							Journal
-						</TransitionLink>
-						<TransitionLink
-							to="/about"
-							className={`nav-btn${pathname === '/about' ? ' active' : ''}`}
-						>
-							About
-						</TransitionLink>
+						{navLinks.map(({ label, to }) => (
+							<TransitionLink
+								key={to}
+								to={to}
+								className={`nav-btn${pathname.startsWith(to) ? ' active' : ''}`}
+							>
+								{label}
+							</TransitionLink>
+						))}
 					</nav>
-				</div>
 
-				<TransitionLink to="/" className="site-title" aria-label="CK Photography, home">
-					<h1 className="m-0" id="title">
-						<span className="d-sm-none">CK</span>
-						<span className="d-none d-sm-inline">CK Photography</span>
-					</h1>
-				</TransitionLink>
-
-				<div className="header-end" id="menu-icons">
-					<AppearancePicker />
-					<IconButton
-						label="Log in"
-						icon="user"
-						data-bs-toggle="modal"
-						data-bs-target="#loginModal"
-					/>
-					<IconButton
-						label={`Wishlist, ${wishCount} ${wishCount === 1 ? 'item' : 'items'}`}
-						icon="heart"
-						count={wishCount}
-						data-bs-toggle="offcanvas"
-						data-bs-target="#offcanvasLeft"
-						aria-controls="offcanvasLeft"
-					/>
-					<IconButton
-						label={`Cart, ${itemCount} ${itemCount === 1 ? 'item' : 'items'}`}
-						icon="bag"
-						count={itemCount}
-						data-bs-toggle="offcanvas"
-						data-bs-target="#offcanvasRight"
-						aria-controls="offcanvasRight"
-					/>
+					<div className="header-end">
+						<AppearancePicker />
+						<a
+							href={INSTAGRAM_URL}
+							className="icon-btn d-none d-sm-inline-flex"
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label={`@${INSTAGRAM_HANDLE} on Instagram`}
+						>
+							<Icon name="instagram" size={20} />
+						</a>
+						<TransitionLink to="/contact" className="btn btn-accent header-cta d-none d-md-inline-flex">
+							Book a shoot
+						</TransitionLink>
+						<button
+							type="button"
+							className="icon-btn d-lg-none"
+							onClick={() => setMenuOpen(true)}
+							aria-expanded={menuOpen}
+							aria-controls="site-menu"
+							aria-label="Open menu"
+						>
+							<Icon name="menu" size={24} />
+						</button>
+					</div>
 				</div>
-			</div>
-		</header>
+			</header>
+			<MenuOverlay open={menuOpen} onClose={closeMenu} pathname={pathname} />
+		</>
 	);
 }

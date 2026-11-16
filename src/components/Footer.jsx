@@ -1,66 +1,58 @@
 import { TransitionLink } from '../context/PageTransition';
-import { socialLinks } from '../data/navigation';
+import { CONTACT, navLinks } from '../data/navigation';
+import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from '../data/instagram';
 import Icon from './Icon';
 
-export default function Footer({ className = '' }) {
+export default function Footer({ className = '', showCta = true }) {
 	return (
 		<footer className={`site-footer ${className}`} id="footer">
 			<div className="container-xxl px-3 px-lg-4">
-				<div className="row g-4 g-lg-5">
-					<div className="col-12 col-lg-5">
-						<h2 className="mb-2">CK Photography</h2>
-						<p className="text-muted-ck mb-3" style={{ maxWidth: '26rem' }}>
-							Fine art portrait and landscape photography from Thessaloniki.
-							Signed fine art prints and the presets behind the look.
+				{showCta && (
+					<TransitionLink to="/contact" className="footer-cta">
+						<span className="eyebrow">Available for commissions</span>
+						<span className="footer-cta-title">
+							Let's make something <Icon name="arrowRight" size={48} />
+						</span>
+					</TransitionLink>
+				)}
+
+				<div className="footer-grid">
+					<div>
+						<p className="footer-brand">CK Photography</p>
+						<p className="text-muted-ck m-0">
+							City and landscape photography.
+							<br />
+							Based in {CONTACT.location}.
 						</p>
-						<div className="social-links" id="social">
-							{socialLinks.map(({ name, icon, href }) => (
-								<a
-									key={name}
-									href={href}
-									target="_blank"
-									rel="noopener noreferrer"
-									aria-label={name}
-								>
-									<Icon name={icon} />
-								</a>
+					</div>
+					<nav aria-label="Footer">
+						<h3>Explore</h3>
+						<ul>
+							{navLinks.map(({ label, to }) => (
+								<li key={to}>
+									<TransitionLink to={to}>{label}</TransitionLink>
+								</li>
 							))}
-						</div>
-					</div>
-
-					<div className="col-6 col-lg-2">
-						<h3>Shop</h3>
-						<ul>
-							<li><TransitionLink to="/prints">Prints</TransitionLink></li>
-							<li><TransitionLink to="/presets">Presets</TransitionLink></li>
-							<li><TransitionLink to="/checkout">Checkout</TransitionLink></li>
 						</ul>
-					</div>
-
-					<div className="col-6 col-lg-2">
-						<h3>Studio</h3>
-						<ul>
-							<li><TransitionLink to="/about">About CK</TransitionLink></li>
-							<li><TransitionLink to="/journal">Journal</TransitionLink></li>
-							<li><a href="mailto:ckphoto@gmail.com">Commissions</a></li>
-						</ul>
-					</div>
-
-					<div className="col-12 col-lg-3">
+					</nav>
+					<div>
 						<h3>Contact</h3>
 						<ul>
 							<li>
-								<a href="mailto:ckphoto@gmail.com" className="d-inline-flex align-items-center gap-2">
-									<Icon name="mail" size={16} /> ckphoto@gmail.com
-								</a>
+								<a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
 							</li>
 							<li>
-								<a href="tel:+306974425966" className="d-inline-flex align-items-center gap-2">
-									<Icon name="phone" size={16} /> +30 697 442 5966
-								</a>
+								<a href={`tel:${CONTACT.phone}`}>{CONTACT.phoneDisplay}</a>
 							</li>
-							<li className="d-inline-flex align-items-center gap-2 py-1 text-muted-ck">
-								<Icon name="pin" size={16} /> Thessaloniki, Greece
+							<li>
+								<a
+									href={INSTAGRAM_URL}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="d-inline-flex align-items-center gap-2"
+								>
+									<Icon name="instagram" size={16} /> @{INSTAGRAM_HANDLE}
+								</a>
 							</li>
 						</ul>
 					</div>
@@ -68,8 +60,10 @@ export default function Footer({ className = '' }) {
 
 				<div className="footer-bottom">
 					<p className="m-0">
-						Copyright &copy; {new Date().getFullYear()} Ioannis Panou. All rights reserved.
+						&copy; {new Date().getFullYear()} CK Photography. All photographs are copyright of the
+						photographer.
 					</p>
+					<p className="m-0">Site by Ioannis Panou</p>
 				</div>
 			</div>
 		</footer>

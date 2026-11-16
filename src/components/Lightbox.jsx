@@ -60,7 +60,20 @@ export default function Lightbox({ images, index, onIndexChange, onClose }) {
 				<Icon name="close" size={26} />
 			</button>
 
-			<img key={image.src} className="lightbox-img" src={image.src} alt={image.alt} />
+			<figure className="lightbox-figure">
+				<img key={image.src} className="lightbox-img" src={image.src} alt={image.alt} />
+				{(image.caption || image.meta || image.link) && (
+					<figcaption className="lightbox-info">
+						{image.caption && <span className="lightbox-caption">{image.caption}</span>}
+						{image.meta && <span className="lightbox-meta">{image.meta}</span>}
+						{image.link && (
+							<a href={image.link.href} target="_blank" rel="noopener noreferrer">
+								{image.link.label}
+							</a>
+						)}
+					</figcaption>
+				)}
+			</figure>
 
 			{count > 1 && (
 				<>

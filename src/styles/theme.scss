@@ -80,11 +80,27 @@
 	@include theme(#f3ede3, #e9e0d2, #2a241e, #786c5f, #d8ccbb, #9c4a2b, #fff8f0, #823b20);
 }
 
+:root[data-theme='noir'] {
+	@include theme(#0a0a0a, #161616, #f2efe9, #8f8a82, #262626, #ff5a1f, #0a0a0a, #ff7a47);
+}
+
+:root[data-theme='bone'] {
+	@include theme(#efece6, #e4e0d8, #0d0d0d, #6b665e, #d3cec4, #e8341c, #ffffff, #c42a15);
+}
+
 :root[data-theme='nordic'] {
 	@include theme(#eef2f4, #e1e8ec, #1c2a33, #5f707b, #cfd9df, #2f5d73, #ffffff, #244a5c);
 }
 
 /* ---------- Typography pairings ---------- */
+
+// Bold: wide expressive display face, tight tracking, set large
+:root[data-type='bold'] {
+	--ck-font-display: 'Syne Variable', 'Inter Variable', system-ui, sans-serif;
+	--ck-font-body: 'Inter Variable', system-ui, sans-serif;
+	--ck-display-weight: 700;
+	--ck-display-tracking: -0.03em;
+}
 
 // Luxe: high-contrast Garamond display with a neutral grotesk body
 :root[data-type='luxe'] {

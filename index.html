@@ -1,27 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="gallery" data-bs-theme="light" data-type="classic" data-corners="square">
+<html lang="en" data-theme="noir" data-bs-theme="dark" data-type="bold" data-corners="square">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta
 			name="description"
-			content="CK Photography: fine art portrait and landscape prints and Lightroom presets from Thessaloniki."
+			content="CK Photography: city and landscape photography from Thessaloniki. Portfolio, projects and commissions."
 		/>
-		<meta name="theme-color" content="#ffffff" />
+		<meta name="theme-color" content="#0a0a0a" />
 		<link rel="icon" type="image/png" href="/images/icons/favicon.png" />
-		<link
-			rel="preload"
-			href="/fonts/Nunito/Nunito-VariableFont_wght.ttf"
-			as="font"
-			type="font/ttf"
-			crossorigin
-		/>
 		<title>CK Photography</title>
 		<script>
 			// Apply saved appearance settings before first paint to avoid a flash.
 			(function () {
 				var root = document.documentElement;
-				var themes = { gallery: 'light', darkroom: 'dark', film: 'light', nordic: 'light' };
+				var themes = { noir: 'dark', bone: 'light', gallery: 'light', darkroom: 'dark', film: 'light', nordic: 'light' };
 				var read = function (key) {
 					try {
 						return localStorage.getItem(key);
@@ -32,14 +25,14 @@
 				var theme = read('ck-theme');
 				if (!themes[theme]) {
 					theme = window.matchMedia('(prefers-color-scheme: dark)').matches
-						? 'darkroom'
-						: 'gallery';
+						? 'noir'
+						: 'bone';
 				}
 				var type = read('ck-type');
 				var corners = read('ck-corners');
 				root.dataset.theme = theme;
 				root.dataset.bsTheme = themes[theme];
-				root.dataset.type = /^(classic|luxe|minimal)$/.test(type) ? type : 'classic';
+				root.dataset.type = /^(bold|classic|luxe|minimal)$/.test(type) ? type : 'bold';
 				root.dataset.corners = corners === 'soft' ? 'soft' : 'square';
 			})();
 		</script>

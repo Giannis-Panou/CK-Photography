@@ -1,197 +1,237 @@
-import { useEffect, useRef, useState } from 'react';
-import { Carousel } from 'bootstrap';
+import { useEffect, useState } from 'react';
 import { Page } from '../components/Layout';
 import { TransitionLink } from '../context/PageTransition';
-import ProductCard from '../components/ProductCard';
 import Reveal from '../components/Reveal';
 import SmartImage from '../components/SmartImage';
+import Marquee from '../components/Marquee';
+import Lightbox from '../components/Lightbox';
+import InstagramGrid from '../components/InstagramGrid';
 import Icon from '../components/Icon';
-import items from '../data/catalog';
-import { journal } from '../data/journal';
-import { PostMeta } from './Journal';
+import { getPhotos } from '../data/photos';
+import { projects } from '../data/projects';
+import { INSTAGRAM_HANDLE, INSTAGRAM_URL, isSampleFeed } from '../data/instagram';
 
-const slides = ['wallpaper3', 'wallpaper1', 'wallpaper2', 'wallpaper', 'wallpaper4', 'wallpaper5', 'wallpaper6'];
-const pad = (n) => String(n).padStart(2, '0');
-
-// A mix of city and landscape work for the home page
-const featured = ['Neon City', 'Above the Clouds', 'Flatiron NYC', 'Golden Mountain']
-	.map((name) => items.prints.find((p) => p.name === name))
-	.filter(Boolean);
+const heroPhotos = getPhotos(['land3', 'print3', 'land4', 'print2']);
+const selected = getPhotos(['print1', 'land3', 'print4', 'land4', 'wallpaper2', 'print7']);
 
 function Hero() {
-	const ref = useRef(null);
 	const [active, setActive] = useState(0);
 
-	// Bootstrap only auto-starts carousels on window load, so start it here
-	// for client-side navigations back to the home page too.
 	useEffect(() => {
-		const el = ref.current;
-		const carousel = Carousel.getOrCreateInstance(el, { interval: 6000, pause: false });
-		carousel.cycle();
-		const onSlide = (e) => setActive(e.to);
-		el.addEventListener('slide.bs.carousel', onSlide);
-		return () => {
-			el.removeEventListener('slide.bs.carousel', onSlide);
-			carousel.dispose();
-		};
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+		const t = setInterval(() => setActive((i) => (i + 1) % heroPhotos.length), 5500);
+		return () => clearInterval(t);
 	}, []);
 
 	return (
-		<section className="hero" aria-label="Featured photographs">
-			<div
-				id="heroCarousel"
-				className="carousel slide carousel-fade h-100"
-				ref={ref}
-			>
-				<div className="carousel-inner h-100">
-					{slides.map((src, i) => (
-						<div
-							key={src}
-							className={`carousel-item h-100${i === 0 ? ' active' : ''}`}
-						>
-							<img
-								src={`/images/wallpapers/${src}.webp`}
-								className="hero-img"
-								alt=""
-								fetchPriority={i === 0 ? 'high' : undefined}
-								loading={i === 0 ? 'eager' : 'lazy'}
-							/>
-						</div>
-					))}
-				</div>
+		<section className="hero" aria-label="Introduction">
+			<div className="hero-media" aria-hidden="true">
+				{heroPhotos.map((p, i) => (
+					<img
+						key={p.id}
+						src={p.src}
+						srcSet={p.srcSet}
+						sizes="100vw"
+						alt=""
+						className={i === active ? 'is-active' : undefined}
+						fetchPriority={i === 0 ? 'high' : undefined}
+						loading={i === 0 ? 'eager' : 'lazy'}
+					/>
+				))}
 			</div>
 
 			<div className="hero-content container-xxl px-3 px-lg-4">
-				<span className="eyebrow hero-eyebrow">Fine art photography · Thessaloniki</span>
+				<p className="hero-kicker">
+					<span className="hero-dot" aria-hidden="true" /> Photographer based in Thessaloniki
+				</p>
 				<h2 className="hero-title">
-					Light, place &amp;
-					<br />
-					the moments between
+					<span className="line">
+						<span>Cities</span>
+					</span>
+					<span className="line">
+						<span>
+							<em>&amp;</em> Summits
+						</span>
+					</span>
 				</h2>
-				<div className="d-flex flex-wrap gap-2 gap-sm-3">
-					<TransitionLink to="/prints" className="btn btn-on-image">
-						Shop prints
+				<div className="hero-actions">
+					<TransitionLink to="/work" className="btn btn-on-image">
+						View the work
 					</TransitionLink>
-					<TransitionLink to="/presets" className="btn btn-outline-on-image">
-						Explore presets
+					<TransitionLink to="/contact" className="btn btn-outline-on-image">
+						Book a shoot
 					</TransitionLink>
 				</div>
 			</div>
 
 			<div className="hero-footer container-xxl px-3 px-lg-4">
-				<div className="hero-indicators" role="group" aria-label="Choose slide">
-					{slides.map((src, i) => (
-						<button
-							key={src}
-							type="button"
-							data-bs-target="#heroCarousel"
-							data-bs-slide-to={i}
-							className={i === active ? 'active' : undefined}
-							aria-current={i === active}
-							aria-label={`Slide ${i + 1} of ${slides.length}`}
-						/>
+				<p className="hero-now">
+					<span>Now showing</span> {heroPhotos[active].title}
+				</p>
+				<div className="hero-progress" aria-hidden="true">
+					{heroPhotos.map((p, i) => (
+						<span key={p.id} className={i === active ? 'is-active' : undefined} />
 					))}
 				</div>
-				<p className="hero-caption">
-					<span>{pad(active + 1)}</span> / {pad(slides.length)}
-				</p>
 			</div>
-
-			<button
-				type="button"
-				className="hero-scroll"
-				aria-label="Scroll to featured work"
-				onClick={() => document.getElementById('featured')?.scrollIntoView({ behavior: 'smooth' })}
-			>
-				<Icon name="chevronDown" size={22} />
-			</button>
 		</section>
 	);
 }
 
-function Featured() {
+function SelectedWork() {
+	const [open, setOpen] = useState(null);
+	const images = selected.map((p) => ({ src: p.src, alt: p.title, caption: p.title }));
+
 	return (
-		<section className="section" id="featured">
+		<section className="section">
 			<div className="container-xxl px-3 px-lg-4">
-				<Reveal className="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4 mb-md-5">
-					<div>
-						<span className="eyebrow">Featured work</span>
-						<h2 className="section-title">Selected prints</h2>
-					</div>
-					<TransitionLink to="/prints" className="text-link">
-						View all prints <Icon name="arrowRight" size={16} />
+				<Reveal className="section-head">
+					<span className="eyebrow">Selected work</span>
+					<h2 className="section-title">
+						Light, found
+						<br />
+						in unlikely places.
+					</h2>
+					<TransitionLink to="/work" className="text-link">
+						All work <Icon name="arrowRight" size={16} />
 					</TransitionLink>
 				</Reveal>
-				<ul className="product-grid">
-					{featured.map((item, i) => (
-						<ProductCard key={item.name} item={item} index={i} />
+
+				<ul className="editorial-grid">
+					{selected.map((p, i) => (
+						<Reveal as="li" key={p.id} className={`ed-${i + 1}`} delay={(i % 3) * 90}>
+							<button
+								type="button"
+								className="ed-tile"
+								onClick={() => setOpen(i)}
+								aria-label={`Open ${p.title}`}
+							>
+								<SmartImage
+									src={p.thumb}
+									srcSet={p.srcSet}
+									sizes="(min-width: 992px) 40vw, 90vw"
+									alt={p.title}
+									loading="lazy"
+								/>
+							</button>
+							<p className="ed-caption">
+								<span>{String(i + 1).padStart(2, '0')}</span> {p.title}
+							</p>
+						</Reveal>
 					))}
 				</ul>
 			</div>
+			{open !== null && (
+				<Lightbox images={images} index={open} onIndexChange={setOpen} onClose={() => setOpen(null)} />
+			)}
 		</section>
 	);
 }
 
-function CollectionTiles() {
-	const tiles = [
-		{
-			to: '/prints',
-			eyebrow: `${items.prints.length} works`,
-			title: 'Fine art prints',
-			image: '/images/wallpapers/wallpaper4.webp',
-		},
-		{
-			to: '/presets',
-			eyebrow: `${items.presets.length} presets`,
-			title: 'Lightroom presets',
-			image: '/images/wallpapers/wallpaper1.webp',
-		},
-	];
+function ProjectList() {
+	const [hovered, setHovered] = useState(0);
 
 	return (
-		<section className="section pt-0">
+		<section className="section section-surface projects-teaser">
 			<div className="container-xxl px-3 px-lg-4">
-				<div className="row g-3 g-lg-4">
-					{tiles.map((tile, i) => (
-						<Reveal key={tile.to} className="col-12 col-md-6" delay={i * 120}>
-							<TransitionLink to={tile.to} className="tile">
-								<SmartImage src={tile.image} alt="" loading="lazy" />
-								<div className="tile-body">
-									<span className="eyebrow">{tile.eyebrow}</span>
-									<h3>{tile.title}</h3>
-									<span className="text-link">
-										Shop now <Icon name="arrowRight" size={16} />
-									</span>
-								</div>
-							</TransitionLink>
-						</Reveal>
-					))}
+				<Reveal className="section-head">
+					<span className="eyebrow">Projects</span>
+					<h2 className="section-title">Series &amp; stories</h2>
+					<TransitionLink to="/projects" className="text-link">
+						All projects <Icon name="arrowRight" size={16} />
+					</TransitionLink>
+				</Reveal>
+
+				<div className="project-list-wrap">
+					<ol className="project-list">
+						{projects.map((p, i) => (
+							<li key={p.slug}>
+								<TransitionLink
+									to={`/projects/${p.slug}`}
+									className="project-row"
+									onMouseEnter={() => setHovered(i)}
+									onFocus={() => setHovered(i)}
+								>
+									<span className="project-num">{String(i + 1).padStart(2, '0')}</span>
+									<span className="project-name">{p.title}</span>
+									<span className="project-sub">{p.subtitle}</span>
+									<span className="project-year">{p.year}</span>
+									<Icon name="arrowRight" size={28} className="project-arrow" />
+								</TransitionLink>
+							</li>
+						))}
+					</ol>
+					{/* Desktop: preview of the hovered project's cover */}
+					<div className="project-preview d-none d-lg-block" aria-hidden="true">
+						{projects.map((p, i) => (
+							<img
+								key={p.slug}
+								src={p.coverPhoto.thumb}
+								alt=""
+								loading="lazy"
+								className={i === hovered ? 'is-active' : undefined}
+							/>
+						))}
+					</div>
 				</div>
+			</div>
+		</section>
+	);
+}
+
+function InstagramSection() {
+	return (
+		<section className="section">
+			<div className="container-xxl px-3 px-lg-4">
+				<Reveal className="section-head">
+					<span className="eyebrow">
+						<Icon name="instagram" size={14} /> On Instagram
+					</span>
+					<h2 className="section-title">
+						<a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="ig-handle">
+							@{INSTAGRAM_HANDLE}
+						</a>
+					</h2>
+					<TransitionLink to="/instagram" className="text-link">
+						See the feed <Icon name="arrowRight" size={16} />
+					</TransitionLink>
+				</Reveal>
+				<InstagramGrid limit={8} className="ig-grid-home" />
+				{isSampleFeed && (
+					<p className="sample-note">Example feed. Live posts appear here once Instagram is connected.</p>
+				)}
 			</div>
 		</section>
 	);
 }
 
 function AboutTeaser() {
+	const photo = getPhotos(['wallpaper1'])[0];
 	return (
 		<section className="section section-surface">
 			<div className="container-xxl px-3 px-lg-4">
 				<div className="row g-4 g-lg-5 align-items-center">
 					<Reveal className="col-12 col-md-6">
 						<div className="teaser-img">
-							<SmartImage src="/images/wallpapers/wallpaper6.webp" alt="Snow-covered mountain ridge" loading="lazy" />
+							<SmartImage
+								src={photo.thumb}
+								srcSet={photo.srcSet}
+								sizes="(min-width: 768px) 50vw, 100vw"
+								alt={photo.title}
+								loading="lazy"
+							/>
 						</div>
 					</Reveal>
 					<Reveal className="col-12 col-md-6 col-lg-5 offset-lg-1" delay={120}>
-						<span className="eyebrow">The photographer</span>
-						<h2 className="section-title mb-3">Hi, I'm CK</h2>
+						<span className="eyebrow">About</span>
+						<h2 className="section-title mb-4">Hi, I'm CK.</h2>
 						<p className="lead-muted mb-4">
-							A photographer with a love for capturing life's most beautiful and
-							fleeting moments. Based in Thessaloniki, I specialise in portrait and
-							landscape photography, blending artistic vision with technical craft.
+							A photographer with a love for capturing life's most beautiful and fleeting moments.
+							Based in Thessaloniki, I photograph cities after dark, mountains above the clouds, and
+							the people who live between the two.
 						</p>
 						<TransitionLink to="/about" className="text-link">
-							More about CK <Icon name="arrowRight" size={16} />
+							More about me <Icon name="arrowRight" size={16} />
 						</TransitionLink>
 					</Reveal>
 				</div>
@@ -200,64 +240,15 @@ function AboutTeaser() {
 	);
 }
 
-function JournalTeaser() {
-	return (
-		<section className="section journal-section">
-			<div className="container-xxl px-3 px-lg-4">
-				<Reveal className="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4 mb-md-5">
-					<div>
-						<span className="eyebrow">From the journal</span>
-						<h2 className="section-title">Stories behind the photographs</h2>
-					</div>
-					<TransitionLink to="/journal" className="text-link">
-						All stories <Icon name="arrowRight" size={16} />
-					</TransitionLink>
-				</Reveal>
-				<ul className="journal-grid">
-					{journal.slice(0, 3).map((post, i) => (
-						<Reveal as="li" key={post.slug} delay={i * 100}>
-							<TransitionLink to={`/journal/${post.slug}`} className="journal-card">
-								<div className="journal-cover">
-									<SmartImage src={post.cover} alt="" loading="lazy" />
-								</div>
-								<PostMeta post={post} />
-								<h3>{post.title}</h3>
-								<p>{post.excerpt}</p>
-							</TransitionLink>
-						</Reveal>
-					))}
-				</ul>
-			</div>
-		</section>
-	);
-}
-
-function CommissionBand() {
-	return (
-		<section className="section text-center">
-			<Reveal className="container px-3">
-				<span className="eyebrow">Commissions</span>
-				<h2 className="section-title mb-3">Have a story worth photographing?</h2>
-				<p className="lead-muted mx-auto mb-4">
-					Portrait, wedding, event, commercial and landscape sessions.
-				</p>
-				<a href="mailto:ckphoto@gmail.com" className="btn btn-accent">
-					Get in touch
-				</a>
-			</Reveal>
-		</section>
-	);
-}
-
 export default function Home() {
 	return (
 		<Page title="CK Photography" className="page-home">
 			<Hero />
-			<Featured />
-			<CollectionTiles />
+			<Marquee items={['City', 'Landscape', 'Portrait', 'Wedding', 'Commercial', 'Event']} />
+			<SelectedWork />
+			<ProjectList />
+			<InstagramSection />
 			<AboutTeaser />
-			<JournalTeaser />
-			<CommissionBand />
 		</Page>
 	);
 }

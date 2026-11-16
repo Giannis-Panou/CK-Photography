@@ -1,25 +1,24 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
-import Shop from './pages/Shop';
-import Item from './pages/Item';
+import Work from './pages/Work';
+import Projects from './pages/Projects';
+import Project from './pages/Project';
+import Instagram from './pages/Instagram';
 import About from './pages/About';
-import Checkout from './pages/Checkout';
-import Journal from './pages/Journal';
-import JournalPost from './pages/JournalPost';
+import Contact from './pages/Contact';
 
 export default function App() {
 	return (
 		<Routes>
 			<Route element={<Layout />}>
 				<Route index element={<Home />} />
-				<Route path="prints" element={<Shop key="prints" type="prints" />} />
-				<Route path="presets" element={<Shop key="presets" type="presets" />} />
-				<Route path="item/:name" element={<Item />} />
-				<Route path="journal" element={<Journal />} />
-				<Route path="journal/:slug" element={<JournalPost />} />
+				<Route path="work" element={<Work />} />
+				<Route path="projects" element={<Projects />} />
+				<Route path="projects/:slug" element={<Project />} />
+				<Route path="instagram" element={<Instagram />} />
 				<Route path="about" element={<About />} />
-				<Route path="checkout" element={<Checkout />} />
+				<Route path="contact" element={<Contact />} />
 				<Route path="*" element={<Navigate to="/" replace />} />
 			</Route>
 		</Routes>

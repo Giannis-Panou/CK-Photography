@@ -7,6 +7,20 @@ import { createContext, useCallback, useContext, useEffect, useState } from 'rea
  */
 
 export const THEMES = {
+	noir: {
+		label: 'Noir',
+		description: 'Near-black, electric orange accent',
+		bsTheme: 'dark',
+		swatch: ['#0a0a0a', '#ff5a1f'],
+		meta: '#0a0a0a',
+	},
+	bone: {
+		label: 'Bone',
+		description: 'Warm off-white, signal red accent',
+		bsTheme: 'light',
+		swatch: ['#efece6', '#e8341c'],
+		meta: '#efece6',
+	},
 	gallery: {
 		label: 'Gallery',
 		description: 'Bright white walls, black type',
@@ -38,6 +52,7 @@ export const THEMES = {
 };
 
 export const TYPE_STYLES = {
+	bold: { label: 'Bold', description: 'Syne & Inter', sample: "'Syne Variable', sans-serif" },
 	classic: { label: 'Classic', description: 'Playfair & Nunito', sample: "'Playfair Display SC', serif" },
 	luxe: { label: 'Luxe', description: 'Cormorant & Inter', sample: "'Cormorant Garamond', serif" },
 	minimal: { label: 'Minimal', description: 'Inter throughout', sample: "'Inter Variable', sans-serif" },
@@ -49,8 +64,8 @@ export const CORNER_STYLES = {
 };
 
 const SETTINGS = {
-	theme: { options: THEMES, storageKey: 'ck-theme', attr: 'theme', fallback: 'gallery' },
-	type: { options: TYPE_STYLES, storageKey: 'ck-type', attr: 'type', fallback: 'classic' },
+	theme: { options: THEMES, storageKey: 'ck-theme', attr: 'theme', fallback: 'noir' },
+	type: { options: TYPE_STYLES, storageKey: 'ck-type', attr: 'type', fallback: 'bold' },
 	corners: { options: CORNER_STYLES, storageKey: 'ck-corners', attr: 'corners', fallback: 'square' },
 };
 
