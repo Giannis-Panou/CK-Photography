@@ -1,0 +1,167 @@
+// Shop toolbar & filters; scoped to the shop page
+.page-prints {
+	.shop-toolbar {
+		position: sticky;
+		top: 0;
+		z-index: 10;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.75rem;
+		padding-block: 0.75rem;
+		background-color: var(--ck-bg);
+		border-bottom: 1px solid var(--ck-border);
+		transition: top 0.45s var(--ck-ease);
+	}
+
+	// Sit under the sticky header while it is showing
+	.site-header:not(.is-hidden) ~ & .shop-toolbar {
+		top: var(--header-h);
+	}
+
+	.filters-toggle {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6rem;
+		min-height: 44px;
+		padding-inline: 1rem;
+	}
+
+	.filters-badge {
+		display: inline-block;
+		min-width: 20px;
+		height: 20px;
+		border-radius: 10px;
+		background-color: var(--ck-accent);
+		color: var(--ck-accent-contrast);
+		font-size: 11px;
+		line-height: 20px;
+		letter-spacing: 0;
+	}
+
+	.btn-outline-accent:hover .filters-badge,
+	.btn-outline-accent[aria-expanded='true'] .filters-badge {
+		background-color: var(--ck-bg);
+		color: var(--ck-text);
+	}
+
+	.sort-select {
+		width: auto;
+		min-height: 44px;
+	}
+
+	.result-count {
+		color: var(--ck-muted);
+		font-size: 0.85rem;
+		margin: 0;
+	}
+
+	.filters-panel {
+		display: grid;
+		grid-template-rows: 0fr;
+		transition: grid-template-rows 0.45s var(--ck-ease);
+
+		&.open {
+			grid-template-rows: 1fr;
+		}
+
+		> .filters-panel-inner {
+			overflow: hidden;
+		}
+	}
+
+	.filters-fields {
+		display: grid;
+		gap: 0.75rem;
+		grid-template-columns: 1fr 1fr;
+		padding: 1.25rem 0 0.5rem;
+		align-items: end;
+
+		.form-label {
+			font-size: 0.75rem;
+			font-weight: 700;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			color: var(--ck-muted);
+		}
+
+		.form-control,
+		.form-select,
+		.btn {
+			min-height: 44px;
+		}
+
+		@media (min-width: 768px) {
+			grid-template-columns: 2fr 1fr 1fr auto;
+		}
+	}
+
+	.chip-group {
+		grid-column: 1 / -1;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+
+		@media (min-width: 768px) {
+			grid-column: auto;
+		}
+	}
+
+	.chip {
+		min-height: 44px;
+		padding: 0.4rem 1.1rem;
+		border: 1px solid var(--ck-border);
+		background: transparent;
+		color: var(--ck-text);
+		font-size: 0.85rem;
+		transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+
+		&:hover {
+			border-color: var(--ck-text);
+		}
+
+		&[aria-pressed='true'] {
+			background-color: var(--ck-text);
+			border-color: var(--ck-text);
+			color: var(--ck-bg);
+		}
+	}
+
+	.clear-filters {
+		grid-column: 1 / -1;
+
+		@media (min-width: 768px) {
+			grid-column: auto;
+		}
+	}
+
+	.empty-results {
+		grid-column: 1 / -1;
+		text-align: center;
+		padding: 4rem 1rem;
+		color: var(--ck-muted);
+	}
+}
+
+// Hide text visually (but keep it for screen readers) below the sm breakpoint
+@media (max-width: 575.98px) {
+	.page-prints {
+		.visually-hidden-xs {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			overflow: hidden;
+			clip: rect(0 0 0 0);
+			white-space: nowrap;
+		}
+
+		.filters-toggle {
+			padding-inline: 0.75rem;
+			letter-spacing: 0;
+		}
+
+		.sort-select {
+			max-width: 8.5rem;
+		}
+	}
+}
