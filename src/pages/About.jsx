@@ -3,29 +3,26 @@ import Reveal from '../components/Reveal';
 import SmartImage from '../components/SmartImage';
 import Icon from '../components/Icon';
 import { TransitionLink } from '../context/PageTransition';
-import { getPhoto, photos } from '../data/photos';
+import { covers, photos, pickPhotos } from '../data/photos';
 import { projects } from '../data/projects';
-
-const services = [
-	['Portrait', 'Natural, unhurried portraits for individuals, couples and families.'],
-	['Wedding', 'Documentary coverage of the day, from preparations to the last dance.'],
-	['Commercial', 'Imagery for brands, products and spaces.'],
-	['Event', 'Conferences, launches and celebrations.'],
-	['Landscape', 'Fine art landscapes, available as signed prints.'],
-];
+import { useLang } from '../i18n/LanguageContext';
 
 export default function About() {
-	const portrait = getPhoto('wallpaper2');
-	const detail = getPhoto('print7');
+	const { t } = useLang();
+	// Wide photos from the feed, skipping the ones leading the home page
+	const [portrait = photos[0], detail = photos[1] ?? photos[0]] = pickPhotos(2, {
+		orientation: 'landscape',
+		exclude: covers.slice(0, 4),
+	});
 
 	return (
-		<Page title="About" className="page-about">
+		<Page title={t('about.title')} className="page-about">
 			<header className="page-hero container-xxl px-3 px-lg-4">
-				<span className="eyebrow">About</span>
+				<span className="eyebrow">{t('about.title')}</span>
 				<h2 className="page-hero-title about-statement">
-					I chase the light
+					{t('about.statement1')}
 					<br />
-					<em>most people sleep through.</em>
+					<em>{t('about.statement2')}</em>
 				</h2>
 			</header>
 
@@ -33,32 +30,28 @@ export default function About() {
 				<div className="row g-4 g-lg-5">
 					<Reveal className="col-12 col-lg-7">
 						<div className="about-img about-img-tall">
-							<SmartImage src={portrait.src} srcSet={portrait.srcSet} sizes="(min-width: 992px) 58vw, 100vw" alt={portrait.title} />
+							<SmartImage src={portrait.src} placeholder={portrait.placeholder} srcSet={portrait.srcSet} sizes="(min-width: 992px) 58vw, 100vw" alt={portrait.title} />
 						</div>
 					</Reveal>
 					<Reveal className="col-12 col-lg-5 about-copy" delay={120}>
 						<p className="about-lead">
-							Hi, I'm CK, a passionate photographer with a love for capturing life's most beautiful and
-							fleeting moments.
+							{t('about.lead')}
 						</p>
 						<p className="text-muted-ck">
-							Based in Thessaloniki, I specialize in portrait and landscape photography, offering a unique
-							blend of artistic vision and technical expertise.
+							{t('about.text')}
 						</p>
 						<dl className="about-facts">
 							<div>
-								<dt>Based in</dt>
-								<dd>Thessaloniki, Greece</dd>
+								<dt>{t('about.basedIn')}</dt>
+								<dd>{t('about.basedValue')}</dd>
 							</div>
 							<div>
-								<dt>Focus</dt>
-								<dd>City &amp; landscape</dd>
+								<dt>{t('about.focus')}</dt>
+								<dd>{t('about.focusValue')}</dd>
 							</div>
 							<div>
-								<dt>Portfolio</dt>
-								<dd>
-									{photos.length} photographs, {projects.length} series
-								</dd>
+								<dt>{t('about.portfolio')}</dt>
+								<dd>{t('about.portfolioValue', { photos: photos.length, series: projects.length })}</dd>
 							</div>
 						</dl>
 					</Reveal>
@@ -69,17 +62,15 @@ export default function About() {
 				<div className="container-xxl px-3 px-lg-4">
 					<div className="row g-4 g-lg-5 align-items-end">
 						<Reveal className="col-12 col-lg-6">
-							<span className="eyebrow">Approach</span>
-							<h2 className="section-title mb-4">Patience over gear.</h2>
+							<span className="eyebrow">{t('about.approachEyebrow')}</span>
+							<h2 className="section-title mb-4">{t('about.approachTitle')}</h2>
 							<p className="lead-muted">
-								Most of photography is waiting: for the fog to drop below the ridge, for the rain to turn
-								a street into a mirror, for a plane to cross the right gap between two towers. The
-								pictures are the reward for being there when it happens.
+								{t('about.approachText')}
 							</p>
 						</Reveal>
 						<Reveal className="col-12 col-lg-5 offset-lg-1" delay={120}>
 							<div className="about-img">
-								<SmartImage src={detail.thumb} srcSet={detail.srcSet} sizes="(min-width: 992px) 40vw, 100vw" alt={detail.title} loading="lazy" />
+								<SmartImage src={detail.thumb} placeholder={detail.placeholder} srcSet={detail.srcSet} sizes="(min-width: 992px) 40vw, 100vw" alt={detail.title} loading="lazy" />
 							</div>
 						</Reveal>
 					</div>
@@ -89,14 +80,14 @@ export default function About() {
 			<section className="section section-surface">
 				<div className="container-xxl px-3 px-lg-4">
 					<Reveal className="section-head">
-						<span className="eyebrow">Services</span>
-						<h2 className="section-title">What I photograph</h2>
+						<span className="eyebrow">{t('about.servicesEyebrow')}</span>
+						<h2 className="section-title">{t('about.servicesTitle')}</h2>
 						<TransitionLink to="/contact" className="text-link">
-							Enquire <Icon name="arrowRight" size={16} />
+							{t('about.enquire')} <Icon name="arrowRight" size={16} />
 						</TransitionLink>
 					</Reveal>
 					<ol className="services">
-						{services.map(([name, text], i) => (
+						{t('about.services').map(([name, text], i) => (
 							<Reveal as="li" key={name} delay={i * 80}>
 								<span className="service-num">{String(i + 1).padStart(2, '0')}</span>
 								<h3>{name}</h3>

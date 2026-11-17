@@ -1,50 +1,55 @@
-import manifest from './photo-manifest.json';
+import { posts } from './instagram';
 
-// Every photograph in the portfolio. Titles follow the names used in the
-// original print shop; the three untitled photos have descriptive titles.
-// `file` matches a source in photos/originals (see scripts/optimize-images.mjs).
-const entries = [
-	{ file: 'print1', title: 'Flatiron NYC', category: 'city' },
-	{ file: 'print2', title: 'Fly Away', category: 'city' },
-	{ file: 'print3', title: 'Neon City', category: 'city' },
-	{ file: 'print4', title: 'Neon Alley', category: 'city' },
-	{ file: 'print5', title: 'Urban Jungle', category: 'city' },
-	{ file: 'print6', title: 'Gray Boulevard', category: 'city' },
-	{ file: 'print7', title: 'Among Giants', category: 'city' },
-	{ file: 'print8', title: 'Taking a Shortcut', category: 'city' },
-	{ file: 'land1', title: 'Into the Clouds', category: 'landscape' },
-	{ file: 'land2', title: 'Endless Green', category: 'landscape' },
-	{ file: 'land3', title: 'Above the Clouds', category: 'landscape' },
-	{ file: 'land4', title: 'Golden Mountain', category: 'landscape' },
-	{ file: 'land5', title: 'Below Zero', category: 'landscape' },
-	{ file: 'land6', title: 'House of the Gods', category: 'landscape' },
-	{ file: 'land7', title: 'Villain Stronghold', category: 'landscape' },
-	{ file: 'land8', title: 'Blue Paradise', category: 'landscape' },
-	{ file: 'wallpaper', title: 'Shoreline', category: 'landscape' },
-	{ file: 'wallpaper1', title: 'Forest Fog', category: 'landscape' },
-	{ file: 'wallpaper2', title: 'Moonrise Range', category: 'landscape' },
-];
+// Every photograph on the site comes from the Instagram feed: each photo of
+// each post (all slides of a carousel), latest post first.
 
+// Work page filters. A photo gets a category when its post uses one of the
+// listed hashtags.
 export const CATEGORIES = {
 	city: 'City',
 	landscape: 'Landscape',
 };
+const CATEGORY_TAGS = {
+	city: ['city', 'street', 'urban', 'cityscape', 'architecture', 'nightphotography'],
+	landscape: ['landscape', 'mountains', 'nature', 'sea', 'lake', 'alps'],
+};
 
-export const photos = entries.map((p) => {
-	const { width, height } = manifest[p.file];
-	return {
-		...p,
-		id: p.file,
-		width,
-		height,
-		ratio: width / height,
-		orientation: height > width ? 'portrait' : 'landscape',
-		src: `/images/portfolio/${p.file}-1800.webp`,
-		thumb: `/images/portfolio/${p.file}-800.webp`,
-		srcSet: `/images/portfolio/${p.file}-800.webp 800w, /images/portfolio/${p.file}-1800.webp 1800w`,
-	};
+const categoryOf = (tags) =>
+	Object.keys(CATEGORY_TAGS).find((cat) => tags.some((t) => CATEGORY_TAGS[cat].includes(t))) ?? null;
+
+const toPhoto = (post, m, i) => ({
+	...m,
+	title: post.media.length > 1 && i > 0 ? `${post.title} · ${i + 1}/${post.media.length}` : post.title,
+	postTitle: post.title,
+	category: categoryOf(post.tags),
+	ratio: m.width / m.height,
+	orientation: m.height > m.width ? 'portrait' : 'landscape',
+	postId: post.id,
+	permalink: post.permalink,
+	date: post.date,
 });
+
+const seen = new Set();
+export const photos = posts.flatMap((post) =>
+	post.media.map((m, i) => toPhoto(post, m, i)).filter((p) => !seen.has(p.id) && seen.add(p.id))
+);
 
 const byId = new Map(photos.map((p) => [p.id, p]));
 export const getPhoto = (id) => byId.get(id);
-export const getPhotos = (ids) => ids.map(getPhoto).filter(Boolean);
+
+/** The first photo of each post, latest first: the images the feed leads with. */
+export const covers = posts.map((post) => byId.get(post.media[0]?.id)).filter(Boolean);
+
+/**
+ * Picks `count` photos for a layout slot, preferring post covers (latest
+ * first) and then the remaining photos.
+ *   orientation: 'landscape' | 'portrait' to require one
+ *   exclude:     photos already used elsewhere on the page
+ */
+export function pickPhotos(count, { orientation, exclude = [] } = {}) {
+	const used = new Set(exclude.map((p) => p.id));
+	const pool = [...new Set([...covers, ...photos])];
+	return pool
+		.filter((p) => !used.has(p.id) && (!orientation || p.orientation === orientation))
+		.slice(0, count);
+}

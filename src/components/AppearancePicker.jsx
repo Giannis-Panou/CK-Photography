@@ -1,9 +1,11 @@
 import { CORNER_STYLES, THEMES, TYPE_STYLES, useTheme } from '../context/ThemeContext';
 import Icon from './Icon';
+import { useLang } from '../i18n/LanguageContext';
 
 /** Colour theme, type pairing and corner style, in one dropdown. */
 export default function AppearancePicker() {
 	const { theme, type, corners, set } = useTheme();
+	const { t } = useLang();
 
 	return (
 		<div className="dropdown">
@@ -13,14 +15,14 @@ export default function AppearancePicker() {
 				data-bs-toggle="dropdown"
 				data-bs-auto-close="outside"
 				aria-expanded="false"
-				aria-label="Appearance settings"
+				aria-label={t('appearance.label')}
 			>
 				<Icon name="theme" />
 			</button>
 			<div className="dropdown-menu dropdown-menu-end appearance-menu">
 				<fieldset>
-					<legend className="eyebrow">Colour</legend>
-					{Object.entries(THEMES).map(([key, t]) => (
+					<legend className="eyebrow">{t('appearance.colour')}</legend>
+					{Object.entries(THEMES).map(([key, th]) => (
 						<button
 							key={key}
 							type="button"
@@ -29,10 +31,10 @@ export default function AppearancePicker() {
 							className="dropdown-item theme-option"
 							onClick={() => set('theme', key)}
 						>
-							<span className="theme-swatch" style={{ '--a': t.swatch[0], '--b': t.swatch[1] }} />
+							<span className="theme-swatch" style={{ '--a': th.swatch[0], '--b': th.swatch[1] }} />
 							<span>
-								{t.label}
-								<small>{t.description}</small>
+								{th.label}
+								<small>{t(`appearance.themes.${key}`)}</small>
 							</span>
 							<Icon name="check" size={16} className="check" />
 						</button>
@@ -40,28 +42,28 @@ export default function AppearancePicker() {
 				</fieldset>
 
 				<fieldset>
-					<legend className="eyebrow">Typography</legend>
+					<legend className="eyebrow">{t('appearance.typography')}</legend>
 					<div className="segmented segmented-3">
-						{Object.entries(TYPE_STYLES).map(([key, t]) => (
+						{Object.entries(TYPE_STYLES).map(([key, ty]) => (
 							<button
 								key={key}
 								type="button"
 								role="radio"
 								aria-checked={type === key}
 								onClick={() => set('type', key)}
-								title={t.description}
+								title={ty.description}
 							>
-								<span className="type-sample" style={{ fontFamily: t.sample }}>Aa</span>
-								{t.label}
+								<span className="type-sample" style={{ fontFamily: ty.sample }}>Aa</span>
+								{t(`appearance.types.${key}`)}
 							</button>
 						))}
 					</div>
 				</fieldset>
 
 				<fieldset>
-					<legend className="eyebrow">Corners</legend>
+					<legend className="eyebrow">{t('appearance.corners')}</legend>
 					<div className="segmented">
-						{Object.entries(CORNER_STYLES).map(([key, c]) => (
+						{Object.keys(CORNER_STYLES).map((key) => (
 							<button
 								key={key}
 								type="button"
@@ -70,7 +72,7 @@ export default function AppearancePicker() {
 								onClick={() => set('corners', key)}
 							>
 								<span className={`corner-sample corner-${key}`} aria-hidden="true" />
-								{c.label}
+								{t(`appearance.cornerStyles.${key}`)}
 							</button>
 						))}
 					</div>

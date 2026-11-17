@@ -3,14 +3,14 @@ import InstagramGrid from '../components/InstagramGrid';
 import Reveal from '../components/Reveal';
 import Icon from '../components/Icon';
 import { TransitionLink } from '../context/PageTransition';
-import { INSTAGRAM_HANDLE, INSTAGRAM_URL, isSampleFeed, posts } from '../data/instagram';
-import { getPhoto } from '../data/photos';
+import { INSTAGRAM_HANDLE, INSTAGRAM_URL, isSampleFeed, posts, profile } from '../data/instagram';
+import { useLang } from '../i18n/LanguageContext';
 
 export default function Instagram() {
-	const avatar = getPhoto('land3');
-
+	const { t, locale } = useLang();
+	const number = new Intl.NumberFormat(locale, { notation: 'compact' });
 	return (
-		<Page title="Instagram" className="page-instagram">
+		<Page title={t('instagram.title')} className="page-instagram">
 			<header className="page-hero container-xxl px-3 px-lg-4">
 				<span className="eyebrow">
 					<Icon name="instagram" size={14} /> Instagram
@@ -26,33 +26,40 @@ export default function Instagram() {
 				{/* Profile card, mirroring the Instagram profile header */}
 				<Reveal className="ig-profile">
 					<div className="ig-avatar">
-						<img src={avatar.thumb} alt="" />
+						<img src={profile.avatar ?? posts[0]?.media[0]?.thumb} alt="" />
 					</div>
 					<div className="ig-profile-body">
 						<div className="ig-profile-top">
-							<p className="ig-name">{INSTAGRAM_HANDLE}</p>
+							<p className="ig-name">{profile.name || INSTAGRAM_HANDLE}</p>
 							<a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="btn btn-accent">
-								Follow
+								{t('instagram.follow')}
 							</a>
 							<TransitionLink to="/contact" className="btn btn-outline-accent">
-								Message
+								{t('instagram.message')}
 							</TransitionLink>
 						</div>
-						<ul className="ig-stats" aria-label="Profile">
+						<ul className="ig-stats" aria-label="Instagram">
 							<li>
-								<strong>{posts.length}</strong> posts shown
+								<strong>{number.format(profile.media_count ?? posts.length)}</strong> {t('instagram.posts')}
+							</li>
+							{profile.followers_count != null && (
+								<li>
+									<strong>{number.format(profile.followers_count)}</strong> {t('instagram.followers')}
+								</li>
+							)}
+							<li>
+								<strong>{t('instagram.focusStrong')}</strong>
+								{t('instagram.focusRest')}
 							</li>
 							<li>
-								<strong>City</strong> &amp; landscape
-							</li>
-							<li>
-								<strong>Thessaloniki</strong>, Greece
+								<strong>{t('instagram.placeStrong')}</strong>
+								{t('instagram.placeRest')}
 							</li>
 						</ul>
 						<p className="ig-bio">
-							Photographer. Cities after dark, mountains above the clouds.
+							{t('instagram.bio1')}
 							<br />
-							Commissions open.
+							{t('instagram.bio2')}
 						</p>
 					</div>
 				</Reveal>
@@ -61,8 +68,7 @@ export default function Instagram() {
 					<p className="sample-banner" role="note">
 						<Icon name="instagram" size={16} />
 						<span>
-							<strong>Example layout.</strong> These sample posts use the portfolio's own photos. Once the
-							Instagram account is connected, the latest posts will appear here automatically.
+							<strong>{t('instagram.bannerStrong')}</strong> {t('instagram.bannerText')}
 						</span>
 					</p>
 				)}
@@ -71,7 +77,7 @@ export default function Instagram() {
 
 				<div className="text-center mt-5">
 					<a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="btn btn-outline-accent">
-						<Icon name="instagram" size={16} /> Open on Instagram
+						<Icon name="instagram" size={16} /> {t('instagram.open')}
 					</a>
 				</div>
 			</div>

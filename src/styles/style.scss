@@ -101,6 +101,12 @@ body {
 	align-items: center;
 	gap: 2.25rem;
 	margin-inline: auto;
+
+	// Small desktops: tighter so the longer Greek labels and the language
+	// switch still fit on one row
+	@media (max-width: 1199.98px) {
+		gap: 1.25rem;
+	}
 }
 
 .nav-btn {
@@ -151,6 +157,15 @@ body {
 	padding: 0.6rem 1.1rem;
 	margin-left: 0.5rem;
 	font-size: 0.7rem;
+	white-space: nowrap;
+}
+
+// Small desktops fit the full nav by dropping the word beside the logo
+// (!important to beat Bootstrap's d-sm-inline)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	.logo-word {
+		display: none !important;
+	}
 }
 
 .icon-btn {
@@ -381,6 +396,9 @@ body {
 }
 
 .menu-overlay-foot {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 	padding-block: 1.5rem calc(1.5rem + env(safe-area-inset-bottom));
 
 	a {
@@ -390,6 +408,22 @@ body {
 		color: var(--ck-text);
 		text-decoration: none;
 	}
+}
+
+// Language switch: shows the other language's code, set like a small label
+.lang-toggle {
+	font-family: var(--ck-font-body);
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+}
+
+.menu-lang {
+	order: 2;
+	width: auto;
+	padding-inline: 1rem;
+	border: 1px solid var(--ck-border);
+	border-radius: var(--ck-radius-ui);
 }
 
 /* ---------- Section scaffolding ---------- */

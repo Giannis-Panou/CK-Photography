@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import SmartImage from './SmartImage';
+import { useLang } from '../i18n/LanguageContext';
 
 /**
  * Justified rows (the Flickr / 500px layout): every photo keeps its shape,
@@ -28,6 +29,7 @@ function buildRows(photos, width, targetHeight, gap) {
 }
 
 export default function JustifiedGallery({ photos, onOpen }) {
+	const { t } = useLang();
 	const ref = useRef(null);
 	const [width, setWidth] = useState(0);
 
@@ -54,10 +56,10 @@ export default function JustifiedGallery({ photos, onOpen }) {
 							className="justified-item"
 							style={{ width: row.height * photo.ratio }}
 							onClick={() => onOpen(photos.indexOf(photo))}
-							aria-label={`Open ${photo.title}`}
+							aria-label={t('viewer.open', { title: photo.title })}
 						>
 							<SmartImage
-								src={photo.thumb}
+								src={photo.thumb} placeholder={photo.placeholder}
 								srcSet={photo.srcSet}
 								sizes={`${Math.ceil(row.height * photo.ratio)}px`}
 								alt={photo.title}

@@ -5,6 +5,7 @@ import { navLinks } from '../data/navigation';
 import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from '../data/instagram';
 import AppearancePicker from './AppearancePicker';
 import Icon from './Icon';
+import { LanguageToggle, useLang } from '../i18n/LanguageContext';
 
 /** Tracks whether the page is scrolled and whether the header should tuck away. */
 function useHeaderScroll() {
@@ -29,6 +30,7 @@ function useHeaderScroll() {
 
 /** Full-screen menu for phones and tablets. */
 function MenuOverlay({ open, onClose, pathname }) {
+	const { t } = useLang();
 	const closeRef = useRef(null);
 
 	useEffect(() => {
@@ -50,29 +52,29 @@ function MenuOverlay({ open, onClose, pathname }) {
 			id="site-menu"
 			role="dialog"
 			aria-modal="true"
-			aria-label="Menu"
+			aria-label={t('header.menu')}
 			inert={!open}
 		>
 			<div className="menu-overlay-top container-xxl px-3 px-lg-4">
-				<span className="menu-overlay-label">Menu</span>
+				<span className="menu-overlay-label">{t('header.menu')}</span>
 				<button
 					ref={closeRef}
 					type="button"
 					className="icon-btn"
 					onClick={onClose}
-					aria-label="Close menu"
+					aria-label={t('header.closeMenu')}
 				>
 					<Icon name="close" size={26} />
 				</button>
 			</div>
-			<nav className="menu-overlay-nav container-xxl px-3 px-lg-4" aria-label="Mobile">
+			<nav className="menu-overlay-nav container-xxl px-3 px-lg-4" aria-label={t('nav.mobile')}>
 				<ol>
 					<li style={{ '--i': 0 }}>
 						<TransitionLink to="/" onClick={onClose} aria-current={pathname === '/' ? 'page' : undefined}>
-							<span className="menu-num">00</span>Home
+							<span className="menu-num">00</span>{t('nav.home')}
 						</TransitionLink>
 					</li>
-					{navLinks.map(({ label, to }, i) => (
+					{navLinks.map(({ key, to }, i) => (
 						<li key={to} style={{ '--i': i + 1 }}>
 							<TransitionLink
 								to={to}
@@ -80,13 +82,14 @@ function MenuOverlay({ open, onClose, pathname }) {
 								aria-current={pathname.startsWith(to) ? 'page' : undefined}
 							>
 								<span className="menu-num">{String(i + 1).padStart(2, '0')}</span>
-								{label}
+								{t(`nav.${key}`)}
 							</TransitionLink>
 						</li>
 					))}
 				</ol>
 			</nav>
 			<div className="menu-overlay-foot container-xxl px-3 px-lg-4">
+				<LanguageToggle className="menu-lang" />
 				<a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
 					<Icon name="instagram" size={18} /> @{INSTAGRAM_HANDLE}
 				</a>
@@ -96,6 +99,7 @@ function MenuOverlay({ open, onClose, pathname }) {
 }
 
 export default function Header() {
+	const { t } = useLang();
 	const { scrolled, hidden } = useHeaderScroll();
 	const { pathname } = useLocation();
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -111,36 +115,37 @@ export default function Header() {
 		<>
 			<header className={classes} id="header">
 				<div className="header-inner container-xxl px-3 px-lg-4">
-					<TransitionLink to="/" className="site-logo" aria-label="CK Photography, home">
+					<TransitionLink to="/" className="site-logo" aria-label={t('header.homeLabel')}>
 						<span className="logo-mark">CK</span>
 						<span className="logo-word d-none d-sm-inline">Photography</span>
 					</TransitionLink>
 
-					<nav className="main-nav d-none d-lg-flex" aria-label="Main">
-						{navLinks.map(({ label, to }) => (
+					<nav className="main-nav d-none d-lg-flex" aria-label={t('nav.main')}>
+						{navLinks.map(({ key, to }) => (
 							<TransitionLink
 								key={to}
 								to={to}
 								className={`nav-btn${pathname.startsWith(to) ? ' active' : ''}`}
 							>
-								{label}
+								{t(`nav.${key}`)}
 							</TransitionLink>
 						))}
 					</nav>
 
 					<div className="header-end">
+						<LanguageToggle className="d-none d-lg-inline-flex" />
 						<AppearancePicker />
 						<a
 							href={INSTAGRAM_URL}
 							className="icon-btn d-none d-sm-inline-flex"
 							target="_blank"
 							rel="noopener noreferrer"
-							aria-label={`@${INSTAGRAM_HANDLE} on Instagram`}
+							aria-label={t('header.onInstagram', { handle: INSTAGRAM_HANDLE })}
 						>
 							<Icon name="instagram" size={20} />
 						</a>
 						<TransitionLink to="/contact" className="btn btn-accent header-cta d-none d-md-inline-flex">
-							Book a shoot
+							{t('header.cta')}
 						</TransitionLink>
 						<button
 							type="button"
@@ -148,7 +153,7 @@ export default function Header() {
 							onClick={() => setMenuOpen(true)}
 							aria-expanded={menuOpen}
 							aria-controls="site-menu"
-							aria-label="Open menu"
+							aria-label={t('header.openMenu')}
 						>
 							<Icon name="menu" size={24} />
 						</button>

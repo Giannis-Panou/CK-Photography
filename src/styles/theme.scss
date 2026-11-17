@@ -369,6 +369,43 @@ h5,
 	&.is-loaded {
 		opacity: 1;
 	}
+
+	// With a placeholder: visible at once as a soft preview, then the
+	// photo pulls into focus when it arrives
+	&.has-placeholder {
+		opacity: 1;
+
+		&.is-loaded {
+			animation: focus-in 0.7s var(--ck-ease) both;
+		}
+	}
+}
+
+// The placeholder is a ~24px image stretched to fill the frame: the browser's
+// smoothing turns it into a blur of the photo's colours
+.smart-img.has-placeholder,
+.ph-bg {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+@keyframes focus-in {
+	from {
+		filter: blur(10px);
+	}
+	to {
+		filter: none;
+	}
+}
+
+// Light image protection: no drag-to-desktop, no long-press save menu on
+// iOS, no selection highlight. Right-click is blocked in useImageProtection.
+// (It deters casual copying only; screenshots always work.)
+.protect-images img {
+	-webkit-user-drag: none;
+	-webkit-touch-callout: none;
+	user-select: none;
 }
 
 /* ---------- Toasts ---------- */

@@ -34,6 +34,12 @@
 				root.dataset.bsTheme = themes[theme];
 				root.dataset.type = /^(bold|classic|luxe|minimal)$/.test(type) ? type : 'bold';
 				root.dataset.corners = corners === 'soft' ? 'soft' : 'square';
+				// Language: saved choice, else the browser's (Greek or English)
+				var lang = read('ck-lang');
+				if (lang !== 'el' && lang !== 'en') {
+					lang = /^el\b/i.test(navigator.language || '') ? 'el' : 'en';
+				}
+				root.lang = lang;
 			})();
 		</script>
 	</head>

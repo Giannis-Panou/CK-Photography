@@ -1,10 +1,12 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { useLang } from '../i18n/LanguageContext';
 import Icon from '../components/Icon';
 
 const ToastContext = createContext(null);
 const DURATION = 3500;
 
 function Toast({ toast, onDismiss }) {
+	const dismissLabel = useLang().t('viewer.dismiss');
 	useEffect(() => {
 		const t = setTimeout(() => onDismiss(toast.id), DURATION);
 		return () => clearTimeout(t);
@@ -33,7 +35,7 @@ function Toast({ toast, onDismiss }) {
 				type="button"
 				className="ck-toast-close"
 				onClick={() => onDismiss(toast.id)}
-				aria-label="Dismiss"
+				aria-label={dismissLabel}
 			>
 				<Icon name="close" size={16} />
 			</button>

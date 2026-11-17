@@ -216,6 +216,11 @@
 	animation: rise 1s var(--ck-ease) 0.15s both;
 }
 
+.project-ig-link {
+	display: inline-flex;
+	margin-top: 1.5rem;
+}
+
 .project-facts {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -504,6 +509,9 @@
 	@media (min-width: 992px) {
 		aspect-ratio: 5 / 4;
 		height: 100%;
+		// When the text beside it is taller, the box grows in height only;
+		// without this the ratio would push it wider than its column
+		max-width: 100%;
 	}
 }
 

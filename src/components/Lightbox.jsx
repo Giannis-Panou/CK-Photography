@@ -1,12 +1,14 @@
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import Icon from './Icon';
+import { useLang } from '../i18n/LanguageContext';
 
 /**
  * Full-screen image viewer: Esc closes, arrow keys / swipe move between images.
  * images: [{ src, alt }]
  */
 export default function Lightbox({ images, index, onIndexChange, onClose }) {
+	const { t } = useLang();
 	const closeRef = useRef(null);
 	const touchX = useRef(null);
 	const count = images.length;
@@ -40,7 +42,7 @@ export default function Lightbox({ images, index, onIndexChange, onClose }) {
 			className="lightbox"
 			role="dialog"
 			aria-modal="true"
-			aria-label="Image viewer"
+			aria-label={t('viewer.label')}
 			onClick={(e) => e.target === e.currentTarget && onClose()}
 			onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
 			onTouchEnd={(e) => {
@@ -55,7 +57,7 @@ export default function Lightbox({ images, index, onIndexChange, onClose }) {
 				type="button"
 				className="lightbox-btn lightbox-close"
 				onClick={onClose}
-				aria-label="Close viewer"
+				aria-label={t('viewer.close')}
 			>
 				<Icon name="close" size={26} />
 			</button>
@@ -81,7 +83,7 @@ export default function Lightbox({ images, index, onIndexChange, onClose }) {
 						type="button"
 						className="lightbox-btn lightbox-prev"
 						onClick={() => go(-1)}
-						aria-label="Previous image"
+						aria-label={t('viewer.previous')}
 					>
 						<Icon name="chevronLeft" size={30} />
 					</button>
@@ -89,7 +91,7 @@ export default function Lightbox({ images, index, onIndexChange, onClose }) {
 						type="button"
 						className="lightbox-btn lightbox-next"
 						onClick={() => go(1)}
-						aria-label="Next image"
+						aria-label={t('viewer.next')}
 					>
 						<Icon name="chevronRight" size={30} />
 					</button>

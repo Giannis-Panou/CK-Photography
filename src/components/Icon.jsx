@@ -70,6 +70,13 @@ const paths = {
 			<rect x="14" y="14" width="7" height="7" />
 		</>
 	),
+	stack: (
+		<>
+			<rect x="7" y="7" width="14" height="14" rx="2" />
+			<path d="M17 3H5a2 2 0 0 0-2 2v12" />
+		</>
+	),
+	play: <path d="M7 4v16l13-8z" />,
 	gallery: (
 		<>
 			<rect x="3" y="3" width="7" height="11" />

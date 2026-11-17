@@ -14,6 +14,10 @@ A portfolio website for a city and landscape photographer, built with React. Opt
 
 An appearance menu in the header switches colour theme, typography and corner style.
 
+The interface is in **English and Greek**: the first visit follows the browser's language and the
+`EN`/`ΕΛ` switch in the header remembers the choice. Texts live in `src/i18n/en.js` and `src/i18n/el.js`
+(same keys in both). Instagram captions are shown as written.
+
 ## Running locally
 
 Built with React, React Router, Bootstrap 5 and Vite.
@@ -23,12 +27,26 @@ npm install
 npm run dev      # start the dev server
 npm run build    # production build into dist/
 npm run preview  # serve the production build
-npm run images   # regenerate web images from photos/originals
+npm run instagram  # fetch the latest posts (needs INSTAGRAM_TOKEN)
+npm run images   # sample photos from photos/originals (-- --force to redo all)
 ```
 
-## Adding photographs
+## Photographs come from Instagram
 
-1. Put the full-size file in `photos/originals/` (this folder is not deployed).
-2. Run `npm run images` to create the 800px and 1800px WebP versions in
-   `public/images/portfolio/` and update `src/data/photo-manifest.json`.
-3. Add an entry for it in `src/data/photos.js` (and to a project in `src/data/projects.js` if it belongs to a series).
+Every photo on the site is read from the Instagram feed, fetched at build time
+(`npm run instagram`, run automatically by `npm run build`). Carousel posts become
+projects, and captions supply titles and stories. Until an access token is set,
+the site uses a sample feed built from the photos in `photos/originals/`.
+See [docs/instagram.md](docs/instagram.md).
+
+To change the sample photos: put the full-size files in `photos/originals/`, run
+`npm run images`, and edit `src/data/instagram-sample.js`.
+
+## Image protection
+
+- Photos show a tiny blurred preview (stored with each photo) until the full image loads.
+- Right-click, drag and long-press saving are blocked on photos (`PROTECT_IMAGES` in
+  `src/data/navigation.js`). This deters casual copying only; screenshots always work.
+- Optional watermark: set `WATERMARK_TEXT="© CK Photography"` in `.env` or the Netlify
+  environment. It is added to Instagram photos at build time; for the sample photos run
+  `npm run images -- --force`.

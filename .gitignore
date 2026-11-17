@@ -3,3 +3,8 @@ dist
 
 # Local Netlify folder
 .netlify
+
+# Instagram feed: fetched at build time, never committed
+.env
+src/data/instagram.json
+public/images/instagram/
