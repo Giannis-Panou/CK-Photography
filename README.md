@@ -1,10 +1,10 @@
-![ck_white](https://github.com/user-attachments/assets/bacd5bf7-f4b3-42d2-a276-24f49439845a)
+# CK Photography
 
 A portfolio website for a city and landscape photographer, built with React. Every photo on the site
 comes from the photographer's Instagram account, so posting on Instagram is all it takes to update it.
 
-**Live demo:** [ckphotographytest.netlify.app](https://ckphotographytest.netlify.app) (running on a sample feed until
-the Instagram account is connected)
+**Live site:** [ckphotography.netlify.app](https://ckphotography.netlify.app) (running on a sample feed until
+the Instagram account is connected). All screenshots below are taken from it.
 
 ![Home page](docs/screenshots/home.webp)
 
