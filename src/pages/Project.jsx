@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { Page } from '../components/Layout';
 import Reveal from '../components/Reveal';
-import SmartImage from '../components/SmartImage';
+import SmartImage, { HERO_SIZES } from '../components/SmartImage';
 import Lightbox from '../components/Lightbox';
 import Icon from '../components/Icon';
 import { TransitionLink } from '../context/PageTransition';
@@ -33,7 +33,7 @@ export default function Project() {
 				<img
 					src={project.coverPhoto.src}
 					srcSet={project.coverPhoto.srcSet}
-					sizes="100vw"
+					sizes={HERO_SIZES}
 					alt=""
 					fetchPriority="high"
 					className="ph-bg"

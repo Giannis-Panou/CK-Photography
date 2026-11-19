@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 
+// Full-screen covers crop wide photos to the screen. On portrait screens
+// only part of the width shows, so ask for a larger file than 100vw would
+export const HERO_SIZES = '(max-aspect-ratio: 1/1) 250vw, 100vw';
+
 /**
  * An <img> that doesn't pop in line by line.
  * With a `placeholder` (tiny data URI from the image scripts) it shows a soft

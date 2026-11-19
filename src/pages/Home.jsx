@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Page } from '../components/Layout';
 import { TransitionLink } from '../context/PageTransition';
 import Reveal from '../components/Reveal';
-import SmartImage from '../components/SmartImage';
+import SmartImage, { HERO_SIZES } from '../components/SmartImage';
 import Marquee from '../components/Marquee';
 import Lightbox from '../components/Lightbox';
 import InstagramGrid from '../components/InstagramGrid';
@@ -36,7 +36,7 @@ function Hero() {
 						key={p.id}
 						src={p.src}
 						srcSet={p.srcSet}
-						sizes="100vw"
+						sizes={HERO_SIZES}
 						alt=""
 						style={{ backgroundImage: `url("${p.placeholder}")` }}
 						className={i === active ? 'ph-bg is-active' : 'ph-bg'}
